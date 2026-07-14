@@ -298,6 +298,94 @@
 /* ==================== VERİ ==================== */
 const KONULAR = [
   {
+    id:"temel", ikon:"⚖️", baslik:"Amaç, Kapsam ve Tanımlar",
+    ozet:"4458 sayılı Gümrük Kanunu ve Yönetmeliğin temel kavramları, gümrük idareleri, rejimler ve tanımlar.",
+    bolumler:[
+      {baslik:"Amaç ve Kapsam (G.K. 1-2)", metin:`
+        <p><b>4458 sayılı Gümrük Kanunu</b>: Kabul 27.10.1999, yürürlük <b>05.02.2000</b> (R.G. 23866 / 04.11.1999).</p>
+        <p><b>Amaç (md. 1):</b> Türkiye Cumhuriyeti Gümrük Bölgesine giren ve çıkan <b>eşyaya ve taşıt araçlarına</b> uygulanacak gümrük kurallarını belirlemektir.</p>
+        <p><b>Kapsam (md. 2):</b> Türkiye Cumhuriyeti Gümrük Bölgesi, TC <b>topraklarını</b> kapsar; <b>kara suları, iç sular ve hava sahası</b> da gümrük bölgesine dahildir. Kanundaki "Türkiye Gümrük Bölgesi" ve "Gümrük Bölgesi" kavramları bu bölgeyi ifade eder.</p>
+      `},
+      {baslik:"Gümrük idaresi: A ve B sınıfı, ihtisas gümrüğü", metin:`
+        <p><b>Müsteşarlık:</b> Gümrük Müsteşarlığı (bugün <b>Ticaret Bakanlığı</b>).</p>
+        <p>Gümrük müdürlükleri yetkilerine göre ikiye ayrılır:</p>
+        <ul>
+          <li><b>A sınıfı gümrükler:</b> Her türlü gümrük işlemini yapmaya yetkilidir.</li>
+          <li><b>B sınıfı gümrükler:</b> Yalnızca yolcu ve yolcu beraberi eşya ile Müsteşarlıkça belirlenen işlemleri yapar.</li>
+        </ul>
+        <div class="box tip"><b>İhtisas gümrüğü:</b> Belirli eşyanın gümrük işlemlerinin yalnızca belirli gümrüklerden yapılmasıdır. Amaçları: işlemleri hızlandırmak, kontrolde etkinlik, zorunlu standartları korumak, tüketici/halk sağlığını korumak, düşük kıymet beyanını önlemek. (Tekstil, halı, otomotiv, kozmetik, akaryakıt, oyuncak vb.)</div>
+      `},
+      {baslik:"Giriş / İthalat / Çıkış / İhracat gümrük idaresi", metin:`
+        <ul>
+          <li><b>Giriş gümrük idaresi:</b> Eşyanın TGB'ye getirilip risk analizine dayalı kontrolle <b>sevk</b> edildiği gümrük.</li>
+          <li><b>İthalat gümrük idaresi:</b> TGB'ye getirilen eşyanın <b>gümrükçe onaylanmış işlem/kullanıma (GOBİK)</b> tabi tutulduğu gümrük.</li>
+          <li><b>Çıkış gümrük idaresi:</b> Eşyanın TGB'yi <b>terk etmeden önce</b> sunulup çıkış işlemlerinin yapıldığı gümrük.</li>
+          <li><b>İhracat gümrük idaresi:</b> TGB'yi terk edecek eşyanın <b>GOBİK'e</b> tabi tutulduğu gümrük.</li>
+        </ul>
+        <div class="box"><b>2006/11 sayılı Genelge:</b> 1/5/2006'dan itibaren <b>kara sınır kapılarında yalnızca transit</b> işlemleri yapılır; ithalat ve ihracat işlemleri <b>iç gümrüklerde</b> gerçekleştirilir.</div>
+      `},
+      {baslik:"Kişi, yerleşik kişi ve karar", metin:`
+        <p><b>Kişi:</b> Gerçek kişiler, tüzel kişiler ve mevzuatça hukuki tasarruf yetkisi tanınan <b>kişiler ortaklığı</b>.</p>
+        <p><b>TGB'de yerleşik kişi:</b> Bu bölgede yerleşim yeri olan gerçek kişiler; kayıtlı işyeri, kanuni iş merkezi veya <b>şubesi</b> bulunan tüzel kişi/kişiler ortaklığı.</p>
+        <p><b>Karar:</b> Bağlayıcı tarife ve menşe bilgileri dahil, gümrük idaresinin belirli bir konuda bir veya daha fazla kişi üzerinde <b>hukuki sonuç doğuran idari tasarrufu</b>.</p>
+      `},
+      {baslik:"Serbest dolaşım statüsü", metin:`
+        <p><b>Serbest dolaşımda bulunan eşya</b> (özetle):</p>
+        <ul>
+          <li>Tümüyle TGB'de elde edilen ve dışarıdan ithal girdi içermeyen eşya,</li>
+          <li>Serbest dolaşıma giriş rejimiyle ithal edilen eşya,</li>
+          <li>Bunlardan üretilen/elde edilen eşya.</li>
+        </ul>
+        <p><b>Serbest dolaşımda bulunmayan eşya:</b> Yukarıdakiler dışında kalan eşya ile (transit hükümleri saklı) TGB'yi fiilen terk eden eşya.</p>
+        <p><b>Gümrük statüsü:</b> Eşyanın serbest dolaşıma girmiş olup olmadığı yönünden durumu.</p>
+      `},
+      {baslik:"Gümrük vergileri ve ithalat/ihracat vergileri", metin:`
+        <p><b>Gümrük vergileri:</b> Eşyaya uygulanan ithalat vergileri ya da ihracat vergilerinin <b>tümü</b>. Uzlaşma Yönetmeliği EK-1'de sayılanlardan bazıları: Gümrük Vergisi, İlave Gümrük Vergisi, Dampinge Karşı Vergi, KDV, ÖTV, TKF, Tütün Fonu, KKDF, TEV, EMY, TRT bandrolü (ticari olmayan eşya).</p>
+        <div class="box"><b>Gümrük vergileri tanımına GİRMEYENLER:</b> <b>Damga Vergisi</b>, Kültür Fonu, <b>ticari</b> TRT bandrol ücreti, Destekleme ve Fiyat İstikrar Fonu (DFİF).</div>
+        <p><b>İthalat vergileri:</b> İthalatta ödenecek gümrük vergisi ve eş etkili vergi/mali yükler. <b>İhracat vergileri:</b> İhracatta ödenecek gümrük vergisi ve eş etkili vergi/mali yükler.</p>
+      `},
+      {baslik:"Gümrük gözetimi, kontrolü ve risk", metin:`
+        <p><b>Gümrük gözetimi:</b> Mevzuata uyulmasını sağlamak üzere gümrük idarelerince <b>genel</b> olarak uygulanan işlemler.</p>
+        <p><b>Gümrük kontrolü:</b> Eşyanın muayenesi, beyan/belge doğrulama, hesap-kayıt inceleme, taşıma aracı kontrolü, bagaj/kişi kontrolü gibi <b>özel</b> uygulamalar.</p>
+        <ul>
+          <li><b>Risk:</b> Önlemlerin doğru uygulanmasını engelleyen, mali çıkarları tehlikeye düşüren ya da güvenlik/sağlık/çevre/tüketici tehdidi oluşturan <b>bir olayın ortaya çıkma ihtimali</b>.</li>
+          <li><b>Risk yönetimi:</b> Riskin en aza indirilmesi; veri-bilgi toplama, analiz, önlem uygulama ve izleme süreci.</li>
+          <li><b>Risk analizi:</b> Risklerin ne sıklıkla ortaya çıkabileceğinin, mevcut bilginin <b>sistematik kullanımıyla</b> belirlenmesi.</li>
+        </ul>
+      `},
+      {baslik:"GOBİK ve gümrük rejimleri", metin:`
+        <p><b>Gümrükçe onaylanmış işlem veya kullanım (GOBİK):</b> Rejime tabi tutma · serbest bölgeye girme · yeniden ihraç · imha · gümrüğe terk.</p>
+        <p><b>Sekiz gümrük rejimi (S.İ.T.H.A.D.G.G):</b> Serbest dolaşıma giriş, İhracat, Transit, Hariçte işleme, Antrepo, Dahilde işleme, Gümrük kontrolü altında işleme, Geçici ithalat.</p>
+        <div class="box"><b>Dikkat:</b> "İthalat rejimi", "geçici ihracat rejimi", "nihai kullanım rejimi", "serbest bölge rejimi", "giriş/çıkış rejimi" diye bir gümrük rejimi <b>yoktur</b>.</div>
+        <ul>
+          <li><b>Ekonomik etkili rejimler (H.A.D.G.G):</b> Hariçte işleme, Antrepo, Dahilde işleme, Gümrük kontrolü altında işleme, Geçici ithalat.</li>
+          <li><b>Şartlı muafiyet düzenlemeleri (T.A.Ş.G.G):</b> Transit, Antrepo, Şartlı muafiyet DİR, Gümrük kontrolü altında işleme, Geçici ithalat.</li>
+        </ul>
+      `},
+      {baslik:"Beyan, teslim ve ilgili kavramlar", metin:`
+        <ul>
+          <li><b>Eşyanın gümrüğe sunulması:</b> Eşyanın gümrüğe/uygun yere getirilmesi üzerine yapılan <b>bildirim</b>.</li>
+          <li><b>Gümrük beyanı:</b> Eşyanın <b>bir gümrük rejimine tabi tutulması talebi</b>.</li>
+          <li><b>Eşyanın teslimi:</b> Rejimin öngördüğü amaçla eşyanın ilgilisine teslimi.</li>
+          <li><b>Eşya:</b> Her türlü <b>madde, ürün ve değer</b>.</li>
+          <li><b>Beyan sahibi:</b> Kendi adına beyanda bulunan veya adına beyanda bulunulan kişi.</li>
+          <li><b>Rejim hak sahibi:</b> Kendi adına ve hesabına beyanı yapan/yapılan kişi.</li>
+          <li><b>Asıl sorumlu:</b> <b>Transit rejiminde</b> rejim hak sahibi.</li>
+          <li><b>Elleçleme:</b> Eşyanın asli niteliğini değiştirmeden istifleme, yer değiştirme, kap yenileme, havalandırma, kalburlama, karıştırma gibi işlemler.</li>
+          <li><b>Gümrüklenmiş değer:</b> İthalde <b>CIF + gümrük vergileri</b>; ihraçta <b>FOB + gümrük vergileri</b>.</li>
+        </ul>
+      `},
+      {baslik:"Gümrük Yönetmeliği tanımları", metin:`
+        <p><b>Dökme eşya:</b> Maden cevheri, kömür, hububat, çimento, gübre gibi ambalajlanmamış, yükleme/boşaltması mekanik tesis gerektiren madde. (Levha, boru, rulo sac, kütük gibi sayılabilen/ambalajlı eşya dökme <b>değildir</b>.)</p>
+        <p><b>Gümrük işlemlerinin bitirilmesi (K.Ö.T.İ.T.İ.M):</b> vergilerin <b>K</b>aldırılması / <b>Ö</b>denmesi / <b>T</b>eminata bağlanması / beyannamenin <b>İ</b>ptali / eşyanın gümrüğe <b>T</b>erki / <b>İ</b>mhası / <b>M</b>üsaderesi. (Geri verme, mahrece iade, tasfiye <b>sayılmamıştır</b>.)</p>
+        <p><b>Gümrüklü saha:</b> Kara/demiryolu/hava gümrük kapıları ve iç gümrükler ile deniz kapılarında liman ve demirleme sahaları.</p>
+        <p><b>Yolcu:</b> Ticaret, memuriyet, tahsil, ziyaret, tedavi veya turizm gibi amaçlarla TGB'ye gelen/giden Türk ve yabancılar.</p>
+        <p><b>Ticaret politikası önlemleri (TPÖ – G.İ.K.İ.M):</b> Gözetim, İthalat yasaklamaları, Korunma önlemleri, İhracat yasaklamaları, Miktar kısıtlamaları — <b>tarife dışı</b> önlemler.</p>
+        <p><b>YYS (Yetkilendirilmiş Yükümlü Sertifikası – G.K. 5/A):</b> Şartları: (a) güvenilirlik/ciddi ihlal bulunmaması, (b) ticari kayıtları düzenli tutma, (c) mali yeterlilik, (d) emniyet ve güvenlik standartları.</p>
+      `}
+    ]
+  },
+  {
     id:"atr", ikon:"📜", baslik:"Gümrük Birliği ve A.TR Dolaşım Belgesi",
     ozet:"Karar 2006/10895: AB Gümrük Birliği, üye ülkeler ve A.TR dolaşım belgesi kuralları.",
     bolumler:[
@@ -453,6 +541,29 @@ const KONULAR = [
 ];
 
 const SORULAR = [
+  {k:"temel", tip:"T1", s:"4458 sayılı Gümrük Kanununun 2 nci maddesine göre, aşağıdakilerden hangisi Türkiye Cumhuriyeti Gümrük Bölgesine <u>dahil değildir</u>?", o:["Kıta sahanlığı","Türkiye Cumhuriyeti toprakları","Kara suları","İç sular","Hava sahası"], d:0, a:"Gümrük Bölgesi; TC topraklarını, kara sularını, iç suları ve hava sahasını kapsar. 'Kıta sahanlığı' bu tanımda sayılmamıştır; olumsuz kök 'dahil değildir' bunu işaret eder.", yd:"4458 sayılı Gümrük Kanunu md. 2"},
+  {k:"temel", tip:"T3", s:"4458 sayılı Gümrük Kanununun 3 üncü maddesindeki tanımlara göre 'Müsteşarlık' ibaresi bugün hangi kurumu ifade etmektedir?", o:["Hazine ve Maliye Bakanlığı","Ticaret Bakanlığı","Ulaştırma ve Altyapı Bakanlığı","Sanayi ve Teknoloji Bakanlığı","İçişleri Bakanlığı"], d:1, a:"Kanundaki 'Gümrük Müsteşarlığı', teşkilat değişikliğiyle bugün Ticaret Bakanlığını ifade eder. Diğer bakanlıklar kurum kümesi çeldiricileridir.", yd:"4458 sayılı Gümrük Kanunu md. 3"},
+  {k:"temel", tip:"T5", s:"4458 sayılı Gümrük Kanununun 3 üncü maddesine göre; '…… sınıfı gümrükler her türlü gümrük işlemini yapmaya yetkili iken, …… sınıfı gümrükler yalnızca yolcu ve yolcu beraberi eşya ile Müsteşarlıkça belirlenen işlemleri yapar.' Boşluklara sırasıyla ne gelmelidir?", o:["A / B","B / A","A / C","1 / 2","İhtisas / Genel"], d:0, a:"A sınıfı gümrükler her türlü işlemi, B sınıfı gümrükler yalnızca sınırlı işlemleri yapar. Doğru sıra 'A / B'dir. 'B / A' ters çevirme; diğerleri var olmayan sınıf adlarıdır.", yd:"4458 sayılı Gümrük Kanunu md. 3"},
+  {k:"temel", tip:"T2", s:"İhtisas gümrüğü uygulamasının amaçlarına ilişkin aşağıdaki öncülleri değerlendiriniz:<br>I. Gümrük işlemlerini daha kısa sürede tamamlamak.<br>II. Gümrük kontrollerinde etkinliği artırmak.<br>III. Düşük kıymet beyanlarını önlemek.<br>IV. Tüketiciyi ve halk sağlığını korumak.<br>Bu öncüllerden hangileri ihtisas gümrüğünün amaçları arasındadır?", o:["Yalnız I","I ve II","I, II, III ve IV","I, II ve III","II, III ve IV"], d:2, a:"Dört öncül de ihtisas gümrüğünün amaçlarındandır (işlemleri hızlandırma, kontrol etkinliği, düşük kıymet beyanını önleme, tüketici/halk sağlığını koruma); ayrıca zorunlu standartların korunması da sayılır. Doğru cevap 'I, II, III ve IV'tür.", yd:"İhtisas gümrüğü uygulaması"},
+  {k:"temel", tip:"T7", s:"Bir eşya Türkiye Gümrük Bölgesine getirilmiş; risk analizine dayalı giriş kontrolüne tabi tutularak geciktirilmeksizin sevk işlemleri yapılmıştır. 4458 sayılı Gümrük Kanununun 3 üncü maddesine göre bu işlemin yapıldığı idare aşağıdakilerden hangisidir?", o:["İthalat gümrük idaresi","İhracat gümrük idaresi","Çıkış gümrük idaresi","Giriş gümrük idaresi","İç gümrük idaresi"], d:3, a:"Eşyanın TGB'ye getirilip sevk edildiği idare 'giriş gümrük idaresi'dir. GOBİK'e tabi tutulsaydı ithalat gümrük idaresi olurdu (kavram çeldiricisi). Çıkış/ihracat idareleri TGB'yi terk eden eşyaya ilişkindir.", yd:"4458 sayılı Gümrük Kanunu md. 3"},
+  {k:"temel", tip:"T1", s:"2006/11 sayılı Genelgeye göre, 1/5/2006 tarihinden itibaren kara sınır kapılarında aşağıdaki işlemlerden hangisi <u>yapılmaz</u>?", o:["Transit işlemleri","Transit beyannamesi tescili","Transit refakat belgesi düzenlenmesi","TIR karnesi işlemleri","İthalata ilişkin gümrük işlemleri"], d:4, a:"Kara sınır kapılarında yalnızca transit işlemleri yapılır; ithalat (ve ihracat) işlemleri iç gümrüklerde gerçekleştirilir. Olumsuz kök 'yapılmaz' ithalat işlemlerini işaret eder. Diğer şıklar transit ile ilgilidir.", yd:"2006/11 sayılı Genelge"},
+  {k:"temel", tip:"T2", s:"4458 sayılı Gümrük Kanununun 3 üncü maddesine göre, aşağıdaki öncüllerden hangileri 'serbest dolaşımda bulunan eşya' kapsamındadır?<br>I. Tümüyle Türkiye Gümrük Bölgesinde elde edilen ve dışarıdan ithal girdi içermeyen eşya.<br>II. Serbest dolaşıma giriş rejimine tabi tutularak ithal edilen eşya.<br>III. Transit rejimi kapsamında Türkiye Gümrük Bölgesinden geçen eşya.", o:["Yalnız III","I ve III","II ve III","I ve II","I, II ve III"], d:3, a:"I ve II serbest dolaşımda bulunan eşyadır. III (transit eşyası) serbest dolaşımda değildir; III içeren kombinasyonlar elenir. Doğru cevap 'I ve II'dir.", yd:"4458 sayılı Gümrük Kanunu md. 3"},
+  {k:"temel", tip:"T1", s:"4458 sayılı Gümrük Kanununa göre, aşağıdakilerden hangisi 'gümrük vergileri' tanımı kapsamında <u>yer almaz</u>?", o:["İlave Gümrük Vergisi","Dampinge Karşı Vergi","Katma Değer Vergisi","Özel Tüketim Vergisi","Damga Vergisi"], d:4, a:"Damga Vergisi gümrük vergileri tanımına girmez (Kültür Fonu, ticari TRT bandrolü ve DFİF de girmez). Diğer dört yük gümrük vergileri kapsamındadır; olumsuz kök 'yer almaz' Damga Vergisini işaret eder.", yd:"4458 sayılı Gümrük Kanunu md. 3; Uzlaşma Yönetmeliği EK-1"},
+  {k:"temel", tip:"T1", s:"4458 sayılı Gümrük Kanununa göre, aşağıdakilerden hangisi sekiz gümrük rejiminden biri <u>değildir</u>?", o:["Nihai kullanım rejimi","Transit rejimi","Gümrük antrepo rejimi","Dahilde işleme rejimi","Geçici ithalat rejimi"], d:0, a:"Sekiz rejim: serbest dolaşıma giriş, ihracat, transit, hariçte işleme, antrepo, dahilde işleme, gümrük kontrolü altında işleme, geçici ithalat. 'Nihai kullanım rejimi' diye bir gümrük rejimi yoktur (ayrıca ithalat/geçici ihracat/serbest bölge rejimi de yoktur); olumsuz kök 'değildir' bunu işaret eder.", yd:"4458 sayılı Gümrük Kanunu md. 3"},
+  {k:"temel", tip:"T2", s:"4458 sayılı Gümrük Kanununa göre, aşağıdaki öncüllerden hangileri 'ekonomik etkili gümrük rejimleri' arasındadır?<br>I. Antrepo rejimi<br>II. Dahilde işleme rejimi<br>III. Geçici ithalat rejimi<br>IV. Serbest dolaşıma giriş rejimi", o:["Yalnız IV","I ve II","I, II ve III","II, III ve IV","I, II, III ve IV"], d:2, a:"Ekonomik etkili rejimler: hariçte işleme, antrepo, dahilde işleme, gümrük kontrolü altında işleme, geçici ithalat. I-II-III bunlardandır; IV (serbest dolaşıma giriş) ekonomik etkili değildir. Doğru cevap 'I, II ve III'tür.", yd:"4458 sayılı Gümrük Kanunu"},
+  {k:"temel", tip:"T1", s:"4458 sayılı Gümrük Kanununa göre, aşağıdakilerden hangisi 'şartlı muafiyet düzenlemeleri' kapsamında <u>değildir</u>?", o:["Transit rejimi","Hariçte işleme rejimi","Antrepo rejimi","Gümrük kontrolü altında işleme rejimi","Geçici ithalat rejimi"], d:1, a:"Şartlı muafiyet düzenlemeleri: transit, antrepo, şartlı muafiyet dahilde işleme, gümrük kontrolü altında işleme, geçici ithalat. Hariçte işleme rejimi ekonomik etkili bir rejim olsa da şartlı muafiyet düzenlemesi değildir; olumsuz kök 'değildir' bunu işaret eder.", yd:"4458 sayılı Gümrük Kanunu"},
+  {k:"temel", tip:"T6", s:"Aşağıda gümrük rejimi ile niteliği eşleştirilmiştir. Bu eşleştirmelerden hangisi <u>yanlıştır</u>?", o:["Transit – Şartlı muafiyet düzenlemesi","Antrepo – Hem ekonomik etkili hem şartlı muafiyet","Dahilde işleme – Ekonomik etkili rejim","Serbest dolaşıma giriş – Şartlı muafiyet düzenlemesi","Geçici ithalat – Ekonomik etkili rejim"], d:3, a:"Yanlış eşleştirme D'dir: serbest dolaşıma giriş bir şartlı muafiyet düzenlemesi değildir (ithalat rejimidir). Diğer dört eşleştirme doğrudur; olumsuz kök 'yanlıştır'.", yd:"4458 sayılı Gümrük Kanunu"},
+  {k:"temel", tip:"T1", s:"4458 sayılı Gümrük Kanununa göre, aşağıdakilerden hangisi eşyanın 'gümrükçe onaylanmış bir işlem veya kullanıma tabi tutulması' hâllerinden biri <u>değildir</u>?", o:["Bir gümrük rejimine tabi tutulması","Serbest bölgeye girmesi","Yeniden ihraç edilmesi","İmha edilmesi","Kati ithalatının yapılması"], d:4, a:"GOBİK; rejime tabi tutma, serbest bölgeye girme, yeniden ihraç, imha ve gümrüğe terktir. 'Kati ithalat' ayrı bir GOBİK türü değildir (serbest dolaşıma giriş rejiminin sonucudur); olumsuz kök 'değildir' bunu işaret eder.", yd:"4458 sayılı Gümrük Kanunu md. 3"},
+  {k:"temel", tip:"T3", s:"4458 sayılı Gümrük Kanununun 3 üncü maddesine göre, 'transit rejiminde rejim hak sahibi' aşağıdaki kavramlardan hangisiyle ifade edilir?", o:["Asıl sorumlu","İzin hak sahibi","Beyan sahibi","Doğrudan temsilci","Kefil"], d:0, a:"Transit rejiminde rejim hak sahibi 'asıl sorumlu' olarak tanımlanır. İzin hak sahibi kendisine izin verilen kişidir; beyan sahibi kendi adına/adına beyanda bulunulan kişidir (kavram kümesi çeldiricisi).", yd:"4458 sayılı Gümrük Kanunu md. 3"},
+  {k:"temel", tip:"T3", s:"4458 sayılı Gümrük Kanununun 3 üncü maddesindeki tanıma göre 'eşya' aşağıdakilerden hangisini ifade eder?", o:["Yalnızca ticari mallar","Her türlü madde, ürün ve değer","Yalnızca gümrük vergisine tabi ürünler","Taşıt araçları hariç her türlü mal","Yalnızca serbest dolaşımdaki mallar"], d:1, a:"Eşya, 'her türlü madde, ürün ve değer' olarak tanımlanır (tanımda 'mal' ifadesi geçmez). Diğer şıklar kapsamı daraltan çeldiricilerdir.", yd:"4458 sayılı Gümrük Kanunu md. 3"},
+  {k:"temel", tip:"T4", s:"4458 sayılı Gümrük Kanununa göre 'gümrüklenmiş değer'e ilişkin aşağıdaki ifadelerden hangisi doğrudur?", o:["İthal eşyasında FOB kıymet ile gümrük vergileri toplamıdır.","İhraç eşyasında CIF kıymet ile gümrük vergileri toplamıdır.","İthal eşyasında yalnızca CIF kıymettir.","İthal eşyasında CIF kıymet ile gümrük vergileri toplamı; ihraç eşyasında FOB kıymet ile gümrük vergileri toplamıdır.","İhraç eşyasında yalnızca FOB kıymettir."], d:3, a:"Doğru ifade D'dir (en uzun şık – ters tuzak): ithalde CIF + gümrük vergileri, ihraçta FOB + gümrük vergileri. A ve B, CIF/FOB'u ters çevirir; C ve E vergileri dışlar.", yd:"4458 sayılı Gümrük Kanunu md. 3"},
+  {k:"temel", tip:"T4", s:"4458 sayılı Gümrük Kanununa göre gümrük gözetimi ve gümrük kontrolüne ilişkin aşağıdaki ifadelerden hangisi doğrudur?", o:["Gümrük gözetimi yalnızca eşyanın fiziki muayenesidir.","Gümrük kontrolü, mevzuata uyulmasını sağlamak için genel olarak uygulanan işlemlerdir.","Gümrük gözetimi, mevzuata uyulmasını sağlamak üzere genel olarak uygulanan işlemleri; gümrük kontrolü ise muayene, belge doğrulama ve kayıt inceleme gibi özel uygulamaları ifade eder.","Gümrük kontrolü yalnızca bagaj kontrolünü kapsar.","Gümrük gözetimi ile gümrük kontrolü aynı kavramdır."], d:2, a:"Doğru ifade C'dir (en uzun şık – ters tuzak): gözetim genel işlemler, kontrol ise muayene/belge doğrulama/kayıt inceleme gibi özel uygulamalardır. B tanımları ters çevirir; A/D kapsamı daraltır; E iki kavramı eşitler.", yd:"4458 sayılı Gümrük Kanunu md. 3"},
+  {k:"temel", tip:"T1", s:"Gümrük Yönetmeliğine göre, aşağıdakilerden hangisi 'gümrük işlemlerinin bitirilmesi' hâllerinden biri <u>değildir</u>?", o:["Vergilerin ödenmesi","Vergilerin teminata bağlanması","Beyannamenin iptal edilmesi","Eşyanın imhası","Eşyanın tasfiye edilmesi"], d:4, a:"Gümrük işlemlerinin bitirilmesi (K.Ö.T.İ.T.İ.M): kaldırma, ödeme, teminata bağlama, iptal, terk, imha, müsadere. 'Tasfiye' bu tanımda sayılmamıştır (geri verme ve mahrece iade de sayılmaz); olumsuz kök 'değildir' bunu işaret eder.", yd:"Gümrük Yönetmeliği md. 3"},
+  {k:"temel", tip:"T5", s:"Gümrük Yönetmeliğinin 3 üncü maddesine göre; maden cevheri, hububat, çimento ve suni gübre gibi ambalajlanmamış ve yükleme/boşaltması genellikle mekanik vasıta gerektiren maddeler …… olarak; levha, boru, rulo sac ve kütük gibi sayılabilen maddeler ise …… olarak değerlendirilir. Boşluklara sırasıyla ne gelmelidir?", o:["dökme eşya olmayan / dökme eşya","dökme eşya / dökme eşya olmayan","tehlikeli eşya / dökme eşya","dökme eşya / tehlikeli eşya","serbest eşya / dökme eşya"], d:1, a:"Ambalajsız, mekanik yüklenen maddeler 'dökme eşya'; levha/boru/rulo sac/kütük gibi sayılabilenler 'dökme eşya olmayan' sayılır. Doğru sıra 'dökme eşya / dökme eşya olmayan'dır; ilk şık ters çevirmedir.", yd:"Gümrük Yönetmeliği md. 3"},
+  {k:"temel", tip:"T2", s:"4458 sayılı Gümrük Kanununun 5/A maddesine göre, Yetkilendirilmiş Yükümlü Sertifikası (YYS) verilmesi için aşağıdaki öncüllerden hangileri aranır?<br>I. Sorumlulukların yerine getirilmesinde ciddi ihlalde bulunmamak.<br>II. Ticari kayıtları düzenli tutma yeterliliğine sahip olmak.<br>III. Mali yeterliliğe sahip olduğunu kanıtlamak.<br>IV. Emniyet ve güvenlik standartlarına sahip olmak.", o:["Yalnız I","I ve II","I, II, III ve IV","I, II ve III","II, III ve IV"], d:2, a:"YYS için dört şart birlikte aranır: güvenilirlik, düzenli ticari kayıt, mali yeterlilik, emniyet ve güvenlik. Doğru cevap 'I, II, III ve IV'tür; kısmi kombinasyonlar eksik sayım tuzağıdır.", yd:"4458 sayılı Gümrük Kanunu md. 5/A"},
+  {k:"temel", tip:"T3", s:"Gümrük Yönetmeliğinin 3 üncü maddesine göre, deniz gümrük kapılarında liman yönetmelikleriyle belirlenen liman sahası ve demirleme sahalarını da kapsayan alan aşağıdakilerden hangisiyle ifade edilir?", o:["Gümrük hattı","Antrepo sahası","Serbest bölge","Gümrüklü saha","Geçici depolama yeri"], d:3, a:"Kara/demiryolu/hava kapıları ve iç gümrükler ile deniz kapılarında liman ve demirleme sahalarını kapsayan alan 'gümrüklü saha'dır. Diğer şıklar farklı alan kavramlarıdır (kümesel çeldirici).", yd:"Gümrük Yönetmeliği md. 3"},
+  {k:"temel", tip:"T2", s:"Gümrük Yönetmeliğine göre, aşağıdaki öncüllerden hangileri 'ticaret politikası önlemleri' arasında yer alır?<br>I. Gözetim<br>II. Korunma önlemleri<br>III. Miktar kısıtlamaları<br>IV. İthalat veya ihracat yasaklamaları", o:["Yalnız I","I ve II","I, II ve III","II, III ve IV","I, II, III ve IV"], d:4, a:"Ticaret politikası önlemleri (tarife dışı): gözetim, korunma önlemleri, miktar kısıtlamaları, ithalat/ihracat yasaklamaları. Dört öncül de kapsamdadır; doğru cevap 'I, II, III ve IV'tür.", yd:"Gümrük Yönetmeliği md. 3"},
+
   {k:"atr", tip:"T3", s:"2006/10895 sayılı 'Türkiye ile Avrupa Topluluğu Arasında Oluşturulan Gümrük Birliği'nin Uygulanmasına İlişkin Esaslar Hakkında Karar'a göre; Gümrük Birliği Gümrük Bölgesi'nin iki parçası arasında doğrudan nakledilen sanayi ürünleri ile işlenmiş tarım ürünleri için düzenlenen belge aşağıdakilerden hangisidir?", o:["A.TR Dolaşım Belgesi","EUR.1 Dolaşım Belgesi","EUR-MED Dolaşım Belgesi","Form A Menşe Belgesi","Menşe Şahadetnamesi"], d:0, a:"Doğru cevap A.TR Dolaşım Belgesidir; eşyanın serbest dolaşım statüsünü gösterir. EUR.1 ve EUR-MED tercihli menşe ispatına yarayan belgelerdir (aynı 'dolaşım belgesi' kümesinden çeldirici). Form A ve Menşe Şahadetnamesi ise menşe belgeleridir (kavram kümesi çeldiricisi).", yd:"2006/10895 sayılı Karar; Gümrük Yönetmeliği – A.TR Dolaşım Belgeleri"},
   {k:"atr", tip:"T1", s:"Avrupa Birliği'nin kurucu üyeleri dikkate alındığında, aşağıdaki ülkelerden hangisi kurucu üyelerden biri <u>değildir</u>?", o:["Almanya","Belçika","Fransa","Hollanda","Yunanistan"], d:4, a:"Kurucu altı ülke Hollanda, Almanya, Lüksemburg, İtalya, Fransa ve Belçika'dır (H.A.L.İ.F.B.). Olumsuz kök 'değildir' Yunanistan'ı işaret eder; Yunanistan Birliğe sonradan katılmıştır. Diğer dört şık gerçek kurucu üyelerdir (kavram kümesi çeldiricisi).", yd:"Gümrük Birliği üye ülkeleri (2006/10895 sayılı Karar)"},
   {k:"atr", tip:"T2", s:"Avrupa Birliği üyesi ülkelerle ilgili aşağıdaki öncülleri değerlendiriniz:<br>I. Hollanda kurucu üyelerden biridir.<br>II. Birliğe en son katılan ülke (2013) Hırvatistan'dır.<br>III. Bulgaristan ve Romanya 2007 yılında katılmıştır.<br>IV. Yunanistan kurucu üyelerdendir.<br>Bu öncüllerden hangileri doğrudur?", o:["Yalnız I","I ve IV","I, II ve III","II, III ve IV","I, II, III ve IV"], d:2, a:"I doğru (kurucu üye), II doğru (2013 Hırvatistan), III doğru (2007 Bulgaristan-Romanya). IV yanlıştır: Yunanistan kurucu değildir. Bu nedenle 'I, II ve III' seçilir; IV'ü içeren 'I, II, III ve IV' (tümü) tuzağı elenir.", yd:"Gümrük Birliği üye ülkeleri ve katılım tarihleri"},
@@ -493,6 +604,31 @@ const SORULAR = [
 ];
 
 const KARTLAR = [
+  {k:"temel", on:"4458 sayılı Gümrük Kanunu ne zaman yürürlüğe girdi?", arka:"05.02.2000 (Kabul 27.10.1999, R.G. 04.11.1999/23866)."},
+  {k:"temel", on:"Gümrük Kanununun amacı nedir?", arka:"TC Gümrük Bölgesine giren-çıkan eşya ve taşıt araçlarına uygulanacak gümrük kurallarını belirlemek."},
+  {k:"temel", on:"Türkiye Gümrük Bölgesi neleri kapsar?", arka:"TC toprakları + kara suları + iç sular + hava sahası. (Kıta sahanlığı sayılmaz.)"},
+  {k:"temel", on:"'Müsteşarlık' bugün hangi kurumdur?", arka:"Ticaret Bakanlığı."},
+  {k:"temel", on:"A ve B sınıfı gümrük farkı?", arka:"A: her türlü işlem; B: yalnızca yolcu + yolcu beraberi eşya ve Müsteşarlıkça belirlenen işlemler."},
+  {k:"temel", on:"İhtisas gümrüğü nedir?", arka:"Belirli eşyanın gümrük işlemlerinin yalnızca belirli gümrüklerden yapılması."},
+  {k:"temel", on:"Giriş vs İthalat gümrük idaresi?", arka:"Giriş: getirilip SEVK edilen gümrük. İthalat: getirilip GOBİK'e tabi tutulan gümrük."},
+  {k:"temel", on:"Çıkış vs İhracat gümrük idaresi?", arka:"Çıkış: TGB'yi terk etmeden önce çıkış işlemi. İhracat: terk edecek eşyanın GOBİK'e tabi tutulduğu gümrük."},
+  {k:"temel", on:"2006/11 Genelge neyi düzenler?", arka:"Kara sınır kapılarında yalnızca transit; ithalat-ihracat iç gümrüklerde (1/5/2006'dan itibaren)."},
+  {k:"temel", on:"Sekiz gümrük rejimi (kısaltma)?", arka:"S.İ.T.H.A.D.G.G: Serbest dol. giriş, İhracat, Transit, Hariçte işleme, Antrepo, Dahilde işleme, GKAİR, Geçici ithalat."},
+  {k:"temel", on:"Gümrük rejimi OLMAYANLAR?", arka:"İthalat rejimi, geçici ihracat, nihai kullanım, serbest bölge, giriş/çıkış rejimi YOKTUR."},
+  {k:"temel", on:"Ekonomik etkili rejimler?", arka:"H.A.D.G.G: Hariçte işleme, Antrepo, Dahilde işleme, GKAİR, Geçici ithalat."},
+  {k:"temel", on:"Şartlı muafiyet düzenlemeleri?", arka:"T.A.Ş.G.G: Transit, Antrepo, Şartlı muafiyet DİR, GKAİR, Geçici ithalat."},
+  {k:"temel", on:"GOBİK nedir?", arka:"Rejime tabi tutma, serbest bölgeye girme, yeniden ihraç, imha, gümrüğe terk."},
+  {k:"temel", on:"Gümrük vergileri tanımına GİRMEYENLER?", arka:"Damga Vergisi, Kültür Fonu, ticari TRT bandrol ücreti, DFİF."},
+  {k:"temel", on:"Asıl sorumlu kimdir?", arka:"Transit rejiminde rejim hak sahibi."},
+  {k:"temel", on:"'Eşya' tanımı?", arka:"Her türlü madde, ürün ve değer. (Tanımda 'mal' geçmez.)"},
+  {k:"temel", on:"Gümrüklenmiş değer nasıl bulunur?", arka:"İthal: CIF + gümrük vergileri. İhraç: FOB + gümrük vergileri."},
+  {k:"temel", on:"Gümrük işlemlerinin bitirilmesi (kısaltma)?", arka:"K.Ö.T.İ.T.İ.M: Kaldırma, Ödeme, Teminat, İptal, Terk, İmha, Müsadere. (Geri verme/mahrece iade/tasfiye YOK.)"},
+  {k:"temel", on:"TPÖ (ticaret politikası önlemleri)?", arka:"G.İ.K.İ.M: Gözetim, İthalat yasağı, Korunma, İhracat yasağı, Miktar kısıtlaması — tarife DIŞI önlemler."},
+  {k:"temel", on:"YYS şartları (G.K. 5/A)?", arka:"Güvenilirlik, ticari kayıtları düzenli tutma, mali yeterlilik, emniyet ve güvenlik."},
+  {k:"temel", on:"Dökme eşya nedir?", arka:"Ambalajsız, mekanik yüklenen madde (maden, hububat, çimento, gübre). Levha/boru/rulo sac/kütük dökme DEĞİLDİR."},
+  {k:"temel", on:"Elleçleme nedir?", arka:"Eşyanın asli niteliğini değiştirmeden istifleme, yer değiştirme, kap yenileme, havalandırma, kalburlama, karıştırma."},
+  {k:"temel", on:"Gümrük gözetimi vs kontrolü?", arka:"Gözetim: genel işlemler. Kontrol: muayene, belge doğrulama, kayıt inceleme gibi özel uygulamalar."},
+
   {k:"atr", on:"2006/10895 sayılı Karar nedir?", arka:"Türkiye ile AT arasında oluşturulan Gümrük Birliği'nin uygulanmasına ilişkin esasları düzenleyen karar."},
   {k:"atr", on:"AB'nin kurucu 6 ülkesi? (kod: H.A.L.İ.F.B.)", arka:"Hollanda, Almanya, Lüksemburg, İtalya, Fransa, Belçika."},
   {k:"atr", on:"AB'ye en son katılan ülke?", arka:"Hırvatistan (2013)."},
