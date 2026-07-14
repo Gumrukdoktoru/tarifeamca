@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Tarife Amca - Gümrük müşavirliği sınavı için ücretsiz ders çalışma uygulaması: konu anlatımı, test, bilgi kartları ve ilerleme takibi.">
+<title>Tarife Amca · Gümrük Ders Çalışma</title>
+<style>
+  :root{
+    --bg:#f4f6fb; --panel:#ffffff; --ink:#12203a; --muted:#5b6b85;
+    --line:#e4e9f2; --brand:#12507a; --brand-2:#1c8a9a; --accent:#e8a13a;
+    --ok:#1f9d6b; --bad:#d84c4c; --soft:#eef3fa;
+    --shadow:0 1px 3px rgba(18,32,58,.06),0 8px 24px rgba(18,32,58,.06);
+    --r:16px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0e1524; --panel:#161f31; --ink:#eaf0fa; --muted:#9aabc4;
+      --line:#243247; --brand:#4aa3d6; --brand-2:#3fc3d1; --accent:#f0b455;
+      --ok:#3bc98a; --bad:#f0736f; --soft:#1c2739;
+      --shadow:0 1px 3px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--brand)}
+  button{font-family:inherit}
+
+  /* Header */
+  header{
+    position:sticky; top:0; z-index:20;
+    background:color-mix(in srgb, var(--panel) 88%, transparent);
+    backdrop-filter:saturate(1.4) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .bar{max-width:1080px; margin:0 auto; padding:12px 18px; display:flex; align-items:center; gap:14px}
+  .brand{display:flex; align-items:center; gap:11px; font-weight:800; letter-spacing:.2px; font-size:1.05rem}
+  .logo{
+    width:40px;height:40px;border-radius:12px;flex:0 0 auto;
+    background:linear-gradient(140deg,var(--brand),var(--brand-2));
+    display:grid;place-items:center;font-size:1.35rem;box-shadow:var(--shadow);
+  }
+  .brand small{display:block;font-weight:600;color:var(--muted);font-size:.72rem;letter-spacing:.3px}
+  nav{margin-left:auto; display:flex; gap:4px; flex-wrap:wrap}
+  .tab{
+    border:0;background:transparent;color:var(--muted);cursor:pointer;
+    padding:9px 13px;border-radius:10px;font-weight:600;font-size:.9rem;display:flex;gap:7px;align-items:center;
+    transition:.15s;
+  }
+  .tab:hover{background:var(--soft);color:var(--ink)}
+  .tab.active{background:var(--brand);color:#fff}
+  .tab .ic{font-size:1rem}
+
+  main{max-width:1080px; margin:0 auto; padding:26px 18px 80px}
+  .view{display:none; animation:fade .25s ease}
+  .view.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  h1{font-size:1.6rem;margin:0 0 4px}
+  h2{font-size:1.2rem;margin:26px 0 12px}
+  .sub{color:var(--muted);margin:0 0 22px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+
+  /* Dashboard */
+  .hero{padding:26px;display:flex;gap:22px;align-items:center;flex-wrap:wrap;margin-bottom:22px;
+    background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;border:0}
+  .hero .mascot{font-size:3.4rem;line-height:1}
+  .hero h1{color:#fff}
+  .hero p{margin:6px 0 0;opacity:.92;max-width:52ch}
+  .grid{display:grid;gap:14px}
+  .stats{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+  .stat{padding:18px}
+  .stat .n{font-size:1.9rem;font-weight:800;line-height:1}
+  .stat .l{color:var(--muted);font-size:.83rem;margin-top:5px;font-weight:600}
+  .stat .ic{font-size:1.3rem}
+  .quick{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:14px}
+  .qbtn{padding:20px;text-align:left;cursor:pointer;border:1px solid var(--line);background:var(--panel);
+    border-radius:var(--r);transition:.15s;box-shadow:var(--shadow)}
+  .qbtn:hover{transform:translateY(-2px);border-color:var(--brand)}
+  .qbtn .ic{font-size:1.7rem}
+  .qbtn h3{margin:8px 0 3px;font-size:1.02rem}
+  .qbtn p{margin:0;color:var(--muted);font-size:.85rem}
+
+  .bar-wrap{height:10px;background:var(--soft);border-radius:99px;overflow:hidden;margin-top:10px}
+  .bar-fill{height:100%;background:linear-gradient(90deg,var(--brand),var(--brand-2));border-radius:99px;transition:width .5s}
+
+  /* Konu list */
+  .konu-grid{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+  .konu{padding:18px;cursor:pointer;transition:.15s;display:flex;flex-direction:column;gap:8px}
+  .konu:hover{transform:translateY(-2px);border-color:var(--brand)}
+  .konu .top{display:flex;align-items:center;gap:11px}
+  .konu .ic{font-size:1.6rem}
+  .konu h3{margin:0;font-size:1rem}
+  .konu p{margin:0;color:var(--muted);font-size:.85rem;flex:1}
+  .chip{display:inline-block;font-size:.72rem;font-weight:700;padding:3px 9px;border-radius:99px;
+    background:var(--soft);color:var(--muted)}
+  .chip.done{background:color-mix(in srgb,var(--ok) 18%,transparent);color:var(--ok)}
+
+  /* Reader */
+  .reader h2{border-left:4px solid var(--brand);padding-left:12px;margin-top:30px}
+  .reader p, .reader li{color:var(--ink)}
+  .reader ul{padding-left:20px}
+  .reader .box{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:14px 0}
+  .reader .box.tip{border-left:4px solid var(--accent)}
+  .reader .box b{color:var(--brand)}
+  kbd{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:1px 7px;font-size:.85em;font-weight:700}
+
+  /* Quiz */
+  .q-setup{padding:22px}
+  .opt-row{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 18px}
+  .pill{border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:9px 15px;border-radius:99px;
+    cursor:pointer;font-weight:600;font-size:.88rem;transition:.15s}
+  .pill:hover{border-color:var(--brand)}
+  .pill.sel{background:var(--brand);color:#fff;border-color:var(--brand)}
+  .btn{background:var(--brand);color:#fff;border:0;padding:12px 22px;border-radius:12px;font-weight:700;
+    cursor:pointer;font-size:.95rem;transition:.15s;box-shadow:var(--shadow)}
+  .btn:hover{filter:brightness(1.08)}
+  .btn.ghost{background:transparent;color:var(--brand);border:1px solid var(--line)}
+  .btn.wide{width:100%}
+  .btn:disabled{opacity:.5;cursor:default}
+
+  .qbox{padding:24px}
+  .qmeta{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:.85rem;font-weight:600;margin-bottom:6px}
+  .qtext{font-size:1.18rem;font-weight:700;margin:6px 0 18px}
+  .answers{display:flex;flex-direction:column;gap:10px}
+  .answer{text-align:left;border:1.5px solid var(--line);background:var(--panel);color:var(--ink);
+    padding:14px 16px;border-radius:12px;cursor:pointer;font-size:.95rem;display:flex;gap:12px;align-items:flex-start;transition:.12s}
+  .answer:hover:not(:disabled){border-color:var(--brand);background:var(--soft)}
+  .answer .k{font-weight:800;color:var(--brand);flex:0 0 auto}
+  .answer.correct{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 12%,transparent)}
+  .answer.correct .k{color:var(--ok)}
+  .answer.wrong{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 12%,transparent)}
+  .answer.wrong .k{color:var(--bad)}
+  .answer:disabled{cursor:default}
+  .explain{margin-top:16px;padding:14px 16px;border-radius:12px;background:var(--soft);border-left:4px solid var(--brand);
+    font-size:.92rem;display:none}
+  .explain.show{display:block}
+  .explain b{color:var(--brand)}
+  .qnav{display:flex;justify-content:space-between;margin-top:20px;gap:10px}
+
+  /* Result */
+  .result{padding:34px;text-align:center}
+  .result .big{font-size:3rem;font-weight:800;line-height:1}
+  .result .ring{width:130px;height:130px;margin:0 auto 14px;border-radius:50%;display:grid;place-items:center;
+    background:conic-gradient(var(--brand) var(--deg,0deg), var(--soft) 0)}
+  .result .ring .inner{width:104px;height:104px;border-radius:50%;background:var(--panel);display:grid;place-items:center;flex-direction:column}
+
+  /* Flashcards */
+  .fc-stage{perspective:1400px;margin:18px 0}
+  .flashcard{position:relative;height:300px;cursor:pointer;transition:transform .55s;transform-style:preserve-3d}
+  .flashcard.flip{transform:rotateY(180deg)}
+  .face{position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--r);padding:28px;
+    display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+    border:1px solid var(--line);box-shadow:var(--shadow);background:var(--panel)}
+  .face .tag{position:absolute;top:16px;left:18px;font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+  .face .hint{position:absolute;bottom:16px;font-size:.78rem;color:var(--muted)}
+  .face.front .txt{font-size:1.35rem;font-weight:700}
+  .face.back{transform:rotateY(180deg);background:linear-gradient(140deg,var(--brand),var(--brand-2));color:#fff;border:0}
+  .face.back .txt{font-size:1.05rem;line-height:1.6}
+  .face.back .tag,.face.back .hint{color:rgba(255,255,255,.8)}
+  .fc-controls{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .fc-count{text-align:center;color:var(--muted);font-weight:600;margin-bottom:2px}
+
+  /* Stats page */
+  .konu-stat{padding:14px 18px;display:flex;align-items:center;gap:14px;margin-bottom:10px}
+  .konu-stat .ic{font-size:1.4rem}
+  .konu-stat .info{flex:1}
+  .konu-stat .info h4{margin:0 0 6px;font-size:.95rem}
+  .konu-stat .pct{font-weight:800;font-size:1.05rem;min-width:52px;text-align:right}
+
+  .empty{padding:40px;text-align:center;color:var(--muted)}
+  footer{max-width:1080px;margin:0 auto;padding:0 18px 40px;color:var(--muted);font-size:.8rem;text-align:center}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);opacity:0;
+    background:var(--ink);color:var(--bg);padding:11px 20px;border-radius:99px;font-weight:600;font-size:.88rem;
+    transition:.3s;z-index:50;pointer-events:none;box-shadow:var(--shadow)}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  @media(max-width:600px){
+    .brand small{display:none}
+    .tab span.lbl{display:none}
+    .tab{padding:9px 11px}
+    h1{font-size:1.35rem}
+    .hero{padding:20px}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <div class="brand">
+      <div class="logo">🧑‍✈️</div>
+      <div>Tarife Amca<small>Gümrük müşavirliği çalışma rehberi</small></div>
+    </div>
+    <nav id="nav">
+      <button class="tab active" data-view="home"><span class="ic">🏠</span><span class="lbl">Ana Sayfa</span></button>
+      <button class="tab" data-view="konular"><span class="ic">📚</span><span class="lbl">Konular</span></button>
+      <button class="tab" data-view="test"><span class="ic">📝</span><span class="lbl">Test</span></button>
+      <button class="tab" data-view="kartlar"><span class="ic">🃏</span><span class="lbl">Kartlar</span></button>
+      <button class="tab" data-view="istatistik"><span class="ic">📊</span><span class="lbl">İstatistik</span></button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HOME -->
+  <section class="view active" id="view-home">
+    <div class="card hero">
+      <div class="mascot">🧑‍✈️</div>
+      <div>
+        <h1>Merhaba, ben Tarife Amca!</h1>
+        <p>Gümrük müşavirliği sınavına birlikte hazırlanalım. Konuları oku, testlerle kendini sına, bilgi kartlarıyla tekrar et. Tüm ilerlemen bu cihazda saklanır.</p>
+      </div>
+    </div>
+
+    <div class="grid stats" id="homeStats"></div>
+
+    <h2>Nereden başlasak?</h2>
+    <div class="grid quick">
+      <button class="qbtn" data-go="konular"><div class="ic">📖</div><h3>Konu Anlatımı</h3><p>Temel kavramlardan rejimlere kadar özet ders notları.</p></button>
+      <button class="qbtn" data-go="test-hizli"><div class="ic">⚡</div><h3>Hızlı Test (10 soru)</h3><p>Karışık sorularla ısınma turu.</p></button>
+      <button class="qbtn" data-go="kartlar"><div class="ic">🔁</div><h3>Bilgi Kartları</h3><p>Terimleri hızlı tekrar et, aklında tut.</p></button>
+    </div>
+  </section>
+
+  <!-- KONULAR -->
+  <section class="view" id="view-konular">
+    <h1>Konu Anlatımı</h1>
+    <p class="sub">Bir konuya tıklayarak ders notlarını oku. Okuduğun konular işaretlenir.</p>
+    <div class="grid konu-grid" id="konuGrid"></div>
+  </section>
+
+  <!-- READER -->
+  <section class="view" id="view-reader">
+    <button class="btn ghost" id="readerBack" style="margin-bottom:18px">← Konulara dön</button>
+    <div class="reader card" id="readerBody" style="padding:26px"></div>
+    <div style="display:flex;gap:10px;margin-top:18px;flex-wrap:wrap">
+      <button class="btn" id="readerQuiz">Bu konudan test çöz 📝</button>
+      <button class="btn ghost" id="readerDone">Okudum, işaretle ✓</button>
+    </div>
+  </section>
+
+  <!-- TEST -->
+  <section class="view" id="view-test">
+    <div id="testSetup">
+      <h1>Test Çöz</h1>
+      <p class="sub">Bir konu seç ya da karışık çöz. Her sorudan sonra açıklamayı görebilirsin.</p>
+      <div class="card q-setup">
+        <b>Konu</b>
+        <div class="opt-row" id="testKonuPills"></div>
+        <b>Soru sayısı</b>
+        <div class="opt-row" id="testCountPills"></div>
+        <button class="btn" id="startQuiz">Testi Başlat →</button>
+      </div>
+    </div>
+    <div id="testRunner" style="display:none"></div>
+  </section>
+
+  <!-- KARTLAR -->
+  <section class="view" id="view-kartlar">
+    <h1>Bilgi Kartları</h1>
+    <p class="sub">Kartın önündeki terimi düşün, çevirip cevabı gör. Bildiklerini işaretle, kalanları tekrar et.</p>
+    <div class="card q-setup" id="fcSetup">
+      <b>Konu</b>
+      <div class="opt-row" id="fcKonuPills"></div>
+      <button class="btn" id="startFc">Kartları Aç →</button>
+    </div>
+    <div id="fcRunner" style="display:none"></div>
+  </section>
+
+  <!-- ISTATISTIK -->
+  <section class="view" id="view-istatistik">
+    <h1>İstatistiklerim</h1>
+    <p class="sub">Gelişimini buradan takip et.</p>
+    <div class="grid stats" id="statCards" style="margin-bottom:24px"></div>
+    <h2>Konu bazında başarı</h2>
+    <div id="konuStats"></div>
+    <div style="margin-top:26px">
+      <button class="btn ghost" id="resetBtn">İlerlemeyi sıfırla</button>
+    </div>
+  </section>
+</main>
+
+<footer>
+  Tarife Amca · Gümrük müşavirliği çalışma yardımcısı. İçerik yalnızca çalışma amaçlıdır; sınav ve uygulamada güncel resmî mevzuat (4458 sayılı Gümrük Kanunu ve ilgili yönetmelikler) esas alınmalıdır.
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ==================== VERİ ==================== */
+const KONULAR = [
+  {
+    id:"temel", ikon:"⚖️", baslik:"Gümrük Kanunu ve Temel Kavramlar",
+    ozet:"4458 sayılı Kanun, gümrük bölgesi, serbest dolaşım ve temel tanımlar.",
+    bolumler:[
+      {baslik:"Gümrük Kanunu'na genel bakış", metin:`
+        <p>Türkiye'de gümrük işlemlerinin temel çerçevesini <b>4458 sayılı Gümrük Kanunu</b> çizer. Kanun 27 Ekim 1999'da kabul edilmiş, <b>5 Şubat 2000</b> tarihinde yürürlüğe girmiştir ve büyük ölçüde Avrupa Birliği gümrük mevzuatı ile uyumludur.</p>
+        <p>Kanunun uygulanmasına ilişkin ayrıntılar <b>Gümrük Yönetmeliği</b> ile düzenlenir.</p>
+      `},
+      {baslik:"Türkiye Gümrük Bölgesi", metin:`
+        <p><b>Türkiye Gümrük Bölgesi</b>, Türkiye Cumhuriyeti topraklarını kapsar. Buna kara suları, iç sular ve hava sahası da dahildir.</p>
+        <div class="box tip"><b>İpucu:</b> Serbest bölgeler coğrafi olarak ülke içindedir ancak gümrük mevzuatının uygulanması bakımından <b>Türkiye Gümrük Bölgesi dışı</b> gibi değerlendirilir.</div>
+      `},
+      {baslik:"Serbest dolaşımda eşya", metin:`
+        <p><b>Serbest dolaşımda bulunan eşya</b>: Türkiye'de üretilen ya da ithal işlemleri tamamlanarak (vergileri ödenmiş, ticaret politikası önlemleri uygulanmış) serbest dolaşıma girmiş eşyadır.</p>
+        <ul>
+          <li>Tamamen Türkiye Gümrük Bölgesi'nde elde edilen eşya,</li>
+          <li>Serbest dolaşıma giriş rejimi ile ithal edilmiş eşya,</li>
+          <li>Bunların birleşiminden elde edilen eşya serbest dolaşımdadır.</li>
+        </ul>
+      `},
+      {baslik:"Gümrükçe onaylanmış işlem veya kullanım", metin:`
+        <p>Gümrüğe sunulan eşya, aşağıdaki <b>beş</b> işlemden birine tabi tutulmalıdır:</p>
+        <ul>
+          <li>Bir <b>gümrük rejimine</b> tabi tutulması,</li>
+          <li>Bir <b>serbest bölgeye</b> konulması,</li>
+          <li>Türkiye Gümrük Bölgesi dışına <b>yeniden ihracı</b>,</li>
+          <li><b>İmhası</b>,</li>
+          <li>Gümrüğe <b>terk edilmesi</b>.</li>
+        </ul>
+        <div class="box"><b>Karıştırma!</b> "Gümrük rejimi" bunlardan yalnızca biridir; "gümrükçe onaylanmış işlem veya kullanım" daha geniş bir üst kavramdır.</div>
+      `}
+    ]
+  },
+  {
+    id:"rejim", ikon:"🔀", baslik:"Gümrük Rejimleri",
+    ozet:"Sekiz gümrük rejimi: serbest dolaşıma giriş, transit, antrepo, DİR ve diğerleri.",
+    bolumler:[
+      {baslik:"Sekiz gümrük rejimi", metin:`
+        <p>Gümrük Kanunu'nda düzenlenen <b>sekiz gümrük rejimi</b> şunlardır:</p>
+        <ul>
+          <li><b>Serbest dolaşıma giriş rejimi</b> (ithalat)</li>
+          <li><b>Transit rejimi</b></li>
+          <li><b>Gümrük antrepo rejimi</b></li>
+          <li><b>Dahilde işleme rejimi</b> (DİR)</li>
+          <li><b>Gümrük kontrolü altında işleme rejimi</b></li>
+          <li><b>Geçici ithalat rejimi</b></li>
+          <li><b>Hariçte işleme rejimi</b> (HİR)</li>
+          <li><b>İhracat rejimi</b></li>
+        </ul>
+      `},
+      {baslik:"Serbest dolaşıma giriş ve transit", metin:`
+        <p><b>Serbest dolaşıma giriş rejimi</b>: Eşyanın ithalat vergileri ödenip ticaret politikası önlemleri uygulanarak serbest dolaşıma sokulmasıdır. Eşya bu rejimle "serbest dolaşımda eşya" statüsü kazanır.</p>
+        <p><b>Transit rejimi</b>: İthalat vergileri ve ticaret politikası önlemleri <b>uygulanmaksızın</b>, eşyanın gümrük gözetimi altında bir noktadan diğerine taşınmasıdır.</p>
+      `},
+      {baslik:"Antrepo ve şartlı muafiyet rejimleri", metin:`
+        <p><b>Gümrük antrepo rejimi</b>: Eşyanın vergileri ödenmeden gümrük antreposunda depolanmasına imkân verir. Antrepolar <b>genel</b> (herkesin kullanabildiği) ve <b>özel</b> (yalnızca antrepo işleticisinin kullandığı) olmak üzere ikiye ayrılır.</p>
+        <p><b>Dahilde işleme rejimi (DİR)</b>: İhraç edilecek ürünlerin üretiminde kullanılacak girdilerin vergilerden muaf/geri ödemeli olarak ithaline imkân verir. İki sistemi vardır: <b>şartlı muafiyet</b> ve <b>geri ödeme</b> sistemi.</p>
+        <p><b>Hariçte işleme rejimi (HİR)</b>: Serbest dolaşımdaki eşyanın işlenmek üzere yurt dışına gönderilip, işlem görmüş ürün olarak geri getirilmesidir; vergi yalnızca yurt dışında eklenen kıymet üzerinden alınır (kısmi muafiyet).</p>
+        <div class="box tip"><b>İpucu:</b> "İçeri işle → dışarı sat" DİR; "dışarı işle → geri getir" HİR olarak aklında kalabilir.</div>
+      `},
+      {baslik:"Geçici ithalat ve kontrol altında işleme", metin:`
+        <p><b>Geçici ithalat rejimi</b>: Eşyanın tam veya kısmi muafiyetle, belirli bir süre kullanılıp aynen geri gönderilmek üzere ithalidir (fuar eşyası, sergi malzemesi, profesyonel ekipman vb.).</p>
+        <p><b>Gümrük kontrolü altında işleme rejimi</b>: Serbest dolaşıma girmemiş eşyanın, ithalat vergilerine tabi tutulmadan işçiliğe tabi tutulup, elde edilen ürünün vergileri üzerinden serbest dolaşıma girmesidir.</p>
+      `}
+    ]
+  },
+  {
+    id:"tarife", ikon:"🔢", baslik:"Gümrük Tarifesi ve GTİP",
+    ozet:"Armonize Sistem, Türk Gümrük Tarife Cetveli ve 12 haneli GTİP yapısı.",
+    bolumler:[
+      {baslik:"Armonize Sistem (HS)", metin:`
+        <p><b>Armonize Sistem (Harmonized System – HS)</b>, Dünya Gümrük Örgütü (WCO) tarafından geliştirilen, eşyanın uluslararası ortak sınıflandırma sistemidir. İlk <b>6 hane</b> tüm üye ülkelerde ortaktır.</p>
+        <p>Türkiye'de kullanılan liste <b>Türk Gümrük Tarife Cetveli</b>dir ve her yıl güncellenir.</p>
+      `},
+      {baslik:"GTİP'in yapısı (12 hane)", metin:`
+        <p><b>GTİP</b> = Gümrük Tarife İstatistik Pozisyonu. Türkiye'de <b>12 haneli</b>dir:</p>
+        <ul>
+          <li><b>1–6. haneler:</b> Armonize Sistem kodu (uluslararası, WCO)</li>
+          <li><b>7–8. haneler:</b> AB Kombine Nomanklatürü (CN) kodu</li>
+          <li><b>9–10. haneler:</b> Ulusal alt açılım kodu</li>
+          <li><b>11–12. haneler:</b> İstatistik / gümrük tarife pozisyonu kodu</li>
+        </ul>
+        <div class="box"><b>Neden önemli?</b> Eşyanın doğru GTİP'i, uygulanacak <b>vergi oranını</b>, ticaret politikası önlemlerini ve izinleri belirler. Yanlış sınıflandırma ceza ve vergi farkı doğurur.</div>
+      `},
+      {baslik:"Sınıflandırmanın genel kuralları", metin:`
+        <p>Eşyanın hangi pozisyona gireceği <b>Tarifenin Yorumuna İlişkin Genel Kurallar (GYK / GİR)</b> ile belirlenir. Temel mantık:</p>
+        <ul>
+          <li>Önce eşyayı en <b>özel</b> şekilde tanımlayan pozisyon tercih edilir.</li>
+          <li>Karışım ve set hâlindeki eşyada, esas niteliği veren bileşen belirleyicidir.</li>
+          <li>Sınıflandırılamayan eşya, kendisine <b>en çok benzeyen</b> eşyanın pozisyonuna girer.</li>
+        </ul>
+      `}
+    ]
+  },
+  {
+    id:"kiymet", ikon:"💰", baslik:"Gümrük Kıymeti",
+    ozet:"İthalatta verginin matrahı: satış bedeli yöntemi ve altı kıymet yöntemi.",
+    bolumler:[
+      {baslik:"Gümrük kıymeti nedir?", metin:`
+        <p><b>Gümrük kıymeti</b>, ithal eşyasının vergilendirmeye esas kıymetidir; yani vergilerin hesaplandığı <b>matrah</b>tır. Kural olarak eşyanın <b>satış bedeli</b> esas alınır.</p>
+      `},
+      {baslik:"Altı kıymet belirleme yöntemi (sıralı)", metin:`
+        <p>Kıymet, aşağıdaki yöntemlerle <b>sırasıyla</b> belirlenir. Bir üst yöntem uygulanamıyorsa bir sonrakine geçilir:</p>
+        <ul>
+          <li><b>1. Satış bedeli yöntemi</b> — asıl ve öncelikli yöntemdir.</li>
+          <li><b>2. Aynı eşyanın satış bedeli</b> yöntemi</li>
+          <li><b>3. Benzer eşyanın satış bedeli</b> yöntemi</li>
+          <li><b>4. İndirgeme (mahsubi) yöntemi</b></li>
+          <li><b>5. Hesaplanmış kıymet yöntemi</b></li>
+          <li><b>6. Son (geri dönüş / fall-back) yöntemi</b></li>
+        </ul>
+        <div class="box tip"><b>İpucu:</b> İthalatçının talebi hâlinde <b>4 ve 5. yöntemlerin sırası değiştirilebilir</b>. Diğer yöntemlerde sıra değişmez.</div>
+      `},
+      {baslik:"Kıymete eklenecek unsurlar", metin:`
+        <p>Satış bedeline, daha önce dahil değilse şunlar <b>eklenir</b>:</p>
+        <ul>
+          <li>Alıcı tarafından ödenen komisyonlar (satın alma komisyonu hariç),</li>
+          <li>Ambalaj ve kap bedelleri,</li>
+          <li>Royalti ve lisans ücretleri,</li>
+          <li>Türkiye'ye getirilene kadarki <b>navlun (taşıma)</b> ve <b>sigorta</b> giderleri.</li>
+        </ul>
+        <p>Buna karşılık, eşyanın Türkiye'ye <b>girişinden sonraki</b> taşıma, montaj, bakım giderleri ve Türkiye'de ödenen vergiler kıymete <b>dahil edilmez</b> (ayrı gösterilmişse).</p>
+      `}
+    ]
+  },
+  {
+    id:"mense", ikon:"🌍", baslik:"Eşyanın Menşei",
+    ozet:"Tercihli ve tercihsiz menşe, tamamen elde edilen eşya ve esaslı işçilik.",
+    bolumler:[
+      {baslik:"Menşe kavramı", metin:`
+        <p><b>Menşe</b>, eşyanın ekonomik olarak hangi ülkeye ait sayıldığını gösterir. İki türü vardır:</p>
+        <ul>
+          <li><b>Tercihsiz menşe:</b> Ticaret politikası önlemleri, anti-damping, kota gibi uygulamalarda esas alınır.</li>
+          <li><b>Tercihli menşe:</b> Serbest ticaret anlaşmaları kapsamında indirimli/sıfır vergi uygulanması için gereklidir.</li>
+        </ul>
+      `},
+      {baslik:"Menşenin belirlenmesi", metin:`
+        <p>Bir eşya <b>tümüyle bir ülkede elde edilmişse</b> (madencilik ürünleri, o ülkede yetiştirilen bitkiler, doğan/yetişen hayvanlar vb.) o ülke menşelidir.</p>
+        <p>Üretimi <b>birden fazla ülkede</b> gerçekleşen eşyanın menşei, <b>ekonomik açıdan gerekli görülen en son esaslı işçilik veya işlemin</b> yapıldığı ülkedir. Bu işlem, yeni bir ürün ortaya çıkarmalı veya imalatın önemli bir aşamasını oluşturmalıdır.</p>
+        <div class="box"><b>Önemli:</b> Yalnızca ambalajlama, etiketleme, ayıklama gibi <b>basit işlemler</b> menşe kazandırmaz.</div>
+      `},
+      {baslik:"Menşe ispatı", metin:`
+        <p>Menşe; <b>menşe şahadetnamesi</b>, <b>A.TR dolaşım belgesi</b> (AB ile serbest dolaşım), <b>EUR.1 / EUR-MED</b> dolaşım belgeleri gibi belgelerle ispatlanır.</p>
+        <div class="box tip"><b>Dikkat:</b> A.TR belgesi menşe değil, <b>serbest dolaşım</b> statüsünü gösterir; EUR.1 ise <b>menşe</b> ispatına yarar.</div>
+      `}
+    ]
+  },
+  {
+    id:"vergi", ikon:"🧾", baslik:"Gümrük Vergileri ve Yükümlülükler",
+    ozet:"İthalatta alınan vergiler, gümrük yükümlülüğü ve zaman aşımı.",
+    bolumler:[
+      {baslik:"İthalatta alınabilen vergi ve mali yükler", metin:`
+        <p>İthalatta duruma göre şu vergi ve mali yükler alınabilir:</p>
+        <ul>
+          <li><b>Gümrük Vergisi</b> (ve varsa İlave Gümrük Vergisi)</li>
+          <li><b>Katma Değer Vergisi (KDV)</b></li>
+          <li><b>Özel Tüketim Vergisi (ÖTV)</b> — belirli ürünlerde</li>
+          <li><b>Dampinge Karşı Vergi</b> (anti-damping) ve telafi edici vergiler</li>
+          <li><b>Kaynak Kullanımını Destekleme Fonu (KKDF)</b> — vadeli ithalatta</li>
+          <li><b>Toplu Konut Fonu</b> — bazı tarım ürünlerinde</li>
+          <li><b>Damga Vergisi</b></li>
+        </ul>
+      `},
+      {baslik:"Gümrük yükümlülüğü", metin:`
+        <p><b>Gümrük yükümlülüğü</b> (gümrük borcu), eşyanın serbest dolaşıma girişi ya da geçici ithali gibi işlemlerle, yani vergiye tabi eşyanın rejime tabi tutulmasıyla <b>doğar</b>. Yükümlü, kural olarak beyan sahibidir.</p>
+        <p>Kurallara aykırı şekilde gümrük bölgesine sokulan ya da gözetimden çıkarılan eşyada da yükümlülük doğar.</p>
+      `},
+      {baslik:"Tebliğ ve zaman aşımı", metin:`
+        <p>Gümrük vergileri, <b>gümrük yükümlülüğünün doğduğu tarihten itibaren üç yıl</b> içinde yükümlüye tebliğ edilmezse <b>zaman aşımına</b> uğrar. (Ceza gerektiren fiillerde farklı süreler söz konusu olabilir.)</p>
+        <div class="box"><b>Aklında kalsın:</b> Gümrük vergilerinde temel zaman aşımı süresi <b>3 yıl</b>dır.</div>
+      `}
+    ]
+  },
+  {
+    id:"islem", ikon:"📋", baslik:"Gümrük İşlemleri ve Beyan",
+    ozet:"Özet beyan, geçici depolama, gümrük beyannamesi ve süreler.",
+    bolumler:[
+      {baslik:"Eşyanın gümrüğe sunulması ve özet beyan", metin:`
+        <p>Türkiye Gümrük Bölgesi'ne getirilen eşya için <b>özet beyan</b> verilir ve eşya <b>gümrüğe sunulur</b>. Özet beyan, eşyanın gümrüğe geldiğini bildiren ön bildirimdir.</p>
+      `},
+      {baslik:"Geçici depolama ve süreler", metin:`
+        <p>Gümrüğe sunulan ancak henüz bir işleme tabi tutulmayan eşya, <b>geçici depolanan eşya</b> statüsündedir. Bu eşyanın gümrükçe onaylanmış bir işlem veya kullanıma tabi tutulması için tanınan süreler:</p>
+        <ul>
+          <li><b>Denizyolu</b> ile gelen eşyada <b>45 gün</b>,</li>
+          <li><b>Diğer yollarla</b> (kara, hava) gelen eşyada <b>20 gün</b>.</li>
+        </ul>
+        <div class="box tip"><b>İpucu:</b> "Deniz uzun, kara kısa" → 45 / 20 gün.</div>
+      `},
+      {baslik:"Gümrük beyanı ve beyanname", metin:`
+        <p>Eşyanın bir rejime tabi tutulması için <b>gümrük beyanı</b> yapılır. Beyan şekilleri: <b>yazılı beyan</b> (esas usul), sözlü beyan ve diğer beyan şekilleri.</p>
+        <p>Yazılı beyanda <b>gümrük beyannamesi</b> (tek idari belge) kullanılır. Beyanname, gümrük idaresince <b>tescil</b> edildiği anda hukuki sonuç doğurur; vergiler kural olarak tescil tarihindeki oran ve esaslara göre hesaplanır.</p>
+      `},
+      {baslik:"Kontrol türleri (hatlar)", metin:`
+        <p>Tescil sonrası eşya risk analizine göre bir <b>hatta</b> yönlendirilir:</p>
+        <ul>
+          <li><b>Kırmızı hat:</b> Belge + fiziki muayene yapılır.</li>
+          <li><b>Sarı hat:</b> Yalnızca belge kontrolü yapılır.</li>
+          <li><b>Mavi hat:</b> Sonradan kontrol (onaylanmış kişi statüsü vb.).</li>
+          <li><b>Yeşil hat:</b> Kontrol yapılmadan işlem tamamlanır.</li>
+        </ul>
+      `},
+      {baslik:"Karara itiraz", metin:`
+        <p>Gümrük idaresinin aldığı kararlara karşı, yükümlüler kararın <b>tebliğ tarihinden itibaren 15 gün</b> içinde bir üst makama (bölge müdürlüğüne) <b>itiraz</b> edebilir. İdari itiraz yolları tüketildikten sonra yargı yoluna gidilebilir.</p>
+      `}
+    ]
+  },
+  {
+    id:"meslek", ikon:"🎓", baslik:"Gümrük Müşavirliği Mesleği",
+    ozet:"Temsil, gümrük müşaviri/yardımcısı ve mesleki sorumluluklar.",
+    bolumler:[
+      {baslik:"Gümrükte temsil", metin:`
+        <p>Gümrük işlemleri, sahibi tarafından bizzat ya da bir <b>temsilci</b> aracılığıyla takip edilebilir. Temsil iki şekildedir:</p>
+        <ul>
+          <li><b>Doğrudan temsil:</b> Temsilci, başkasının adına ve hesabına hareket eder.</li>
+          <li><b>Dolaylı temsil:</b> Temsilci, kendi adına ancak başkasının hesabına hareket eder. <b>Gümrük müşavirleri dolaylı temsil</b> yetkisine sahiptir.</li>
+        </ul>
+      `},
+      {baslik:"Gümrük müşaviri ve müşavir yardımcısı", metin:`
+        <p><b>Gümrük müşaviri</b>, eşya sahiplerinin dolaylı temsilcisi olarak gümrük işlemlerini takip etme yetkisine sahip, mesleki nitelikleri kanunla belirlenmiş kişidir.</p>
+        <p><b>Gümrük müşavir yardımcısı</b>, gümrük müşavirinin gözetiminde çalışan ve belirli sınav/staj şartlarını taşıyan kişidir. Yardımcılıkta belirli süre çalışan ve sınavda başarılı olanlar gümrük müşaviri olabilir.</p>
+        <div class="box"><b>Not:</b> Meslek mensubu olabilmek için gereken öğrenim, staj süresi ve sınav şartları mevzuatla belirlenir; güncel şartları resmî kaynaklardan doğrulamak gerekir.</div>
+      `},
+      {baslik:"Sorumluluk ve etik", metin:`
+        <p>Gümrük müşaviri, verdiği beyanların doğruluğundan ve mevzuata uygunluğundan sorumludur. Yanlış beyan, eksik vergi ve cezai sonuçlar doğurabilir. Meslek; <b>doğruluk, gizlilik ve tarafsızlık</b> ilkeleri üzerine kuruludur.</p>
+      `}
+    ]
+  }
+];
+
+const SORULAR = [
+  {k:"temel", s:"4458 sayılı Gümrük Kanunu hangi tarihte yürürlüğe girmiştir?", o:["5 Şubat 2000","1 Ocak 1996","4 Kasım 1999","31 Aralık 2009"], d:0, a:"Kanun 27 Ekim 1999'da kabul edilmiş, 5 Şubat 2000'de yürürlüğe girmiştir."},
+  {k:"temel", s:"Aşağıdakilerden hangisi 'gümrükçe onaylanmış işlem veya kullanım' kapsamında DEĞİLDİR?", o:["Bir gümrük rejimine tabi tutulması","Serbest bölgeye konulması","Eşyanın imhası","Eşyanın sigortalanması"], d:3, a:"Sigortalama bir onaylanmış işlem türü değildir. Kapsamda: rejime tabi tutma, serbest bölgeye koyma, yeniden ihraç, imha ve gümrüğe terk vardır."},
+  {k:"temel", s:"Serbest bölgeler, gümrük mevzuatının uygulanması bakımından nasıl değerlendirilir?", o:["Türkiye Gümrük Bölgesi içi","Türkiye Gümrük Bölgesi dışı gibi","Transit alanı","Antrepo sayılır"], d:1, a:"Serbest bölgeler coğrafi olarak ülke içinde olsa da gümrük uygulaması bakımından Türkiye Gümrük Bölgesi dışı gibi değerlendirilir."},
+  {k:"temel", s:"Türkiye Gümrük Bölgesi aşağıdakilerden hangisini KAPSAMAZ?", o:["Kara suları","İç sular","Hava sahası","Yabancı ülkelerdeki temsilcilikler"], d:3, a:"Gümrük Bölgesi; Türkiye Cumhuriyeti topraklarını, kara sularını, iç suları ve hava sahasını kapsar."},
+
+  {k:"rejim", s:"Aşağıdakilerden hangisi sekiz gümrük rejiminden biri DEĞİLDİR?", o:["Transit rejimi","Gümrük antrepo rejimi","Serbest bölge rejimi","Hariçte işleme rejimi"], d:2, a:"Serbest bölge bir 'gümrük rejimi' değildir; gümrükçe onaylanmış işlem türlerinden biridir. Sekiz rejim arasında yer almaz."},
+  {k:"rejim", s:"İthalat vergileri ve ticaret politikası önlemleri UYGULANMADAN eşyanın gümrük gözetiminde taşınmasını sağlayan rejim hangisidir?", o:["Serbest dolaşıma giriş","Transit rejimi","İhracat rejimi","Geçici ithalat"], d:1, a:"Transit rejiminde eşya, vergi ve önlemler uygulanmaksızın gümrük gözetimi altında bir noktadan diğerine taşınır."},
+  {k:"rejim", s:"İhraç edilecek ürünlerin üretiminde kullanılacak girdilerin vergiden muaf ithaline imkân veren rejim hangisidir?", o:["Hariçte işleme rejimi","Gümrük antrepo rejimi","Dahilde işleme rejimi","Geçici ithalat rejimi"], d:2, a:"Dahilde işleme rejimi (DİR), ihraç ürünün girdilerinin şartlı muafiyet veya geri ödeme sistemiyle ithaline imkân verir."},
+  {k:"rejim", s:"Serbest dolaşımdaki eşyanın işlenmek üzere yurt dışına gönderilip geri getirilmesini düzenleyen rejim hangisidir?", o:["Dahilde işleme rejimi","Hariçte işleme rejimi","Transit rejimi","Antrepo rejimi"], d:1, a:"Hariçte işleme rejiminde (HİR) vergi yalnızca yurt dışında eklenen kıymet üzerinden alınır."},
+  {k:"rejim", s:"Fuar ve sergi eşyasının belirli süre kullanılıp aynen geri gönderilmek üzere ithali hangi rejimle yapılır?", o:["Geçici ithalat rejimi","Serbest dolaşıma giriş","Gümrük antrepo rejimi","İhracat rejimi"], d:0, a:"Geçici ithalat rejimi, eşyanın tam/kısmi muafiyetle belirli süre kullanılıp aynen geri gönderilmesini sağlar."},
+  {k:"rejim", s:"Gümrük antrepoları temel olarak nasıl ikiye ayrılır?", o:["Açık ve kapalı","Genel ve özel","Küçük ve büyük","Geçici ve daimi"], d:1, a:"Antrepolar genel (herkesin kullanabildiği) ve özel (yalnızca işleticinin kullandığı) olarak ayrılır."},
+
+  {k:"tarife", s:"GTİP kodunun ilk kaç hanesi Armonize Sistem'e (uluslararası) aittir?", o:["4","6","8","12"], d:1, a:"İlk 6 hane WCO Armonize Sistem kodudur ve tüm üye ülkelerde ortaktır."},
+  {k:"tarife", s:"Türkiye'de kullanılan GTİP kaç hanelidir?", o:["8","10","12","14"], d:2, a:"Türkiye'de GTİP 12 hanelidir."},
+  {k:"tarife", s:"GTİP'in 7-8. haneleri neyi ifade eder?", o:["Armonize Sistem","AB Kombine Nomanklatürü (CN)","İstatistik kodu","Ulusal alt açılım"], d:1, a:"7-8. haneler AB Kombine Nomanklatürü (CN) kodudur."},
+  {k:"tarife", s:"Armonize Sistem'i geliştiren ve yürüten kuruluş hangisidir?", o:["Dünya Ticaret Örgütü (WTO)","Dünya Gümrük Örgütü (WCO)","Avrupa Birliği","Birleşmiş Milletler"], d:1, a:"Armonize Sistem, Dünya Gümrük Örgütü (WCO) tarafından geliştirilmiştir."},
+  {k:"tarife", s:"Eşyanın yanlış GTİP ile beyan edilmesinin en olası sonucu nedir?", o:["Hiçbir sonuç doğmaz","Vergi farkı ve cezai yaptırım","Eşyanın otomatik iadesi","Menşe değişikliği"], d:1, a:"Yanlış sınıflandırma, uygulanacak vergi oranını değiştireceğinden vergi farkı ve ceza doğurabilir."},
+
+  {k:"kiymet", s:"Gümrük kıymetinin belirlenmesinde asıl ve öncelikli yöntem hangisidir?", o:["Hesaplanmış kıymet yöntemi","Satış bedeli yöntemi","İndirgeme yöntemi","Son yöntem"], d:1, a:"Kural olarak eşyanın satış bedeli (transaction value) esas alınır; diğer yöntemler bu uygulanamazsa sırayla devreye girer."},
+  {k:"kiymet", s:"Gümrük kıymeti yöntemlerinden hangi ikisinin sırası, ithalatçının talebiyle değiştirilebilir?", o:["1. ve 2. yöntem","2. ve 3. yöntem","4. ve 5. yöntem","5. ve 6. yöntem"], d:2, a:"İthalatçının talebi hâlinde indirgeme (4) ve hesaplanmış kıymet (5) yöntemlerinin sırası değiştirilebilir."},
+  {k:"kiymet", s:"Aşağıdakilerden hangisi gümrük kıymetine EKLENİR?", o:["Türkiye'ye getirilene kadarki navlun ve sigorta","İthalattan sonraki montaj gideri","Türkiye'de ödenen KDV","İthalat sonrası bakım gideri"], d:0, a:"Eşya Türkiye'ye getirilene kadarki taşıma (navlun) ve sigorta giderleri kıymete eklenir; giriş sonrası giderler ve Türkiye'deki vergiler hariç tutulur."},
+  {k:"kiymet", s:"Gümrük kıymeti kavramı temel olarak neyi ifade eder?", o:["Eşyanın satış fiyatındaki kâr","Verginin hesaplandığı matrah","Eşyanın perakende fiyatı","Nakliye ücreti"], d:1, a:"Gümrük kıymeti, ithalat vergilerinin üzerinden hesaplandığı matrahtır."},
+  {k:"kiymet", s:"Satın alma komisyonu gümrük kıymetine nasıl dahil edilir?", o:["Her zaman eklenir","Kıymete dahil edilmez","Yalnızca ithalatta eklenir","İhracatçı öderse eklenir"], d:1, a:"Satın alma komisyonu gümrük kıymetine dahil edilmez; ancak satış/aracılık komisyonları eklenir."},
+
+  {k:"mense", s:"Ticaret politikası önlemleri ve anti-damping uygulamalarında hangi menşe türü esas alınır?", o:["Tercihli menşe","Tercihsiz menşe","Çifte menşe","Geçici menşe"], d:1, a:"Ticaret politikası önlemleri, kota ve anti-damping uygulamalarında tercihsiz menşe esas alınır."},
+  {k:"mense", s:"Üretimi birden fazla ülkede gerçekleşen eşyanın menşei nasıl belirlenir?", o:["İlk üretim ülkesi","En son esaslı işçilik/işlemin yapıldığı ülke","En pahalı girdinin ülkesi","İhracatçının ülkesi"], d:1, a:"Birden fazla ülkede üretilen eşyanın menşei, ekonomik açıdan gerekli son esaslı işçilik veya işlemin yapıldığı ülkedir."},
+  {k:"mense", s:"Aşağıdaki işlemlerden hangisi tek başına menşe KAZANDIRMAZ?", o:["Ekonomik açıdan esaslı işçilik","Yeni bir ürün ortaya çıkaran işleme","Basit ambalajlama ve etiketleme","İmalatın önemli aşaması"], d:2, a:"Basit ambalajlama, etiketleme, ayıklama gibi işlemler tek başına menşe kazandırmaz."},
+  {k:"mense", s:"A.TR dolaşım belgesi neyi gösterir?", o:["Eşyanın menşeini","Eşyanın serbest dolaşım statüsünü","Anti-damping muafiyetini","Gümrük kıymetini"], d:1, a:"A.TR belgesi menşei değil, AB ile Türkiye arasındaki serbest dolaşım statüsünü gösterir. Menşe ispatı EUR.1 ile yapılır."},
+  {k:"mense", s:"Serbest ticaret anlaşmaları kapsamında indirimli/sıfır vergi için hangi menşe gerekir?", o:["Tercihsiz menşe","Tercihli menşe","Ortak menşe","İkincil menşe"], d:1, a:"İndirimli veya sıfır vergi uygulaması için tercihli menşe kurallarının sağlanması ve ilgili belgenin (ör. EUR.1) sunulması gerekir."},
+
+  {k:"vergi", s:"Vadeli (kredili) ithalatta gündeme gelen fon aşağıdakilerden hangisidir?", o:["Toplu Konut Fonu","Kaynak Kullanımını Destekleme Fonu (KKDF)","Tanıtım Fonu","Destekleme Fonu"], d:1, a:"KKDF, kural olarak vadeli/kredili ithalat işlemlerinde gündeme gelir."},
+  {k:"vergi", s:"Gümrük vergilerinde temel zaman aşımı süresi ne kadardır?", o:["1 yıl","2 yıl","3 yıl","5 yıl"], d:2, a:"Gümrük vergileri, yükümlülüğün doğduğu tarihten itibaren 3 yıl içinde tebliğ edilmezse zaman aşımına uğrar."},
+  {k:"vergi", s:"Aşağıdakilerden hangisi ithalatta alınabilen bir vergi/mali yük DEĞİLDİR?", o:["Katma Değer Vergisi","Özel Tüketim Vergisi","Dampinge karşı vergi","Motorlu Taşıtlar Vergisi"], d:3, a:"Motorlu Taşıtlar Vergisi ithalatta alınan bir gümrük yükü değildir. KDV, ÖTV, anti-damping ise alınabilir."},
+  {k:"vergi", s:"Gümrük yükümlülüğü (borcu) kural olarak ne zaman doğar?", o:["Eşya sipariş edilince","Vergiye tabi eşyanın rejime tabi tutulmasıyla","Fatura düzenlenince","Eşya satılınca"], d:1, a:"Gümrük yükümlülüğü, vergiye tabi eşyanın serbest dolaşıma girişi gibi bir rejime tabi tutulmasıyla doğar."},
+  {k:"vergi", s:"Dampinge karşı vergi (anti-damping) hangi amaçla uygulanır?", o:["İhracatı artırmak","Normal değerinin altında satılan ithalata karşı yerli üretimi korumak","Vergi geliri sağlamak","Menşei belirlemek"], d:1, a:"Anti-damping vergisi, normal değerinin altında (dampingli) fiyatla yapılan ithalatın yerli üretime verdiği zararı telafi etmek için uygulanır."},
+
+  {k:"islem", s:"Denizyolu ile gelen eşya için geçici depolama süresi ne kadardır?", o:["20 gün","30 gün","45 gün","90 gün"], d:2, a:"Denizyolu ile gelen eşyada 45 gün, diğer yollarla gelende 20 gün süre tanınır."},
+  {k:"islem", s:"Karayolu ile gelen eşya için geçici depolama süresi ne kadardır?", o:["10 gün","20 gün","45 gün","60 gün"], d:1, a:"Kara ve havayolu ile gelen eşyada süre 20 gündür (denizyolunda 45 gün)."},
+  {k:"islem", s:"Kırmızı hatta yönlendirilen eşyaya ne uygulanır?", o:["Hiçbir kontrol","Sadece belge kontrolü","Belge kontrolü ve fiziki muayene","Sonradan kontrol"], d:2, a:"Kırmızı hatta hem belge kontrolü hem de fiziki muayene yapılır."},
+  {k:"islem", s:"Yalnızca belge kontrolünün yapıldığı hat hangisidir?", o:["Kırmızı hat","Sarı hat","Yeşil hat","Mavi hat"], d:1, a:"Sarı hatta yalnızca belge kontrolü yapılır; fiziki muayene yapılmaz."},
+  {k:"islem", s:"Gümrük idaresinin kararlarına itiraz süresi (tebliğden itibaren) ne kadardır?", o:["7 gün","15 gün","30 gün","60 gün"], d:1, a:"Gümrük kararlarına, tebliğ tarihinden itibaren 15 gün içinde bir üst makama itiraz edilir."},
+  {k:"islem", s:"Yazılı beyanda kullanılan temel belge hangisidir?", o:["Özet beyan","Gümrük beyannamesi (tek idari belge)","Menşe şahadetnamesi","A.TR belgesi"], d:1, a:"Yazılı beyanda gümrük beyannamesi (tek idari belge) kullanılır; tescil ile hukuki sonuç doğurur."},
+
+  {k:"meslek", s:"Gümrük müşavirleri hangi temsil türüne sahiptir?", o:["Yalnızca doğrudan temsil","Dolaylı temsil","Vekâleten temsil","Temsil yetkisi yoktur"], d:1, a:"Gümrük müşavirleri, kendi adına ancak başkasının hesabına hareket ettikleri dolaylı temsil yetkisine sahiptir."},
+  {k:"meslek", s:"Doğrudan temsilde temsilci kimin adına ve hesabına hareket eder?", o:["Kendi adına ve hesabına","Başkasının adına ve hesabına","Kendi adına, başkasının hesabına","Devlet adına"], d:1, a:"Doğrudan temsilde temsilci, başkasının adına ve hesabına hareket eder."},
+  {k:"meslek", s:"Dolaylı temsilde temsilci nasıl hareket eder?", o:["Başkasının adına ve hesabına","Kendi adına ancak başkasının hesabına","Kendi adına ve hesabına","Hiç kimsenin adına"], d:1, a:"Dolaylı temsilde temsilci kendi adına, ancak başkasının hesabına hareket eder."},
+  {k:"meslek", s:"Gümrük müşavirinin mesleğinde esas aldığı temel ilkeler hangileridir?", o:["Hız, ucuzluk, reklam","Doğruluk, gizlilik, tarafsızlık","Rekabet, pazarlama, kâr","Esneklik, aracılık, komisyon"], d:1, a:"Meslek; doğruluk, gizlilik ve tarafsızlık ilkeleri üzerine kuruludur."}
+];
+
+const KARTLAR = [
+  {k:"temel", on:"4458 sayılı Kanun nedir?", arka:"Türkiye'nin Gümrük Kanunu. 5 Şubat 2000'de yürürlüğe girdi; AB gümrük mevzuatı ile uyumludur."},
+  {k:"temel", on:"Türkiye Gümrük Bölgesi neleri kapsar?", arka:"Türkiye Cumhuriyeti toprakları + kara suları + iç sular + hava sahası."},
+  {k:"temel", on:"Serbest dolaşımda eşya nedir?", arka:"Türkiye'de üretilmiş ya da ithal işlemleri (vergi + önlemler) tamamlanmış eşya."},
+  {k:"temel", on:"Gümrükçe onaylanmış işlem/kullanım kaç tanedir?", arka:"Beş: rejime tabi tutma, serbest bölgeye koyma, yeniden ihraç, imha, gümrüğe terk."},
+  {k:"temel", on:"Serbest bölge gümrük açısından nasıl değerlendirilir?", arka:"Türkiye Gümrük Bölgesi dışı gibi değerlendirilir (coğrafi olarak içeride olsa da)."},
+
+  {k:"rejim", on:"Sekiz gümrük rejimi nelerdir?", arka:"Serbest dolaşıma giriş, transit, antrepo, dahilde işleme, kontrol altında işleme, geçici ithalat, hariçte işleme, ihracat."},
+  {k:"rejim", on:"Transit rejimi nedir?", arka:"Vergi ve ticaret politikası önlemleri uygulanmadan, eşyanın gümrük gözetiminde taşınması."},
+  {k:"rejim", on:"DİR (Dahilde İşleme Rejimi) nedir?", arka:"İhraç ürünün girdilerinin şartlı muafiyet/geri ödeme ile ithali. 'İçeri işle, dışarı sat.'"},
+  {k:"rejim", on:"HİR (Hariçte İşleme Rejimi) nedir?", arka:"Serbest dolaşımdaki eşyanın işlenmek üzere yurt dışına gönderilip geri getirilmesi. Vergi sadece eklenen kıymete."},
+  {k:"rejim", on:"Antrepo türleri nelerdir?", arka:"Genel antrepo (herkes kullanır) ve özel antrepo (yalnız işletici kullanır)."},
+  {k:"rejim", on:"Geçici ithalat rejimi ne işe yarar?", arka:"Fuar/sergi/ekipman gibi eşyanın tam veya kısmi muafiyetle geçici ithali, sonra aynen geri gönderilir."},
+
+  {k:"tarife", on:"GTİP kaç hanelidir (Türkiye)?", arka:"12 hane."},
+  {k:"tarife", on:"GTİP'in ilk 6 hanesi neyi ifade eder?", arka:"Armonize Sistem (HS) kodu — WCO tarafından belirlenir, uluslararası ortaktır."},
+  {k:"tarife", on:"GTİP 7-8. haneler?", arka:"AB Kombine Nomanklatürü (CN) kodu."},
+  {k:"tarife", on:"Armonize Sistemi kim yönetir?", arka:"Dünya Gümrük Örgütü (WCO)."},
+  {k:"tarife", on:"Türk Gümrük Tarife Cetveli ne sıklıkla güncellenir?", arka:"Her yıl güncellenir."},
+
+  {k:"kiymet", on:"Gümrük kıymeti nedir?", arka:"İthalat vergilerinin üzerinden hesaplandığı matrah. Kural olarak eşyanın satış bedeli."},
+  {k:"kiymet", on:"Kaç kıymet belirleme yöntemi vardır?", arka:"Altı yöntem, sırayla uygulanır. İlki satış bedeli yöntemidir."},
+  {k:"kiymet", on:"Hangi iki yöntemin sırası değiştirilebilir?", arka:"4. (indirgeme) ve 5. (hesaplanmış kıymet) — ithalatçının talebiyle."},
+  {k:"kiymet", on:"Kıymete eklenen giderler?", arka:"Türkiye'ye getirilene kadarki navlun + sigorta, komisyon (satın alma hariç), royalti, ambalaj."},
+  {k:"kiymet", on:"Kıymete dahil edilmeyenler?", arka:"Giriş sonrası taşıma/montaj/bakım ve Türkiye'de ödenen vergiler (ayrı gösterilmişse)."},
+
+  {k:"mense", on:"Tercihsiz menşe ne için kullanılır?", arka:"Ticaret politikası önlemleri, kota, anti-damping uygulamaları."},
+  {k:"mense", on:"Tercihli menşe ne sağlar?", arka:"Serbest ticaret anlaşmaları kapsamında indirimli/sıfır gümrük vergisi."},
+  {k:"mense", on:"Birden çok ülkede üretilen eşyanın menşei?", arka:"Son esaslı işçilik/işlemin yapıldığı ülke."},
+  {k:"mense", on:"Basit işlemler menşe kazandırır mı?", arka:"Hayır. Ambalajlama, etiketleme, ayıklama tek başına menşe kazandırmaz."},
+  {k:"mense", on:"A.TR vs EUR.1 farkı?", arka:"A.TR = serbest dolaşım statüsü; EUR.1 = menşe ispatı."},
+
+  {k:"vergi", on:"İthalatta alınabilen vergiler?", arka:"Gümrük vergisi, KDV, ÖTV, anti-damping, KKDF, Toplu Konut Fonu, damga vergisi."},
+  {k:"vergi", on:"KKDF ne zaman gündeme gelir?", arka:"Kural olarak vadeli/kredili ithalatta."},
+  {k:"vergi", on:"Gümrük vergisinde zaman aşımı?", arka:"3 yıl (yükümlülüğün doğduğu tarihten itibaren)."},
+  {k:"vergi", on:"Gümrük yükümlülüğü ne zaman doğar?", arka:"Vergiye tabi eşyanın serbest dolaşıma giriş gibi bir rejime tabi tutulmasıyla."},
+  {k:"vergi", on:"Anti-damping vergisi amacı?", arka:"Normal değerin altında (dampingli) ithalatın yerli üretime zararını telafi etmek."},
+
+  {k:"islem", on:"Geçici depolama süresi (denizyolu)?", arka:"45 gün."},
+  {k:"islem", on:"Geçici depolama süresi (kara/hava)?", arka:"20 gün."},
+  {k:"islem", on:"Özet beyan nedir?", arka:"Eşyanın gümrüğe geldiğini bildiren ön bildirim."},
+  {k:"islem", on:"Kontrol hatları nelerdir?", arka:"Kırmızı (belge+fiziki), Sarı (belge), Mavi (sonradan kontrol), Yeşil (kontrolsüz)."},
+  {k:"islem", on:"Gümrük kararına itiraz süresi?", arka:"Tebliğden itibaren 15 gün (bir üst makama)."},
+  {k:"islem", on:"Beyanname ne zaman hukuki sonuç doğurur?", arka:"Gümrük idaresince tescil edildiği anda."},
+
+  {k:"meslek", on:"Doğrudan temsil nedir?", arka:"Temsilci, başkasının adına ve hesabına hareket eder."},
+  {k:"meslek", on:"Dolaylı temsil nedir?", arka:"Temsilci kendi adına, başkasının hesabına hareket eder. Gümrük müşavirleri bu yetkiye sahiptir."},
+  {k:"meslek", on:"Gümrük müşavirinin temel ilkeleri?", arka:"Doğruluk, gizlilik, tarafsızlık."}
+];
+
+/* ==================== DURUM / DEPOLAMA ==================== */
+const LS_KEY = "tarifeAmca_v1";
+let state = load();
+function load(){
+  try{ return JSON.parse(localStorage.getItem(LS_KEY)) || defaults(); }
+  catch(e){ return defaults(); }
+}
+function defaults(){
+  return { read:{}, qStats:{}, konuStats:{}, fcKnown:{}, quizTaken:0, lastDay:null, streak:0 };
+}
+function save(){ localStorage.setItem(LS_KEY, JSON.stringify(state)); }
+function markDay(){
+  const t = new Date();
+  const key = t.getFullYear()+"-"+(t.getMonth()+1)+"-"+t.getDate();
+  if(state.lastDay === key) return;
+  const y = new Date(t); y.setDate(y.getDate()-1);
+  const yk = y.getFullYear()+"-"+(y.getMonth()+1)+"-"+y.getDate();
+  state.streak = (state.lastDay === yk) ? (state.streak||0)+1 : 1;
+  state.lastDay = key;
+  save();
+}
+
+/* ==================== YARDIMCI ==================== */
+const $ = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+function konuAdi(id){ const k = KONULAR.find(x=>x.id===id); return k?k.baslik:id; }
+function konuIkon(id){ const k = KONULAR.find(x=>x.id===id); return k?k.ikon:"📘"; }
+let toastT;
+function toast(msg){
+  const el = $("#toast"); el.textContent = msg; el.classList.add("show");
+  clearTimeout(toastT); toastT = setTimeout(()=>el.classList.remove("show"), 1900);
+}
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
+
+/* ==================== NAVİGASYON ==================== */
+function show(view){
+  $$(".view").forEach(v=>v.classList.remove("active"));
+  $("#view-"+view).classList.add("active");
+  $$(".tab").forEach(t=>t.classList.toggle("active", t.dataset.view===view));
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+$("#nav").addEventListener("click", e=>{
+  const t = e.target.closest(".tab"); if(!t) return;
+  const v = t.dataset.view;
+  show(v);
+  if(v==="istatistik") renderStats();
+});
+$$(".qbtn").forEach(b=>b.addEventListener("click", ()=>{
+  const go = b.dataset.go;
+  if(go==="test-hizli"){ show("test"); quickQuiz(); }
+  else show(go);
+}));
+
+/* ==================== ANA SAYFA ==================== */
+function renderHome(){
+  const totalQ = SORULAR.length;
+  const answered = Object.keys(state.qStats).length;
+  const readCount = Object.keys(state.read).length;
+  const el = $("#homeStats");
+  el.innerHTML = `
+    ${statCard("🔥", state.streak||0, "Günlük seri")}
+    ${statCard("📖", readCount+"/"+KONULAR.length, "Okunan konu")}
+    ${statCard("✅", answered+"/"+totalQ, "Denenen soru")}
+    ${statCard("📝", state.quizTaken||0, "Çözülen test")}
+  `;
+}
+function statCard(ic, n, l){
+  return `<div class="card stat"><div class="ic">${ic}</div><div class="n">${n}</div><div class="l">${l}</div></div>`;
+}
+
+/* ==================== KONULAR ==================== */
+function renderKonular(){
+  const g = $("#konuGrid");
+  g.innerHTML = KONULAR.map(k=>{
+    const done = state.read[k.id];
+    return `<div class="card konu" data-konu="${k.id}">
+      <div class="top"><span class="ic">${k.ikon}</span><h3>${k.baslik}</h3></div>
+      <p>${k.ozet}</p>
+      <div><span class="chip ${done?'done':''}">${done?'✓ Okundu':'Okunmadı'}</span></div>
+    </div>`;
+  }).join("");
+  $$("#konuGrid .konu").forEach(c=>c.addEventListener("click", ()=>openReader(c.dataset.konu)));
+}
+
+/* ==================== OKUYUCU ==================== */
+let currentKonu = null;
+function openReader(id){
+  currentKonu = id;
+  const k = KONULAR.find(x=>x.id===id);
+  $("#readerBody").innerHTML = `
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+      <span style="font-size:2rem">${k.ikon}</span><h1 style="margin:0">${k.baslik}</h1>
+    </div>
+    <p class="sub">${k.ozet}</p>
+    ${k.bolumler.map(b=>`<h2>${b.baslik}</h2>${b.metin}`).join("")}
+  `;
+  show("reader");
+}
+$("#readerBack").addEventListener("click", ()=>show("konular"));
+$("#readerDone").addEventListener("click", ()=>{
+  if(currentKonu){ state.read[currentKonu]=true; save(); renderKonular(); renderHome(); toast("Konu okundu olarak işaretlendi ✓"); }
+});
+$("#readerQuiz").addEventListener("click", ()=>{
+  if(currentKonu){ show("test"); startQuizWith(currentKonu, 999); }
+});
+
+/* ==================== TEST ==================== */
+let quiz = null;
+function renderTestSetup(){
+  const kp = $("#testKonuPills");
+  kp.innerHTML = `<button class="pill sel" data-k="all">🎲 Karışık</button>` +
+    KONULAR.map(k=>`<button class="pill" data-k="${k.id}">${k.ikon} ${k.baslik}</button>`).join("");
+  kp.querySelectorAll(".pill").forEach(p=>p.addEventListener("click",()=>{
+    kp.querySelectorAll(".pill").forEach(x=>x.classList.remove("sel")); p.classList.add("sel");
+  }));
+  const cp = $("#testCountPills");
+  cp.innerHTML = [5,10,20,"Tümü"].map((n,i)=>`<button class="pill ${i===1?'sel':''}" data-c="${n}">${n} soru</button>`).join("");
+  cp.querySelectorAll(".pill").forEach(p=>p.addEventListener("click",()=>{
+    cp.querySelectorAll(".pill").forEach(x=>x.classList.remove("sel")); p.classList.add("sel");
+  }));
+}
+$("#startQuiz").addEventListener("click", ()=>{
+  const k = $("#testKonuPills .pill.sel").dataset.k;
+  const cRaw = $("#testCountPills .pill.sel").dataset.c;
+  const c = cRaw==="Tümü" ? 999 : parseInt(cRaw,10);
+  startQuizWith(k, c);
+});
+function quickQuiz(){ startQuizWith("all", 10); }
+function startQuizWith(konu, count){
+  let pool = konu==="all" ? SORULAR.slice() : SORULAR.filter(q=>q.k===konu);
+  pool = shuffle(pool).slice(0, Math.min(count, pool.length));
+  if(pool.length===0){ toast("Bu konuda soru bulunamadı."); return; }
+  quiz = { list:pool, i:0, correct:0, konu, answered:false };
+  $("#testSetup").style.display="none";
+  $("#testRunner").style.display="block";
+  markDay();
+  renderQuestion();
+}
+function renderQuestion(){
+  const q = quiz.list[quiz.i];
+  const opts = q.o.map((o,idx)=>({o,idx}));
+  const letters = ["A","B","C","D","E"];
+  $("#testRunner").innerHTML = `
+    <div class="card qbox">
+      <div class="qmeta">
+        <span>${konuIkon(q.k)} ${konuAdi(q.k)}</span>
+        <span>Soru ${quiz.i+1} / ${quiz.list.length}</span>
+      </div>
+      <div class="bar-wrap"><div class="bar-fill" style="width:${(quiz.i)/quiz.list.length*100}%"></div></div>
+      <div class="qtext">${q.s}</div>
+      <div class="answers" id="answers">
+        ${opts.map(({o},idx)=>`<button class="answer" data-idx="${idx}"><span class="k">${letters[idx]}</span><span>${o}</span></button>`).join("")}
+      </div>
+      <div class="explain" id="explain"></div>
+      <div class="qnav">
+        <button class="btn ghost" id="quitQuiz">Bitir</button>
+        <button class="btn" id="nextQ" disabled>Sonraki →</button>
+      </div>
+    </div>`;
+  quiz.answered = false;
+  $$("#answers .answer").forEach(b=>b.addEventListener("click", ()=>answer(parseInt(b.dataset.idx,10))));
+  $("#nextQ").addEventListener("click", next);
+  $("#quitQuiz").addEventListener("click", ()=>finishQuiz());
+}
+function answer(idx){
+  if(quiz.answered) return;
+  quiz.answered = true;
+  const q = quiz.list[quiz.i];
+  const correct = q.d;
+  const btns = $$("#answers .answer");
+  btns.forEach(b=>{
+    const bi = parseInt(b.dataset.idx,10);
+    b.disabled = true;
+    if(bi===correct) b.classList.add("correct");
+    if(bi===idx && idx!==correct) b.classList.add("wrong");
+  });
+  const isRight = idx===correct;
+  if(isRight) quiz.correct++;
+  // istatistik
+  const qid = q.k + "|" + q.s;
+  state.qStats[qid] = isRight ? "ok" : "bad";
+  state.konuStats[q.k] = state.konuStats[q.k] || {ok:0, total:0};
+  state.konuStats[q.k].total++;
+  if(isRight) state.konuStats[q.k].ok++;
+  save();
+  const ex = $("#explain");
+  ex.innerHTML = `<b>${isRight?'✅ Doğru!':'❌ Yanlış.'}</b> ${q.a}`;
+  ex.classList.add("show");
+  $("#nextQ").disabled = false;
+  $("#nextQ").textContent = quiz.i === quiz.list.length-1 ? "Sonucu Gör →" : "Sonraki →";
+  renderHome();
+}
+function next(){
+  if(quiz.i < quiz.list.length-1){ quiz.i++; renderQuestion(); }
+  else finishQuiz();
+}
+function finishQuiz(){
+  const total = quiz.i + (quiz.answered?1:0);
+  const answeredCount = quiz.list.slice(0, quiz.i + (quiz.answered?1:0)).length;
+  state.quizTaken = (state.quizTaken||0)+1;
+  save();
+  const pct = answeredCount? Math.round(quiz.correct/answeredCount*100) : 0;
+  const deg = pct*3.6;
+  let msg = pct>=85?"Muhteşem! 🎉":pct>=60?"İyi gidiyorsun 👏":pct>=40?"Fena değil, tekrar lazım 💪":"Biraz daha çalışalım 📚";
+  $("#testRunner").innerHTML = `
+    <div class="card result">
+      <div class="ring" style="--deg:${deg}deg"><div class="inner"><div class="big">%${pct}</div></div></div>
+      <h1 style="margin:8px 0 2px">${msg}</h1>
+      <p class="sub">${answeredCount} soruda ${quiz.correct} doğru.</p>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:8px">
+        <button class="btn" id="againQuiz">Yeni Test</button>
+        <button class="btn ghost" id="reviewKonu">Konulara Dön</button>
+      </div>
+    </div>`;
+  $("#againQuiz").addEventListener("click", ()=>{ $("#testRunner").style.display="none"; $("#testSetup").style.display="block"; });
+  $("#reviewKonu").addEventListener("click", ()=>{ show("konular"); $("#testRunner").style.display="none"; $("#testSetup").style.display="block"; });
+  renderHome();
+}
+
+/* ==================== BİLGİ KARTLARI ==================== */
+let fc = null;
+function renderFcSetup(){
+  const kp = $("#fcKonuPills");
+  kp.innerHTML = `<button class="pill sel" data-k="all">🎲 Tümü</button>` +
+    KONULAR.map(k=>`<button class="pill" data-k="${k.id}">${k.ikon} ${k.baslik}</button>`).join("");
+  kp.querySelectorAll(".pill").forEach(p=>p.addEventListener("click",()=>{
+    kp.querySelectorAll(".pill").forEach(x=>x.classList.remove("sel")); p.classList.add("sel");
+  }));
+}
+$("#startFc").addEventListener("click", ()=>{
+  const k = $("#fcKonuPills .pill.sel").dataset.k;
+  let pool = k==="all" ? KARTLAR.slice() : KARTLAR.filter(c=>c.k===k);
+  pool = shuffle(pool);
+  if(!pool.length){ toast("Kart bulunamadı."); return; }
+  fc = { list:pool, i:0 };
+  $("#fcSetup").style.display="none";
+  $("#fcRunner").style.display="block";
+  markDay();
+  renderCard();
+});
+function renderCard(){
+  const c = fc.list[fc.i];
+  $("#fcRunner").innerHTML = `
+    <div class="fc-count">Kart ${fc.i+1} / ${fc.list.length}</div>
+    <div class="fc-stage">
+      <div class="flashcard" id="card">
+        <div class="face front">
+          <span class="tag">${konuIkon(c.k)} ${konuAdi(c.k)}</span>
+          <div class="txt">${c.on}</div>
+          <span class="hint">Cevabı görmek için dokun</span>
+        </div>
+        <div class="face back">
+          <span class="tag">Cevap</span>
+          <div class="txt">${c.arka}</div>
+          <span class="hint">Tekrar dokun</span>
+        </div>
+      </div>
+    </div>
+    <div class="fc-controls">
+      <button class="btn ghost" id="fcBad">↺ Tekrar et</button>
+      <button class="btn" id="fcKnown">✓ Biliyorum</button>
+    </div>
+    <div class="fc-controls" style="margin-top:10px">
+      <button class="btn ghost" id="fcExit">Kapat</button>
+    </div>`;
+  const card = $("#card");
+  card.addEventListener("click", ()=>card.classList.toggle("flip"));
+  $("#fcKnown").addEventListener("click", ()=>{ state.fcKnown[c.on]=true; save(); nextCard(); });
+  $("#fcBad").addEventListener("click", ()=>{ delete state.fcKnown[c.on]; save(); nextCard(); });
+  $("#fcExit").addEventListener("click", ()=>{ $("#fcRunner").style.display="none"; $("#fcSetup").style.display="block"; renderHome(); });
+}
+function nextCard(){
+  if(fc.i < fc.list.length-1){ fc.i++; renderCard(); }
+  else {
+    const known = fc.list.filter(c=>state.fcKnown[c.on]).length;
+    $("#fcRunner").innerHTML = `
+      <div class="card result">
+        <div style="font-size:3rem">🃏</div>
+        <h1 style="margin:8px 0 2px">Deste bitti!</h1>
+        <p class="sub">${fc.list.length} karttan ${known} tanesini biliyorum dedin.</p>
+        <button class="btn" id="fcRestart">Tekrar Karıştır</button>
+      </div>`;
+    $("#fcRestart").addEventListener("click", ()=>{ fc.list=shuffle(fc.list); fc.i=0; renderCard(); });
+  }
+}
+
+/* ==================== İSTATİSTİK ==================== */
+function renderStats(){
+  const answered = Object.keys(state.qStats).length;
+  const correct = Object.values(state.qStats).filter(v=>v==="ok").length;
+  const acc = answered? Math.round(correct/answered*100):0;
+  const knownCards = Object.keys(state.fcKnown).length;
+  $("#statCards").innerHTML = `
+    ${statCard("🔥", state.streak||0, "Günlük seri")}
+    ${statCard("🎯", "%"+acc, "Genel isabet")}
+    ${statCard("✅", correct+"/"+answered, "Doğru / denenen")}
+    ${statCard("🃏", knownCards+"/"+KARTLAR.length, "Bilinen kart")}
+  `;
+  const cs = $("#konuStats");
+  const rows = KONULAR.map(k=>{
+    const st = state.konuStats[k.id];
+    const pct = st && st.total? Math.round(st.ok/st.total*100):0;
+    const has = st && st.total;
+    return `<div class="card konu-stat">
+      <span class="ic">${k.ikon}</span>
+      <div class="info">
+        <h4>${k.baslik}</h4>
+        <div class="bar-wrap"><div class="bar-fill" style="width:${pct}%"></div></div>
+      </div>
+      <div class="pct" style="color:${!has?'var(--muted)':pct>=60?'var(--ok)':pct>=40?'var(--accent)':'var(--bad)'}">${has?'%'+pct:'—'}</div>
+    </div>`;
+  }).join("");
+  cs.innerHTML = rows;
+}
+$("#resetBtn").addEventListener("click", ()=>{
+  if(confirm("Tüm ilerlemen (okunan konular, test sonuçları, kartlar) silinecek. Emin misin?")){
+    state = defaults(); save();
+    renderHome(); renderKonular(); renderStats();
+    toast("İlerleme sıfırlandı.");
+  }
+});
+
+/* ==================== BAŞLAT ==================== */
+renderHome();
+renderKonular();
+renderTestSetup();
+renderFcSetup();
+</script>
+</body>
+</html>
