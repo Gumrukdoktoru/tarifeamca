@@ -220,7 +220,7 @@
 
     <h2>Nereden başlasak?</h2>
     <div class="grid quick">
-      <button class="qbtn" data-go="konular"><div class="ic">📖</div><h3>Konu Anlatımı</h3><p>Temel kavramlardan rejimlere kadar özet ders notları.</p></button>
+      <button class="qbtn" data-go="konular"><div class="ic">📖</div><h3>Konu Anlatımı</h3><p>Notlardan hazırlanmış özet ders sayfaları.</p></button>
       <button class="qbtn" data-go="test-hizli"><div class="ic">⚡</div><h3>Hızlı Test (10 soru)</h3><p>Karışık sorularla ısınma turu.</p></button>
       <button class="qbtn" data-go="kartlar"><div class="ic">🔁</div><h3>Bilgi Kartları</h3><p>Terimleri hızlı tekrar et, aklında tut.</p></button>
     </div>
@@ -285,7 +285,7 @@
 </main>
 
 <footer>
-  Tarife Amca · Gümrük müşavirliği çalışma yardımcısı. İçerik yalnızca çalışma amaçlıdır; sınav ve uygulamada güncel resmî mevzuat (4458 sayılı Gümrük Kanunu ve ilgili yönetmelikler) esas alınmalıdır.
+  Tarife Amca · Gümrük müşavirliği çalışma yardımcısı. İçerik yalnızca çalışma amaçlıdır; sınav ve uygulamada güncel resmî mevzuat (4458 sayılı Gümrük Kanunu, 2006/10895 sayılı Karar ve ilgili yönetmelikler) esas alınmalıdır.
 </footer>
 
 <div class="toast" id="toast"></div>
@@ -294,332 +294,103 @@
 /* ==================== VERİ ==================== */
 const KONULAR = [
   {
-    id:"temel", ikon:"⚖️", baslik:"Gümrük Kanunu ve Temel Kavramlar",
-    ozet:"4458 sayılı Kanun, gümrük bölgesi, serbest dolaşım ve temel tanımlar.",
+    id:"atr", ikon:"📜", baslik:"Gümrük Birliği ve A.TR Dolaşım Belgesi",
+    ozet:"Karar 2006/10895: AB Gümrük Birliği, üye ülkeler ve A.TR dolaşım belgesi kuralları.",
     bolumler:[
-      {baslik:"Gümrük Kanunu'na genel bakış", metin:`
-        <p>Türkiye'de gümrük işlemlerinin temel çerçevesini <b>4458 sayılı Gümrük Kanunu</b> çizer. Kanun 27 Ekim 1999'da kabul edilmiş, <b>5 Şubat 2000</b> tarihinde yürürlüğe girmiştir ve büyük ölçüde Avrupa Birliği gümrük mevzuatı ile uyumludur.</p>
-        <p>Kanunun uygulanmasına ilişkin ayrıntılar <b>Gümrük Yönetmeliği</b> ile düzenlenir.</p>
-      `},
-      {baslik:"Türkiye Gümrük Bölgesi", metin:`
-        <p><b>Türkiye Gümrük Bölgesi</b>, Türkiye Cumhuriyeti topraklarını kapsar. Buna kara suları, iç sular ve hava sahası da dahildir.</p>
-        <div class="box tip"><b>İpucu:</b> Serbest bölgeler coğrafi olarak ülke içindedir ancak gümrük mevzuatının uygulanması bakımından <b>Türkiye Gümrük Bölgesi dışı</b> gibi değerlendirilir.</div>
-      `},
-      {baslik:"Serbest dolaşımda eşya", metin:`
-        <p><b>Serbest dolaşımda bulunan eşya</b>: Türkiye'de üretilen ya da ithal işlemleri tamamlanarak (vergileri ödenmiş, ticaret politikası önlemleri uygulanmış) serbest dolaşıma girmiş eşyadır.</p>
+      {baslik:"Gümrük Birliği ve AB üye ülkeleri", metin:`
+        <p><b>2006/10895 sayılı Karar</b>, "Türkiye ile Avrupa Topluluğu Arasında Oluşturulan Gümrük Birliği'nin Uygulanmasına İlişkin Esaslar Hakkında Karar"dır.</p>
+        <p><b>Kurucu ülkeler (6):</b> Hollanda, Almanya, Lüksemburg, İtalya, Fransa, Belçika.</p>
+        <div class="box tip"><b>Ezber kodu:</b> <b>H.A.L.İ.F.B.</b> → <b>H</b>ollanda, <b>A</b>lmanya, <b>L</b>üksemburg, <b>İ</b>talya, <b>F</b>ransa, <b>B</b>elçika.</div>
         <ul>
-          <li>Tamamen Türkiye Gümrük Bölgesi'nde elde edilen eşya,</li>
-          <li>Serbest dolaşıma giriş rejimi ile ithal edilmiş eşya,</li>
-          <li>Bunların birleşiminden elde edilen eşya serbest dolaşımdadır.</li>
+          <li>AB toplam <b>28</b> üye ülkedir.</li>
+          <li>AB'ye <b>en son katılan ülke: Hırvatistan (2013)</b>.</li>
+          <li><b>2007</b>'de katılanlar: Bulgaristan ve Romanya.</li>
+          <li><b>Birleşik Krallık, 31 Ocak 2020</b> tarihinde AB'den ayrılmıştır.</li>
+        </ul>
+        <p><b>Birleşik Krallık</b>; İngiltere, İskoçya, Galler ve Kuzey İrlanda'dan oluşur. <b>Kuzey İrlanda 07.05.2021</b> tarihinde (uygulamaya) dahil edilmiştir.</p>
+      `},
+      {baslik:"A.TR'nin düzenleneceği haller", metin:`
+        <p><b>A.TR Dolaşım Belgesi</b>, Gümrük Birliği Gümrük Bölgesi'nin iki parçası arasında <b>doğrudan nakledilen</b> şu eşya için düzenlenir:</p>
+        <ul>
+          <li><b>Sanayi ürünleri</b></li>
+          <li><b>İşlenmiş tarım ürünleri</b></li>
+        </ul>
+        <div class="box"><b>İstisna:</b> <b>AKÇT</b> (Avrupa Kömür-Çelik Topluluğu) ürünleri A.TR kapsamı <b>dışındadır</b>; bunlar için <b>EUR.1</b> belgesi kullanılır.</div>
+      `},
+      {baslik:"A.TR'nin sonradan verilmesi", metin:`
+        <p>A.TR belgesi aşağıdaki hallerde <b>sonradan</b> düzenlenebilir:</p>
+        <ul>
+          <li><b>Hata, unutulma, ihmal ya da özel durumlar</b> nedeniyle ihracat sırasında düzenlenmemiş olması,</li>
+          <li>Düzenlenmiş ancak <b>teknik nedenlerle kabul edilmemiş</b> olduğunun yetkili kişi/kuruluşa ve gümrüğe ispatlanması,</li>
+          <li>Eşyanın <b>varış ülkesi üçüncü ülke iken, Topluluk üyesi bir ülke olarak değişmesi</b>,</li>
+          <li>Topluluk üyesi bir ülkeye ihraç edilen eşyanın <b>Topluluk üyesi başka bir ülkeye</b> gönderilmesi hâlinde, ihracatçının <b>varış ülkesinin değiştirilmesini talep etmesi</b>.</li>
         </ul>
       `},
-      {baslik:"Gümrükçe onaylanmış işlem veya kullanım", metin:`
-        <p>Gümrüğe sunulan eşya, aşağıdaki <b>beş</b> işlemden birine tabi tutulmalıdır:</p>
+      {baslik:"Teknik nedenlerle A.TR'nin reddi", metin:`
+        <p>Aşağıdaki gibi <b>teknik nedenlerle</b> kabul edilmeyen A.TR belgeleri <b>sonradan düzenlenebilir</b>:</p>
         <ul>
-          <li>Bir <b>gümrük rejimine</b> tabi tutulması,</li>
-          <li>Bir <b>serbest bölgeye</b> konulması,</li>
-          <li>Türkiye Gümrük Bölgesi dışına <b>yeniden ihracı</b>,</li>
-          <li><b>İmhası</b>,</li>
-          <li>Gümrüğe <b>terk edilmesi</b>.</li>
-        </ul>
-        <div class="box"><b>Karıştırma!</b> "Gümrük rejimi" bunlardan yalnızca biridir; "gümrükçe onaylanmış işlem veya kullanım" daha geniş bir üst kavramdır.</div>
-      `}
-    ]
-  },
-  {
-    id:"rejim", ikon:"🔀", baslik:"Gümrük Rejimleri",
-    ozet:"Sekiz gümrük rejimi: serbest dolaşıma giriş, transit, antrepo, DİR ve diğerleri.",
-    bolumler:[
-      {baslik:"Sekiz gümrük rejimi", metin:`
-        <p>Gümrük Kanunu'nda düzenlenen <b>sekiz gümrük rejimi</b> şunlardır:</p>
-        <ul>
-          <li><b>Serbest dolaşıma giriş rejimi</b> (ithalat)</li>
-          <li><b>Transit rejimi</b></li>
-          <li><b>Gümrük antrepo rejimi</b></li>
-          <li><b>Dahilde işleme rejimi</b> (DİR)</li>
-          <li><b>Gümrük kontrolü altında işleme rejimi</b></li>
-          <li><b>Geçici ithalat rejimi</b></li>
-          <li><b>Hariçte işleme rejimi</b> (HİR)</li>
-          <li><b>İhracat rejimi</b></li>
+          <li>Belgenin <b>öngörülen form dışında</b> bir form ile düzenlenmesi (ebat/renk farkı, seri numarası bulunmaması, öngörülen dillerden birinde basılmaması),</li>
+          <li>Doldurulması <b>zorunlu kutulardan birinin</b> (örn. <b>5 numaralı kutu</b>) doldurulmaması,</li>
+          <li>Belgenin <b>mühürlenip imzalanmaması</b> (<b>12 numaralı kutu</b>),</li>
+          <li><b>Yetkili olmayan bir makam</b> tarafından onaylanması,</li>
+          <li>Vize edilirken <b>örneği gönderilmeyen yeni bir mühür</b> kullanılması,</li>
+          <li>Belgenin orijinal olmayıp <b>fotokopi veya suret</b> olması,</li>
+          <li><b>5 numaralı kutuya</b> Türkiye ve Topluluk ülkesi <b>olmayan</b> bir ülkenin yazılması.</li>
         </ul>
       `},
-      {baslik:"Serbest dolaşıma giriş ve transit", metin:`
-        <p><b>Serbest dolaşıma giriş rejimi</b>: Eşyanın ithalat vergileri ödenip ticaret politikası önlemleri uygulanarak serbest dolaşıma sokulmasıdır. Eşya bu rejimle "serbest dolaşımda eşya" statüsü kazanır.</p>
-        <p><b>Transit rejimi</b>: İthalat vergileri ve ticaret politikası önlemleri <b>uygulanmaksızın</b>, eşyanın gümrük gözetimi altında bir noktadan diğerine taşınmasıdır.</p>
+      {baslik:"İkinci nüsha A.TR düzenlenmesi", metin:`
+        <p>A.TR Dolaşım Belgesinin <b>çalınması, kaybedilmesi veya hasar görmesi</b> hâllerinde, belgenin <b>ikinci bir nüshasının</b> düzenlenmesi için başvurulabilir.</p>
+        <div class="box"><b>Karıştırma!</b> Çalınma/kaybolma/hasar → <b>ikinci nüsha</b>; hata/unutulma/teknik red → <b>sonradan verme</b>.</div>
       `},
-      {baslik:"Antrepo ve şartlı muafiyet rejimleri", metin:`
-        <p><b>Gümrük antrepo rejimi</b>: Eşyanın vergileri ödenmeden gümrük antreposunda depolanmasına imkân verir. Antrepolar <b>genel</b> (herkesin kullanabildiği) ve <b>özel</b> (yalnızca antrepo işleticisinin kullandığı) olmak üzere ikiye ayrılır.</p>
-        <p><b>Dahilde işleme rejimi (DİR)</b>: İhraç edilecek ürünlerin üretiminde kullanılacak girdilerin vergilerden muaf/geri ödemeli olarak ithaline imkân verir. İki sistemi vardır: <b>şartlı muafiyet</b> ve <b>geri ödeme</b> sistemi.</p>
-        <p><b>Hariçte işleme rejimi (HİR)</b>: Serbest dolaşımdaki eşyanın işlenmek üzere yurt dışına gönderilip, işlem görmüş ürün olarak geri getirilmesidir; vergi yalnızca yurt dışında eklenen kıymet üzerinden alınır (kısmi muafiyet).</p>
-        <div class="box tip"><b>İpucu:</b> "İçeri işle → dışarı sat" DİR; "dışarı işle → geri getir" HİR olarak aklında kalabilir.</div>
-      `},
-      {baslik:"Geçici ithalat ve kontrol altında işleme", metin:`
-        <p><b>Geçici ithalat rejimi</b>: Eşyanın tam veya kısmi muafiyetle, belirli bir süre kullanılıp aynen geri gönderilmek üzere ithalidir (fuar eşyası, sergi malzemesi, profesyonel ekipman vb.).</p>
-        <p><b>Gümrük kontrolü altında işleme rejimi</b>: Serbest dolaşıma girmemiş eşyanın, ithalat vergilerine tabi tutulmadan işçiliğe tabi tutulup, elde edilen ürünün vergileri üzerinden serbest dolaşıma girmesidir.</p>
-      `}
-    ]
-  },
-  {
-    id:"tarife", ikon:"🔢", baslik:"Gümrük Tarifesi ve GTİP",
-    ozet:"Armonize Sistem, Türk Gümrük Tarife Cetveli ve 12 haneli GTİP yapısı.",
-    bolumler:[
-      {baslik:"Armonize Sistem (HS)", metin:`
-        <p><b>Armonize Sistem (Harmonized System – HS)</b>, Dünya Gümrük Örgütü (WCO) tarafından geliştirilen, eşyanın uluslararası ortak sınıflandırma sistemidir. İlk <b>6 hane</b> tüm üye ülkelerde ortaktır.</p>
-        <p>Türkiye'de kullanılan liste <b>Türk Gümrük Tarife Cetveli</b>dir ve her yıl güncellenir.</p>
-      `},
-      {baslik:"GTİP'in yapısı (12 hane)", metin:`
-        <p><b>GTİP</b> = Gümrük Tarife İstatistik Pozisyonu. Türkiye'de <b>12 haneli</b>dir:</p>
+      {baslik:"A.TR ibraz süreleri (hepsi 4 ay)", metin:`
+        <p>A.TR belgesinin ithalatçı ülke gümrüğüne ibraz süresi <b>her durumda 4 aydır</b>; yalnızca sürenin <b>hangi tarihten başladığı</b> değişir:</p>
         <ul>
-          <li><b>1–6. haneler:</b> Armonize Sistem kodu (uluslararası, WCO)</li>
-          <li><b>7–8. haneler:</b> AB Kombine Nomanklatürü (CN) kodu</li>
-          <li><b>9–10. haneler:</b> Ulusal alt açılım kodu</li>
-          <li><b>11–12. haneler:</b> İstatistik / gümrük tarife pozisyonu kodu</li>
+          <li><b>Normal A.TR:</b> <b>vize</b> tarihinden itibaren 4 ay,</li>
+          <li><b>"Sonradan verilmiştir"</b> kaydını taşıyan A.TR: <b>vize</b> tarihinden itibaren 4 ay,</li>
+          <li><b>Basitleştirilmiş işlem usullerine</b> göre düzenlenen A.TR: <b>fiili ihraç</b> tarihinden itibaren 4 ay,</li>
+          <li><b>"İkinci nüshadır"</b> A.TR: <b>ilk A.TR belgesinin vize</b> tarihinden itibaren 4 ay.</li>
         </ul>
-        <div class="box"><b>Neden önemli?</b> Eşyanın doğru GTİP'i, uygulanacak <b>vergi oranını</b>, ticaret politikası önlemlerini ve izinleri belirler. Yanlış sınıflandırma ceza ve vergi farkı doğurur.</div>
-      `},
-      {baslik:"Sınıflandırmanın genel kuralları", metin:`
-        <p>Eşyanın hangi pozisyona gireceği <b>Tarifenin Yorumuna İlişkin Genel Kurallar (GYK / GİR)</b> ile belirlenir. Temel mantık:</p>
-        <ul>
-          <li>Önce eşyayı en <b>özel</b> şekilde tanımlayan pozisyon tercih edilir.</li>
-          <li>Karışım ve set hâlindeki eşyada, esas niteliği veren bileşen belirleyicidir.</li>
-          <li>Sınıflandırılamayan eşya, kendisine <b>en çok benzeyen</b> eşyanın pozisyonuna girer.</li>
-        </ul>
-      `}
-    ]
-  },
-  {
-    id:"kiymet", ikon:"💰", baslik:"Gümrük Kıymeti",
-    ozet:"İthalatta verginin matrahı: satış bedeli yöntemi ve altı kıymet yöntemi.",
-    bolumler:[
-      {baslik:"Gümrük kıymeti nedir?", metin:`
-        <p><b>Gümrük kıymeti</b>, ithal eşyasının vergilendirmeye esas kıymetidir; yani vergilerin hesaplandığı <b>matrah</b>tır. Kural olarak eşyanın <b>satış bedeli</b> esas alınır.</p>
-      `},
-      {baslik:"Altı kıymet belirleme yöntemi (sıralı)", metin:`
-        <p>Kıymet, aşağıdaki yöntemlerle <b>sırasıyla</b> belirlenir. Bir üst yöntem uygulanamıyorsa bir sonrakine geçilir:</p>
-        <ul>
-          <li><b>1. Satış bedeli yöntemi</b> — asıl ve öncelikli yöntemdir.</li>
-          <li><b>2. Aynı eşyanın satış bedeli</b> yöntemi</li>
-          <li><b>3. Benzer eşyanın satış bedeli</b> yöntemi</li>
-          <li><b>4. İndirgeme (mahsubi) yöntemi</b></li>
-          <li><b>5. Hesaplanmış kıymet yöntemi</b></li>
-          <li><b>6. Son (geri dönüş / fall-back) yöntemi</b></li>
-        </ul>
-        <div class="box tip"><b>İpucu:</b> İthalatçının talebi hâlinde <b>4 ve 5. yöntemlerin sırası değiştirilebilir</b>. Diğer yöntemlerde sıra değişmez.</div>
-      `},
-      {baslik:"Kıymete eklenecek unsurlar", metin:`
-        <p>Satış bedeline, daha önce dahil değilse şunlar <b>eklenir</b>:</p>
-        <ul>
-          <li>Alıcı tarafından ödenen komisyonlar (satın alma komisyonu hariç),</li>
-          <li>Ambalaj ve kap bedelleri,</li>
-          <li>Royalti ve lisans ücretleri,</li>
-          <li>Türkiye'ye getirilene kadarki <b>navlun (taşıma)</b> ve <b>sigorta</b> giderleri.</li>
-        </ul>
-        <p>Buna karşılık, eşyanın Türkiye'ye <b>girişinden sonraki</b> taşıma, montaj, bakım giderleri ve Türkiye'de ödenen vergiler kıymete <b>dahil edilmez</b> (ayrı gösterilmişse).</p>
-      `}
-    ]
-  },
-  {
-    id:"mense", ikon:"🌍", baslik:"Eşyanın Menşei",
-    ozet:"Tercihli ve tercihsiz menşe, tamamen elde edilen eşya ve esaslı işçilik.",
-    bolumler:[
-      {baslik:"Menşe kavramı", metin:`
-        <p><b>Menşe</b>, eşyanın ekonomik olarak hangi ülkeye ait sayıldığını gösterir. İki türü vardır:</p>
-        <ul>
-          <li><b>Tercihsiz menşe:</b> Ticaret politikası önlemleri, anti-damping, kota gibi uygulamalarda esas alınır.</li>
-          <li><b>Tercihli menşe:</b> Serbest ticaret anlaşmaları kapsamında indirimli/sıfır vergi uygulanması için gereklidir.</li>
-        </ul>
-      `},
-      {baslik:"Menşenin belirlenmesi", metin:`
-        <p>Bir eşya <b>tümüyle bir ülkede elde edilmişse</b> (madencilik ürünleri, o ülkede yetiştirilen bitkiler, doğan/yetişen hayvanlar vb.) o ülke menşelidir.</p>
-        <p>Üretimi <b>birden fazla ülkede</b> gerçekleşen eşyanın menşei, <b>ekonomik açıdan gerekli görülen en son esaslı işçilik veya işlemin</b> yapıldığı ülkedir. Bu işlem, yeni bir ürün ortaya çıkarmalı veya imalatın önemli bir aşamasını oluşturmalıdır.</p>
-        <div class="box"><b>Önemli:</b> Yalnızca ambalajlama, etiketleme, ayıklama gibi <b>basit işlemler</b> menşe kazandırmaz.</div>
-      `},
-      {baslik:"Menşe ispatı", metin:`
-        <p>Menşe; <b>menşe şahadetnamesi</b>, <b>A.TR dolaşım belgesi</b> (AB ile serbest dolaşım), <b>EUR.1 / EUR-MED</b> dolaşım belgeleri gibi belgelerle ispatlanır.</p>
-        <div class="box tip"><b>Dikkat:</b> A.TR belgesi menşe değil, <b>serbest dolaşım</b> statüsünü gösterir; EUR.1 ise <b>menşe</b> ispatına yarar.</div>
-      `}
-    ]
-  },
-  {
-    id:"vergi", ikon:"🧾", baslik:"Gümrük Vergileri ve Yükümlülükler",
-    ozet:"İthalatta alınan vergiler, gümrük yükümlülüğü ve zaman aşımı.",
-    bolumler:[
-      {baslik:"İthalatta alınabilen vergi ve mali yükler", metin:`
-        <p>İthalatta duruma göre şu vergi ve mali yükler alınabilir:</p>
-        <ul>
-          <li><b>Gümrük Vergisi</b> (ve varsa İlave Gümrük Vergisi)</li>
-          <li><b>Katma Değer Vergisi (KDV)</b></li>
-          <li><b>Özel Tüketim Vergisi (ÖTV)</b> — belirli ürünlerde</li>
-          <li><b>Dampinge Karşı Vergi</b> (anti-damping) ve telafi edici vergiler</li>
-          <li><b>Kaynak Kullanımını Destekleme Fonu (KKDF)</b> — vadeli ithalatta</li>
-          <li><b>Toplu Konut Fonu</b> — bazı tarım ürünlerinde</li>
-          <li><b>Damga Vergisi</b></li>
-        </ul>
-      `},
-      {baslik:"Gümrük yükümlülüğü", metin:`
-        <p><b>Gümrük yükümlülüğü</b> (gümrük borcu), eşyanın serbest dolaşıma girişi ya da geçici ithali gibi işlemlerle, yani vergiye tabi eşyanın rejime tabi tutulmasıyla <b>doğar</b>. Yükümlü, kural olarak beyan sahibidir.</p>
-        <p>Kurallara aykırı şekilde gümrük bölgesine sokulan ya da gözetimden çıkarılan eşyada da yükümlülük doğar.</p>
-      `},
-      {baslik:"Tebliğ ve zaman aşımı", metin:`
-        <p>Gümrük vergileri, <b>gümrük yükümlülüğünün doğduğu tarihten itibaren üç yıl</b> içinde yükümlüye tebliğ edilmezse <b>zaman aşımına</b> uğrar. (Ceza gerektiren fiillerde farklı süreler söz konusu olabilir.)</p>
-        <div class="box"><b>Aklında kalsın:</b> Gümrük vergilerinde temel zaman aşımı süresi <b>3 yıl</b>dır.</div>
-      `}
-    ]
-  },
-  {
-    id:"islem", ikon:"📋", baslik:"Gümrük İşlemleri ve Beyan",
-    ozet:"Özet beyan, geçici depolama, gümrük beyannamesi ve süreler.",
-    bolumler:[
-      {baslik:"Eşyanın gümrüğe sunulması ve özet beyan", metin:`
-        <p>Türkiye Gümrük Bölgesi'ne getirilen eşya için <b>özet beyan</b> verilir ve eşya <b>gümrüğe sunulur</b>. Özet beyan, eşyanın gümrüğe geldiğini bildiren ön bildirimdir.</p>
-      `},
-      {baslik:"Geçici depolama ve süreler", metin:`
-        <p>Gümrüğe sunulan ancak henüz bir işleme tabi tutulmayan eşya, <b>geçici depolanan eşya</b> statüsündedir. Bu eşyanın gümrükçe onaylanmış bir işlem veya kullanıma tabi tutulması için tanınan süreler:</p>
-        <ul>
-          <li><b>Denizyolu</b> ile gelen eşyada <b>45 gün</b>,</li>
-          <li><b>Diğer yollarla</b> (kara, hava) gelen eşyada <b>20 gün</b>.</li>
-        </ul>
-        <div class="box tip"><b>İpucu:</b> "Deniz uzun, kara kısa" → 45 / 20 gün.</div>
-      `},
-      {baslik:"Gümrük beyanı ve beyanname", metin:`
-        <p>Eşyanın bir rejime tabi tutulması için <b>gümrük beyanı</b> yapılır. Beyan şekilleri: <b>yazılı beyan</b> (esas usul), sözlü beyan ve diğer beyan şekilleri.</p>
-        <p>Yazılı beyanda <b>gümrük beyannamesi</b> (tek idari belge) kullanılır. Beyanname, gümrük idaresince <b>tescil</b> edildiği anda hukuki sonuç doğurur; vergiler kural olarak tescil tarihindeki oran ve esaslara göre hesaplanır.</p>
-      `},
-      {baslik:"Kontrol türleri (hatlar)", metin:`
-        <p>Tescil sonrası eşya risk analizine göre bir <b>hatta</b> yönlendirilir:</p>
-        <ul>
-          <li><b>Kırmızı hat:</b> Belge + fiziki muayene yapılır.</li>
-          <li><b>Sarı hat:</b> Yalnızca belge kontrolü yapılır.</li>
-          <li><b>Mavi hat:</b> Sonradan kontrol (onaylanmış kişi statüsü vb.).</li>
-          <li><b>Yeşil hat:</b> Kontrol yapılmadan işlem tamamlanır.</li>
-        </ul>
-      `},
-      {baslik:"Karara itiraz", metin:`
-        <p>Gümrük idaresinin aldığı kararlara karşı, yükümlüler kararın <b>tebliğ tarihinden itibaren 15 gün</b> içinde bir üst makama (bölge müdürlüğüne) <b>itiraz</b> edebilir. İdari itiraz yolları tüketildikten sonra yargı yoluna gidilebilir.</p>
-      `}
-    ]
-  },
-  {
-    id:"meslek", ikon:"🎓", baslik:"Gümrük Müşavirliği Mesleği",
-    ozet:"Temsil, gümrük müşaviri/yardımcısı ve mesleki sorumluluklar.",
-    bolumler:[
-      {baslik:"Gümrükte temsil", metin:`
-        <p>Gümrük işlemleri, sahibi tarafından bizzat ya da bir <b>temsilci</b> aracılığıyla takip edilebilir. Temsil iki şekildedir:</p>
-        <ul>
-          <li><b>Doğrudan temsil:</b> Temsilci, başkasının adına ve hesabına hareket eder.</li>
-          <li><b>Dolaylı temsil:</b> Temsilci, kendi adına ancak başkasının hesabına hareket eder. <b>Gümrük müşavirleri dolaylı temsil</b> yetkisine sahiptir.</li>
-        </ul>
-      `},
-      {baslik:"Gümrük müşaviri ve müşavir yardımcısı", metin:`
-        <p><b>Gümrük müşaviri</b>, eşya sahiplerinin dolaylı temsilcisi olarak gümrük işlemlerini takip etme yetkisine sahip, mesleki nitelikleri kanunla belirlenmiş kişidir.</p>
-        <p><b>Gümrük müşavir yardımcısı</b>, gümrük müşavirinin gözetiminde çalışan ve belirli sınav/staj şartlarını taşıyan kişidir. Yardımcılıkta belirli süre çalışan ve sınavda başarılı olanlar gümrük müşaviri olabilir.</p>
-        <div class="box"><b>Not:</b> Meslek mensubu olabilmek için gereken öğrenim, staj süresi ve sınav şartları mevzuatla belirlenir; güncel şartları resmî kaynaklardan doğrulamak gerekir.</div>
-      `},
-      {baslik:"Sorumluluk ve etik", metin:`
-        <p>Gümrük müşaviri, verdiği beyanların doğruluğundan ve mevzuata uygunluğundan sorumludur. Yanlış beyan, eksik vergi ve cezai sonuçlar doğurabilir. Meslek; <b>doğruluk, gizlilik ve tarafsızlık</b> ilkeleri üzerine kuruludur.</p>
+        <div class="box tip"><b>İpucu:</b> Süre hep <b>4 ay</b>. Sadece başlangıç tarihi değişir: normal ve "sonradan verilmiştir" → <b>vize</b>; basitleştirilmiş → <b>fiili ihraç</b>; ikinci nüsha → <b>ilk belgenin vizesi</b>.</div>
       `}
     ]
   }
 ];
 
 const SORULAR = [
-  {k:"temel", s:"4458 sayılı Gümrük Kanunu hangi tarihte yürürlüğe girmiştir?", o:["5 Şubat 2000","1 Ocak 1996","4 Kasım 1999","31 Aralık 2009"], d:0, a:"Kanun 27 Ekim 1999'da kabul edilmiş, 5 Şubat 2000'de yürürlüğe girmiştir."},
-  {k:"temel", s:"Aşağıdakilerden hangisi 'gümrükçe onaylanmış işlem veya kullanım' kapsamında DEĞİLDİR?", o:["Bir gümrük rejimine tabi tutulması","Serbest bölgeye konulması","Eşyanın imhası","Eşyanın sigortalanması"], d:3, a:"Sigortalama bir onaylanmış işlem türü değildir. Kapsamda: rejime tabi tutma, serbest bölgeye koyma, yeniden ihraç, imha ve gümrüğe terk vardır."},
-  {k:"temel", s:"Serbest bölgeler, gümrük mevzuatının uygulanması bakımından nasıl değerlendirilir?", o:["Türkiye Gümrük Bölgesi içi","Türkiye Gümrük Bölgesi dışı gibi","Transit alanı","Antrepo sayılır"], d:1, a:"Serbest bölgeler coğrafi olarak ülke içinde olsa da gümrük uygulaması bakımından Türkiye Gümrük Bölgesi dışı gibi değerlendirilir."},
-  {k:"temel", s:"Türkiye Gümrük Bölgesi aşağıdakilerden hangisini KAPSAMAZ?", o:["Kara suları","İç sular","Hava sahası","Yabancı ülkelerdeki temsilcilikler"], d:3, a:"Gümrük Bölgesi; Türkiye Cumhuriyeti topraklarını, kara sularını, iç suları ve hava sahasını kapsar."},
-
-  {k:"rejim", s:"Aşağıdakilerden hangisi sekiz gümrük rejiminden biri DEĞİLDİR?", o:["Transit rejimi","Gümrük antrepo rejimi","Serbest bölge rejimi","Hariçte işleme rejimi"], d:2, a:"Serbest bölge bir 'gümrük rejimi' değildir; gümrükçe onaylanmış işlem türlerinden biridir. Sekiz rejim arasında yer almaz."},
-  {k:"rejim", s:"İthalat vergileri ve ticaret politikası önlemleri UYGULANMADAN eşyanın gümrük gözetiminde taşınmasını sağlayan rejim hangisidir?", o:["Serbest dolaşıma giriş","Transit rejimi","İhracat rejimi","Geçici ithalat"], d:1, a:"Transit rejiminde eşya, vergi ve önlemler uygulanmaksızın gümrük gözetimi altında bir noktadan diğerine taşınır."},
-  {k:"rejim", s:"İhraç edilecek ürünlerin üretiminde kullanılacak girdilerin vergiden muaf ithaline imkân veren rejim hangisidir?", o:["Hariçte işleme rejimi","Gümrük antrepo rejimi","Dahilde işleme rejimi","Geçici ithalat rejimi"], d:2, a:"Dahilde işleme rejimi (DİR), ihraç ürünün girdilerinin şartlı muafiyet veya geri ödeme sistemiyle ithaline imkân verir."},
-  {k:"rejim", s:"Serbest dolaşımdaki eşyanın işlenmek üzere yurt dışına gönderilip geri getirilmesini düzenleyen rejim hangisidir?", o:["Dahilde işleme rejimi","Hariçte işleme rejimi","Transit rejimi","Antrepo rejimi"], d:1, a:"Hariçte işleme rejiminde (HİR) vergi yalnızca yurt dışında eklenen kıymet üzerinden alınır."},
-  {k:"rejim", s:"Fuar ve sergi eşyasının belirli süre kullanılıp aynen geri gönderilmek üzere ithali hangi rejimle yapılır?", o:["Geçici ithalat rejimi","Serbest dolaşıma giriş","Gümrük antrepo rejimi","İhracat rejimi"], d:0, a:"Geçici ithalat rejimi, eşyanın tam/kısmi muafiyetle belirli süre kullanılıp aynen geri gönderilmesini sağlar."},
-  {k:"rejim", s:"Gümrük antrepoları temel olarak nasıl ikiye ayrılır?", o:["Açık ve kapalı","Genel ve özel","Küçük ve büyük","Geçici ve daimi"], d:1, a:"Antrepolar genel (herkesin kullanabildiği) ve özel (yalnızca işleticinin kullandığı) olarak ayrılır."},
-
-  {k:"tarife", s:"GTİP kodunun ilk kaç hanesi Armonize Sistem'e (uluslararası) aittir?", o:["4","6","8","12"], d:1, a:"İlk 6 hane WCO Armonize Sistem kodudur ve tüm üye ülkelerde ortaktır."},
-  {k:"tarife", s:"Türkiye'de kullanılan GTİP kaç hanelidir?", o:["8","10","12","14"], d:2, a:"Türkiye'de GTİP 12 hanelidir."},
-  {k:"tarife", s:"GTİP'in 7-8. haneleri neyi ifade eder?", o:["Armonize Sistem","AB Kombine Nomanklatürü (CN)","İstatistik kodu","Ulusal alt açılım"], d:1, a:"7-8. haneler AB Kombine Nomanklatürü (CN) kodudur."},
-  {k:"tarife", s:"Armonize Sistem'i geliştiren ve yürüten kuruluş hangisidir?", o:["Dünya Ticaret Örgütü (WTO)","Dünya Gümrük Örgütü (WCO)","Avrupa Birliği","Birleşmiş Milletler"], d:1, a:"Armonize Sistem, Dünya Gümrük Örgütü (WCO) tarafından geliştirilmiştir."},
-  {k:"tarife", s:"Eşyanın yanlış GTİP ile beyan edilmesinin en olası sonucu nedir?", o:["Hiçbir sonuç doğmaz","Vergi farkı ve cezai yaptırım","Eşyanın otomatik iadesi","Menşe değişikliği"], d:1, a:"Yanlış sınıflandırma, uygulanacak vergi oranını değiştireceğinden vergi farkı ve ceza doğurabilir."},
-
-  {k:"kiymet", s:"Gümrük kıymetinin belirlenmesinde asıl ve öncelikli yöntem hangisidir?", o:["Hesaplanmış kıymet yöntemi","Satış bedeli yöntemi","İndirgeme yöntemi","Son yöntem"], d:1, a:"Kural olarak eşyanın satış bedeli (transaction value) esas alınır; diğer yöntemler bu uygulanamazsa sırayla devreye girer."},
-  {k:"kiymet", s:"Gümrük kıymeti yöntemlerinden hangi ikisinin sırası, ithalatçının talebiyle değiştirilebilir?", o:["1. ve 2. yöntem","2. ve 3. yöntem","4. ve 5. yöntem","5. ve 6. yöntem"], d:2, a:"İthalatçının talebi hâlinde indirgeme (4) ve hesaplanmış kıymet (5) yöntemlerinin sırası değiştirilebilir."},
-  {k:"kiymet", s:"Aşağıdakilerden hangisi gümrük kıymetine EKLENİR?", o:["Türkiye'ye getirilene kadarki navlun ve sigorta","İthalattan sonraki montaj gideri","Türkiye'de ödenen KDV","İthalat sonrası bakım gideri"], d:0, a:"Eşya Türkiye'ye getirilene kadarki taşıma (navlun) ve sigorta giderleri kıymete eklenir; giriş sonrası giderler ve Türkiye'deki vergiler hariç tutulur."},
-  {k:"kiymet", s:"Gümrük kıymeti kavramı temel olarak neyi ifade eder?", o:["Eşyanın satış fiyatındaki kâr","Verginin hesaplandığı matrah","Eşyanın perakende fiyatı","Nakliye ücreti"], d:1, a:"Gümrük kıymeti, ithalat vergilerinin üzerinden hesaplandığı matrahtır."},
-  {k:"kiymet", s:"Satın alma komisyonu gümrük kıymetine nasıl dahil edilir?", o:["Her zaman eklenir","Kıymete dahil edilmez","Yalnızca ithalatta eklenir","İhracatçı öderse eklenir"], d:1, a:"Satın alma komisyonu gümrük kıymetine dahil edilmez; ancak satış/aracılık komisyonları eklenir."},
-
-  {k:"mense", s:"Ticaret politikası önlemleri ve anti-damping uygulamalarında hangi menşe türü esas alınır?", o:["Tercihli menşe","Tercihsiz menşe","Çifte menşe","Geçici menşe"], d:1, a:"Ticaret politikası önlemleri, kota ve anti-damping uygulamalarında tercihsiz menşe esas alınır."},
-  {k:"mense", s:"Üretimi birden fazla ülkede gerçekleşen eşyanın menşei nasıl belirlenir?", o:["İlk üretim ülkesi","En son esaslı işçilik/işlemin yapıldığı ülke","En pahalı girdinin ülkesi","İhracatçının ülkesi"], d:1, a:"Birden fazla ülkede üretilen eşyanın menşei, ekonomik açıdan gerekli son esaslı işçilik veya işlemin yapıldığı ülkedir."},
-  {k:"mense", s:"Aşağıdaki işlemlerden hangisi tek başına menşe KAZANDIRMAZ?", o:["Ekonomik açıdan esaslı işçilik","Yeni bir ürün ortaya çıkaran işleme","Basit ambalajlama ve etiketleme","İmalatın önemli aşaması"], d:2, a:"Basit ambalajlama, etiketleme, ayıklama gibi işlemler tek başına menşe kazandırmaz."},
-  {k:"mense", s:"A.TR dolaşım belgesi neyi gösterir?", o:["Eşyanın menşeini","Eşyanın serbest dolaşım statüsünü","Anti-damping muafiyetini","Gümrük kıymetini"], d:1, a:"A.TR belgesi menşei değil, AB ile Türkiye arasındaki serbest dolaşım statüsünü gösterir. Menşe ispatı EUR.1 ile yapılır."},
-  {k:"mense", s:"Serbest ticaret anlaşmaları kapsamında indirimli/sıfır vergi için hangi menşe gerekir?", o:["Tercihsiz menşe","Tercihli menşe","Ortak menşe","İkincil menşe"], d:1, a:"İndirimli veya sıfır vergi uygulaması için tercihli menşe kurallarının sağlanması ve ilgili belgenin (ör. EUR.1) sunulması gerekir."},
-
-  {k:"vergi", s:"Vadeli (kredili) ithalatta gündeme gelen fon aşağıdakilerden hangisidir?", o:["Toplu Konut Fonu","Kaynak Kullanımını Destekleme Fonu (KKDF)","Tanıtım Fonu","Destekleme Fonu"], d:1, a:"KKDF, kural olarak vadeli/kredili ithalat işlemlerinde gündeme gelir."},
-  {k:"vergi", s:"Gümrük vergilerinde temel zaman aşımı süresi ne kadardır?", o:["1 yıl","2 yıl","3 yıl","5 yıl"], d:2, a:"Gümrük vergileri, yükümlülüğün doğduğu tarihten itibaren 3 yıl içinde tebliğ edilmezse zaman aşımına uğrar."},
-  {k:"vergi", s:"Aşağıdakilerden hangisi ithalatta alınabilen bir vergi/mali yük DEĞİLDİR?", o:["Katma Değer Vergisi","Özel Tüketim Vergisi","Dampinge karşı vergi","Motorlu Taşıtlar Vergisi"], d:3, a:"Motorlu Taşıtlar Vergisi ithalatta alınan bir gümrük yükü değildir. KDV, ÖTV, anti-damping ise alınabilir."},
-  {k:"vergi", s:"Gümrük yükümlülüğü (borcu) kural olarak ne zaman doğar?", o:["Eşya sipariş edilince","Vergiye tabi eşyanın rejime tabi tutulmasıyla","Fatura düzenlenince","Eşya satılınca"], d:1, a:"Gümrük yükümlülüğü, vergiye tabi eşyanın serbest dolaşıma girişi gibi bir rejime tabi tutulmasıyla doğar."},
-  {k:"vergi", s:"Dampinge karşı vergi (anti-damping) hangi amaçla uygulanır?", o:["İhracatı artırmak","Normal değerinin altında satılan ithalata karşı yerli üretimi korumak","Vergi geliri sağlamak","Menşei belirlemek"], d:1, a:"Anti-damping vergisi, normal değerinin altında (dampingli) fiyatla yapılan ithalatın yerli üretime verdiği zararı telafi etmek için uygulanır."},
-
-  {k:"islem", s:"Denizyolu ile gelen eşya için geçici depolama süresi ne kadardır?", o:["20 gün","30 gün","45 gün","90 gün"], d:2, a:"Denizyolu ile gelen eşyada 45 gün, diğer yollarla gelende 20 gün süre tanınır."},
-  {k:"islem", s:"Karayolu ile gelen eşya için geçici depolama süresi ne kadardır?", o:["10 gün","20 gün","45 gün","60 gün"], d:1, a:"Kara ve havayolu ile gelen eşyada süre 20 gündür (denizyolunda 45 gün)."},
-  {k:"islem", s:"Kırmızı hatta yönlendirilen eşyaya ne uygulanır?", o:["Hiçbir kontrol","Sadece belge kontrolü","Belge kontrolü ve fiziki muayene","Sonradan kontrol"], d:2, a:"Kırmızı hatta hem belge kontrolü hem de fiziki muayene yapılır."},
-  {k:"islem", s:"Yalnızca belge kontrolünün yapıldığı hat hangisidir?", o:["Kırmızı hat","Sarı hat","Yeşil hat","Mavi hat"], d:1, a:"Sarı hatta yalnızca belge kontrolü yapılır; fiziki muayene yapılmaz."},
-  {k:"islem", s:"Gümrük idaresinin kararlarına itiraz süresi (tebliğden itibaren) ne kadardır?", o:["7 gün","15 gün","30 gün","60 gün"], d:1, a:"Gümrük kararlarına, tebliğ tarihinden itibaren 15 gün içinde bir üst makama itiraz edilir."},
-  {k:"islem", s:"Yazılı beyanda kullanılan temel belge hangisidir?", o:["Özet beyan","Gümrük beyannamesi (tek idari belge)","Menşe şahadetnamesi","A.TR belgesi"], d:1, a:"Yazılı beyanda gümrük beyannamesi (tek idari belge) kullanılır; tescil ile hukuki sonuç doğurur."},
-
-  {k:"meslek", s:"Gümrük müşavirleri hangi temsil türüne sahiptir?", o:["Yalnızca doğrudan temsil","Dolaylı temsil","Vekâleten temsil","Temsil yetkisi yoktur"], d:1, a:"Gümrük müşavirleri, kendi adına ancak başkasının hesabına hareket ettikleri dolaylı temsil yetkisine sahiptir."},
-  {k:"meslek", s:"Doğrudan temsilde temsilci kimin adına ve hesabına hareket eder?", o:["Kendi adına ve hesabına","Başkasının adına ve hesabına","Kendi adına, başkasının hesabına","Devlet adına"], d:1, a:"Doğrudan temsilde temsilci, başkasının adına ve hesabına hareket eder."},
-  {k:"meslek", s:"Dolaylı temsilde temsilci nasıl hareket eder?", o:["Başkasının adına ve hesabına","Kendi adına ancak başkasının hesabına","Kendi adına ve hesabına","Hiç kimsenin adına"], d:1, a:"Dolaylı temsilde temsilci kendi adına, ancak başkasının hesabına hareket eder."},
-  {k:"meslek", s:"Gümrük müşavirinin mesleğinde esas aldığı temel ilkeler hangileridir?", o:["Hız, ucuzluk, reklam","Doğruluk, gizlilik, tarafsızlık","Rekabet, pazarlama, kâr","Esneklik, aracılık, komisyon"], d:1, a:"Meslek; doğruluk, gizlilik ve tarafsızlık ilkeleri üzerine kuruludur."}
+  {k:"atr", s:"2006/10895 sayılı Karar aşağıdakilerden hangisini düzenler?", o:["Türkiye ile AT arasında oluşturulan Gümrük Birliği'nin uygulanma esasları","Serbest bölgelerin kuruluşu","Dahilde işleme rejimi","Gümrük müşavirliği sınav yönetmeliği"], d:0, a:"2006/10895 sayılı Karar, Türkiye ile Avrupa Topluluğu arasında oluşturulan Gümrük Birliği'nin uygulanmasına ilişkin esasları düzenler."},
+  {k:"atr", s:"Aşağıdakilerden hangisi Avrupa Topluluğu'nun KURUCU üyelerinden biri DEĞİLDİR?", o:["Fransa","İtalya","Yunanistan","Hollanda"], d:2, a:"Kurucu ülkeler: Hollanda, Almanya, Lüksemburg, İtalya, Fransa, Belçika (H.A.L.İ.F.B.). Yunanistan kurucu üye değildir."},
+  {k:"atr", s:"'H.A.L.İ.F.B.' ezber kodu neyi ifade eder?", o:["Gümrük rejimlerini","AB'nin kurucu ülkelerini","A.TR belgesindeki kutuları","Gümrük kıymeti yöntemlerini"], d:1, a:"H.A.L.İ.F.B. = Hollanda, Almanya, Lüksemburg, İtalya, Fransa, Belçika — AB'nin kurucu ülkeleri."},
+  {k:"atr", s:"Avrupa Birliği'ne en son katılan ülke ve yılı hangisidir?", o:["Bulgaristan - 2007","Hırvatistan - 2013","Romanya - 2007","Malta - 2004"], d:1, a:"AB'ye en son 2013 yılında Hırvatistan katılmıştır."},
+  {k:"atr", s:"Birleşik Krallık AB'den hangi tarihte ayrılmıştır?", o:["31 Ocak 2020","1 Ocak 2013","07 Mayıs 2021","5 Şubat 2000"], d:0, a:"Birleşik Krallık 31 Ocak 2020 tarihinde AB'den ayrılmıştır."},
+  {k:"atr", s:"A.TR Dolaşım Belgesi aşağıdaki eşyalardan hangileri için düzenlenir?", o:["Yalnızca AKÇT ürünleri","Sanayi ürünleri ve işlenmiş tarım ürünleri","Yalnızca ham tarım ürünleri","Her türlü eşya"], d:1, a:"A.TR, doğrudan nakledilen sanayi ürünleri ve işlenmiş tarım ürünleri için düzenlenir; AKÇT ürünleri hariçtir."},
+  {k:"atr", s:"AKÇT (kömür-çelik) ürünlerinin dolaşımında hangi belge kullanılır?", o:["A.TR","EUR.1","Menşe şahadetnamesi","Özet beyan"], d:1, a:"AKÇT ürünleri A.TR kapsamı dışındadır; bunlar için EUR.1 dolaşım belgesi kullanılır."},
+  {k:"atr", s:"Aşağıdakilerden hangisi A.TR'nin SONRADAN verilebileceği hallerden biri DEĞİLDİR?", o:["Hata veya unutulma nedeniyle düzenlenmemiş olması","Teknik nedenlerle kabul edilmemiş olması","Belgenin çalınması veya hasar görmesi","Varış ülkesinin üçüncü ülkeden Topluluk üyesine değişmesi"], d:2, a:"Çalınma, kaybedilme veya hasar hâlinde İKİNCİ NÜSHA düzenlenir; bu bir 'sonradan verme' hali değildir."},
+  {k:"atr", s:"A.TR belgesinin İKİNCİ NÜSHASI hangi hallerde düzenlenir?", o:["Vergi oranı değişince","Çalınma, kaybedilme veya hasar görme","İhracat iptal edilince","Menşe değişince"], d:1, a:"A.TR'nin çalınması, kaybedilmesi veya hasar görmesi hâlinde ikinci nüsha düzenlenmesi için başvurulabilir."},
+  {k:"atr", s:"A.TR Dolaşım Belgesinin ithalatçı ülke gümrüğüne ibraz süresi ne kadardır?", o:["2 ay","4 ay","6 ay","1 yıl"], d:1, a:"A.TR belgesi, vize edildiği tarihten itibaren 4 ay içinde ithalatçı ülke gümrüğüne ibraz edilmelidir."},
+  {k:"atr", s:"Basitleştirilmiş işlem usullerine göre düzenlenen A.TR, hangi tarihten itibaren 4 ay içinde ibraz edilmelidir?", o:["Vize tarihinden","Fiili ihraç tarihinden","İlk belgenin tarihinden","Fatura tarihinden"], d:1, a:"Basitleştirilmiş işlem usulüne göre düzenlenen A.TR, fiili ihraç tarihinden itibaren 4 ay içinde ibraz edilir."},
+  {k:"atr", s:"'İkinci nüshadır' kaydı taşıyan A.TR'nin 4 aylık ibraz süresi hangi tarihten başlar?", o:["İkinci nüshanın vize tarihinden","İlk A.TR belgesinin vize tarihinden","Fiili ihraç tarihinden","İthalat tarihinden"], d:1, a:"'İkinci nüshadır' A.TR, ilk A.TR belgesinin vize tarihinden itibaren 4 ay içinde ibraz edilmelidir."},
+  {k:"atr", s:"A.TR belgesinde mühürleme ve imzanın yapıldığı, boş bırakılması teknik red sebebi olan kutu hangisidir?", o:["5 numaralı kutu","8 numaralı kutu","12 numaralı kutu","1 numaralı kutu"], d:2, a:"A.TR'nin mühürlenip imzalandığı kutu 12 numaralı kutudur; imzasız/mühürsüz olması teknik red sebebidir."},
+  {k:"atr", s:"Aşağıdakilerden hangisi A.TR'nin TEKNİK nedenle reddi örneğidir?", o:["Belgenin fotokopi/suret olması","Eşyanın hasar görmesi","İhracatın gecikmesi","Faturanın eksik olması"], d:0, a:"Fotokopi/suret olması, zorunlu kutunun boş olması, yetkisiz makam onayı gibi durumlar teknik red sebebidir (ve sonradan düzenlenebilir)."},
+  {k:"atr", s:"A.TR'nin 5 numaralı kutusuna aşağıdakilerden hangisinin yazılması teknik red sebebidir?", o:["Bir Topluluk üyesi ülke","Türkiye","Türkiye ve Topluluk üyesi olmayan bir ülke","Varış gümrüğü"], d:2, a:"5 numaralı kutuya Türkiye veya Topluluk ülkesi olmayan bir ülkenin yazılması teknik red sebebidir."}
 ];
 
 const KARTLAR = [
-  {k:"temel", on:"4458 sayılı Kanun nedir?", arka:"Türkiye'nin Gümrük Kanunu. 5 Şubat 2000'de yürürlüğe girdi; AB gümrük mevzuatı ile uyumludur."},
-  {k:"temel", on:"Türkiye Gümrük Bölgesi neleri kapsar?", arka:"Türkiye Cumhuriyeti toprakları + kara suları + iç sular + hava sahası."},
-  {k:"temel", on:"Serbest dolaşımda eşya nedir?", arka:"Türkiye'de üretilmiş ya da ithal işlemleri (vergi + önlemler) tamamlanmış eşya."},
-  {k:"temel", on:"Gümrükçe onaylanmış işlem/kullanım kaç tanedir?", arka:"Beş: rejime tabi tutma, serbest bölgeye koyma, yeniden ihraç, imha, gümrüğe terk."},
-  {k:"temel", on:"Serbest bölge gümrük açısından nasıl değerlendirilir?", arka:"Türkiye Gümrük Bölgesi dışı gibi değerlendirilir (coğrafi olarak içeride olsa da)."},
-
-  {k:"rejim", on:"Sekiz gümrük rejimi nelerdir?", arka:"Serbest dolaşıma giriş, transit, antrepo, dahilde işleme, kontrol altında işleme, geçici ithalat, hariçte işleme, ihracat."},
-  {k:"rejim", on:"Transit rejimi nedir?", arka:"Vergi ve ticaret politikası önlemleri uygulanmadan, eşyanın gümrük gözetiminde taşınması."},
-  {k:"rejim", on:"DİR (Dahilde İşleme Rejimi) nedir?", arka:"İhraç ürünün girdilerinin şartlı muafiyet/geri ödeme ile ithali. 'İçeri işle, dışarı sat.'"},
-  {k:"rejim", on:"HİR (Hariçte İşleme Rejimi) nedir?", arka:"Serbest dolaşımdaki eşyanın işlenmek üzere yurt dışına gönderilip geri getirilmesi. Vergi sadece eklenen kıymete."},
-  {k:"rejim", on:"Antrepo türleri nelerdir?", arka:"Genel antrepo (herkes kullanır) ve özel antrepo (yalnız işletici kullanır)."},
-  {k:"rejim", on:"Geçici ithalat rejimi ne işe yarar?", arka:"Fuar/sergi/ekipman gibi eşyanın tam veya kısmi muafiyetle geçici ithali, sonra aynen geri gönderilir."},
-
-  {k:"tarife", on:"GTİP kaç hanelidir (Türkiye)?", arka:"12 hane."},
-  {k:"tarife", on:"GTİP'in ilk 6 hanesi neyi ifade eder?", arka:"Armonize Sistem (HS) kodu — WCO tarafından belirlenir, uluslararası ortaktır."},
-  {k:"tarife", on:"GTİP 7-8. haneler?", arka:"AB Kombine Nomanklatürü (CN) kodu."},
-  {k:"tarife", on:"Armonize Sistemi kim yönetir?", arka:"Dünya Gümrük Örgütü (WCO)."},
-  {k:"tarife", on:"Türk Gümrük Tarife Cetveli ne sıklıkla güncellenir?", arka:"Her yıl güncellenir."},
-
-  {k:"kiymet", on:"Gümrük kıymeti nedir?", arka:"İthalat vergilerinin üzerinden hesaplandığı matrah. Kural olarak eşyanın satış bedeli."},
-  {k:"kiymet", on:"Kaç kıymet belirleme yöntemi vardır?", arka:"Altı yöntem, sırayla uygulanır. İlki satış bedeli yöntemidir."},
-  {k:"kiymet", on:"Hangi iki yöntemin sırası değiştirilebilir?", arka:"4. (indirgeme) ve 5. (hesaplanmış kıymet) — ithalatçının talebiyle."},
-  {k:"kiymet", on:"Kıymete eklenen giderler?", arka:"Türkiye'ye getirilene kadarki navlun + sigorta, komisyon (satın alma hariç), royalti, ambalaj."},
-  {k:"kiymet", on:"Kıymete dahil edilmeyenler?", arka:"Giriş sonrası taşıma/montaj/bakım ve Türkiye'de ödenen vergiler (ayrı gösterilmişse)."},
-
-  {k:"mense", on:"Tercihsiz menşe ne için kullanılır?", arka:"Ticaret politikası önlemleri, kota, anti-damping uygulamaları."},
-  {k:"mense", on:"Tercihli menşe ne sağlar?", arka:"Serbest ticaret anlaşmaları kapsamında indirimli/sıfır gümrük vergisi."},
-  {k:"mense", on:"Birden çok ülkede üretilen eşyanın menşei?", arka:"Son esaslı işçilik/işlemin yapıldığı ülke."},
-  {k:"mense", on:"Basit işlemler menşe kazandırır mı?", arka:"Hayır. Ambalajlama, etiketleme, ayıklama tek başına menşe kazandırmaz."},
-  {k:"mense", on:"A.TR vs EUR.1 farkı?", arka:"A.TR = serbest dolaşım statüsü; EUR.1 = menşe ispatı."},
-
-  {k:"vergi", on:"İthalatta alınabilen vergiler?", arka:"Gümrük vergisi, KDV, ÖTV, anti-damping, KKDF, Toplu Konut Fonu, damga vergisi."},
-  {k:"vergi", on:"KKDF ne zaman gündeme gelir?", arka:"Kural olarak vadeli/kredili ithalatta."},
-  {k:"vergi", on:"Gümrük vergisinde zaman aşımı?", arka:"3 yıl (yükümlülüğün doğduğu tarihten itibaren)."},
-  {k:"vergi", on:"Gümrük yükümlülüğü ne zaman doğar?", arka:"Vergiye tabi eşyanın serbest dolaşıma giriş gibi bir rejime tabi tutulmasıyla."},
-  {k:"vergi", on:"Anti-damping vergisi amacı?", arka:"Normal değerin altında (dampingli) ithalatın yerli üretime zararını telafi etmek."},
-
-  {k:"islem", on:"Geçici depolama süresi (denizyolu)?", arka:"45 gün."},
-  {k:"islem", on:"Geçici depolama süresi (kara/hava)?", arka:"20 gün."},
-  {k:"islem", on:"Özet beyan nedir?", arka:"Eşyanın gümrüğe geldiğini bildiren ön bildirim."},
-  {k:"islem", on:"Kontrol hatları nelerdir?", arka:"Kırmızı (belge+fiziki), Sarı (belge), Mavi (sonradan kontrol), Yeşil (kontrolsüz)."},
-  {k:"islem", on:"Gümrük kararına itiraz süresi?", arka:"Tebliğden itibaren 15 gün (bir üst makama)."},
-  {k:"islem", on:"Beyanname ne zaman hukuki sonuç doğurur?", arka:"Gümrük idaresince tescil edildiği anda."},
-
-  {k:"meslek", on:"Doğrudan temsil nedir?", arka:"Temsilci, başkasının adına ve hesabına hareket eder."},
-  {k:"meslek", on:"Dolaylı temsil nedir?", arka:"Temsilci kendi adına, başkasının hesabına hareket eder. Gümrük müşavirleri bu yetkiye sahiptir."},
-  {k:"meslek", on:"Gümrük müşavirinin temel ilkeleri?", arka:"Doğruluk, gizlilik, tarafsızlık."}
+  {k:"atr", on:"2006/10895 sayılı Karar nedir?", arka:"Türkiye ile AT arasında oluşturulan Gümrük Birliği'nin uygulanmasına ilişkin esasları düzenleyen karar."},
+  {k:"atr", on:"AB'nin kurucu 6 ülkesi? (kod: H.A.L.İ.F.B.)", arka:"Hollanda, Almanya, Lüksemburg, İtalya, Fransa, Belçika."},
+  {k:"atr", on:"AB'ye en son katılan ülke?", arka:"Hırvatistan (2013)."},
+  {k:"atr", on:"AB toplam üye sayısı?", arka:"28 ülke. (Birleşik Krallık 31 Ocak 2020'de ayrıldı.)"},
+  {k:"atr", on:"2007'de AB'ye katılan ülkeler?", arka:"Bulgaristan ve Romanya."},
+  {k:"atr", on:"Birleşik Krallık hangi ülkelerden oluşur?", arka:"İngiltere, İskoçya, Galler ve Kuzey İrlanda. (Kuzey İrlanda 07.05.2021'de dahil edildi.)"},
+  {k:"atr", on:"A.TR hangi ürünler için düzenlenir?", arka:"Doğrudan nakledilen sanayi ürünleri ve işlenmiş tarım ürünleri. (AKÇT ürünleri hariç.)"},
+  {k:"atr", on:"AKÇT ürünleri için hangi belge kullanılır?", arka:"EUR.1 dolaşım belgesi."},
+  {k:"atr", on:"A.TR hangi hallerde SONRADAN verilir?", arka:"Hata/unutulma/ihmal; teknik nedenle kabul edilmeme; varış ülkesinin 3. ülkeden Topluluk üyesine değişmesi; varış ülkesi değişikliği talebi."},
+  {k:"atr", on:"A.TR İKİNCİ NÜSHASI hangi hallerde düzenlenir?", arka:"Çalınma, kaybedilme veya hasar görme."},
+  {k:"atr", on:"A.TR ibraz süresi ne kadardır?", arka:"Her durumda 4 ay; değişen sadece hangi tarihten sayıldığıdır."},
+  {k:"atr", on:"Normal ve 'sonradan verilmiştir' A.TR süresi ne zamandan başlar?", arka:"Vize tarihinden itibaren 4 ay."},
+  {k:"atr", on:"Basitleştirilmiş usul A.TR süresi ne zamandan başlar?", arka:"Fiili ihraç tarihinden itibaren 4 ay."},
+  {k:"atr", on:"'İkinci nüshadır' A.TR süresi ne zamandan başlar?", arka:"İlk A.TR belgesinin vize tarihinden itibaren 4 ay."},
+  {k:"atr", on:"A.TR'de 5 ve 12 numaralı kutular?", arka:"5: doldurulması zorunlu kutu; 12: mühür-imza kutusu. Boş olmaları teknik red sebebidir."},
+  {k:"atr", on:"A.TR teknik red örnekleri?", arka:"Yanlış form, zorunlu kutunun boşluğu, mühür/imza eksikliği, yetkisiz makam onayı, örneği gönderilmeyen yeni mühür, fotokopi/suret, 5. kutuya yabancı ülke yazımı."}
 ];
 
 /* ==================== DURUM / DEPOLAMA ==================== */
@@ -819,7 +590,6 @@ function next(){
   else finishQuiz();
 }
 function finishQuiz(){
-  const total = quiz.i + (quiz.answered?1:0);
   const answeredCount = quiz.list.slice(0, quiz.i + (quiz.answered?1:0)).length;
   state.quizTaken = (state.quizTaken||0)+1;
   save();
