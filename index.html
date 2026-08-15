@@ -108,6 +108,13 @@
   .reader .box{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:14px 0}
   .reader .box.tip{border-left:4px solid var(--accent)}
   .reader .box b{color:var(--brand)}
+  .reader .twrap{overflow-x:auto;margin:14px 0;-webkit-overflow-scrolling:touch}
+  .reader table{width:100%;border-collapse:collapse;font-size:.89rem;min-width:420px}
+  .reader th,.reader td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  .reader th{background:var(--soft);font-weight:700;color:var(--brand)}
+  .reader tr:nth-child(even) td{background:color-mix(in srgb,var(--soft) 45%,transparent)}
+  .reader .madde{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.3px;
+    padding:2px 9px;border-radius:99px;background:var(--brand);color:#fff;margin-bottom:8px}
   kbd{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:1px 7px;font-size:.85em;font-weight:700}
 
   /* Quiz */
@@ -641,79 +648,243 @@ const KONULAR = [
     id:"meslek", ikon:"🎓", baslik:"Temsil ve Gümrük Müşavirliği Mesleği",
     ozet:"G.K. 4-5 ve 225-228: doğrudan/dolaylı temsil, müşavir/yardımcı şartları, sınav ve disiplin.",
     bolumler:[
-      {baslik:"Kişilerin sorumlulukları (G.K. 4)", metin:`
-        <p>Gümrük idareleriyle muhatap olan kişiler; mevzuata uymak, gümrüğün <b>gözetim ve kontrollerine</b> tabi olmak, tahsil edilecek her tür <b>vergi, resim, harç ve ücretleri ödemek veya teminata bağlamak</b> ve zorunlu işlemleri yerine getirmekle sorumludur.</p>
-      `},
-      {baslik:"Temsil hakkı (G.K. 5)", metin:`
-        <p><b>Bütün kişiler</b> gümrükteki işleri için bir <b>temsilci</b> tayin edebilir. Kural olarak temsilci Türkiye Gümrük Bölgesinde <b>yerleşik</b> olmalıdır.</p>
-        <div class="box tip"><b>Yerleşik olma koşulu uygulanmayanlar:</b> (1) <b>Transit</b> taşımacılık, (2) <b>Geçici ithalat</b>, (3) <b>arızi</b> beyanda bulunanlar, (4) <b>ticari nitelikte olmayan dahilde işleme</b> amaçlı ithalat.</div>
+      {baslik:"Kişilerin sorumlulukları", metin:`
+        <span class="madde">G.K. 4</span>
+        <p>Gümrük idareleriyle muhatap olan <b>kişiler</b>, aşağıdaki hususlardan <b>sorumludurlar</b>:</p>
         <ul>
-          <li><b>Doğrudan temsil:</b> Temsilci <b>başkasının adına ve hesabına</b> hareket eder.</li>
-          <li><b>Dolaylı temsil:</b> Temsilci <b>kendi adına, ancak başkasının hesabına</b> hareket eder.</li>
-        </ul>
-        <p>Temsilci; namına hareket ettiğini beyan etmek ve <b>yetki belgesini</b> ibraz etmek zorundadır. Beyan etmeyen ya da yetkisiz hareket eden kişi, <b>kendi adına ve kendi hesabına</b> hareket ediyor sayılır.</p>
-      `},
-      {baslik:"İş takibi ve müşavirler (G.K. 225)", metin:`
-        <p>Eşyanın GOBİK'e tabi tutulmasına ilişkin faaliyetler; sahipleri/adına hareket edenlerce <b>doğrudan temsil</b> yoluyla veya <b>gümrük müşavirlerince dolaylı temsil</b> yoluyla takip edilir.</p>
-        <ul>
-          <li><b>Gerçek kişinin doğrudan temsili:</b> geçerli vekâletnameye istinaden, <b>ticari miktar ve mahiyet arz etmeyen</b> eşya ve özel kullanıma mahsus taşıtlar için mümkündür.</li>
-          <li><b>Devlet, belediye, il özel idarelerinin amir ve memurları:</b> tüm gümrük işlemlerini <b>doğrudan temsil</b> yoluyla takip edebilir.</li>
-          <li><b>Kara/deniz/hava yolu işletmeleri ile nakliyeci kuruluş temsilcileri:</b> <b>sadece taşıdıkları eşyanın transit</b> işlemlerini doğrudan temsil yoluyla takip edebilir.</li>
+          <li><b>Cumhurbaşkanlığı kararnameleri</b> ile bunlara ve bu Kanuna dayanılarak çıkarılan <b>mevzuat hükümlerine uymak</b>;</li>
+          <li>Gümrüğün, gerek bu Kanunda gerek diğer mevzuat hükümlerine göre yapacağı <b>gözetim ve kontrollere tabi olmak</b>;</li>
+          <li>Bu idarelerin <b>kendi adına veya başka idareler nam veya hesabına</b> tahsil edeceği her tür <b>vergi, resim, harç ve ücretleri ödemek</b> veya bunları <b>teminata bağlamak</b>;</li>
+          <li>Mevzuat hükümlerinin uymayı zorunlu kıldığı <b>her tür işlemleri yerine getirmek</b>.</li>
         </ul>
       `},
-      {baslik:"Posta ve hızlı kargo (15481 sayılı CB Kararı)", metin:`
-        <p>Posta idaresi ya da hızlı kargo şirketleri, Cumhurbaşkanınca belirlenen eşya için <b>dolaylı temsilci</b> olarak yetkili kılınabilir:</p>
+      {baslik:"Temsil hakkı", metin:`
+        <span class="madde">G.K. 5</span>
+        <p><b>Bütün kişiler</b>, gümrükteki işleri için <b>bir temsilci</b> tayin edebilirler.</p>
+        <p><b>Transit taşımacılık</b> yapan veya <b>arızi</b> olarak beyanda bulunan kişiler <b>hariç</b> olmak üzere, temsilci <b>Türkiye Gümrük Bölgesinde yerleşik</b> bulunan kişilerdir.</p>
+        <div class="box tip"><b>NOT — Yerleşik olma koşulu aşağıdaki kişilere UYGULANMAZ:</b>
+          <ol>
+            <li><b>Transit</b></li>
+            <li><b>Geçici İthalat</b></li>
+            <li><b>Arızi olarak</b> beyanda bulunanlar</li>
+            <li><b>Ticari nitelikte olmayan dahilde işleme</b> amaçlı ithalat</li>
+          </ol>
+        </div>
+        <p><b>Temsil, doğrudan veya dolaylı olabilir.</b> Temsilci;</p>
         <ul>
-          <li><b>Serbest dolaşıma giriş:</b> Brüt <b>30 kg</b>'ı ve kıymet <b>1.500 Avro</b>'yu aşmayan eşya.</li>
-          <li><b>İhracat:</b> Brüt 30 kg / 1.500 Avro (Bakanlık <b>20 katına</b> artırabilir; GGT Seri No 1 ile ihracatta <b>600 kg / 30.000 Avro</b> uygulanır).</li>
+          <li><b>Doğrudan temsil</b> durumunda <b>BAŞKASININ ADINA VE HESABINA</b> hareket eder.</li>
+          <li><b>Dolaylı temsil</b> durumunda ise <b>KENDİ ADINA, ANCAK BAŞKASININ HESABINA</b> hareket eder.</li>
         </ul>
-        <div class="box"><b>Posta/hızlı kargoda:</b> <b>vekâletname aranmaz</b>, ihracatta <b>ihracatçı birliği onayı aranmaz</b>, <b>YKTS kayıt koşulu aranmaz</b>; ancak <b>2 gümrük müşaviri</b> istihdamı zorunludur.</div>
+        <p>Temsilci; <b>temsil edilen kişi namına hareket ettiğini beyan etmek</b>, <b>temsilin doğrudan veya dolaylı olduğunu belirtmek</b> ve sahip olduğu <b>temsil yetki belgesini</b> gümrük idarelerine <b>ibraz etmek zorundadır</b>.</p>
+        <div class="box"><b>Kendi adına ve kendi hesabına hareket ediyor sayılan kişi:</b>
+          <ul>
+            <li>Bir başka kişi adına veya hesabına hareket ettiğini <b>beyan etmeyen</b> ya da</li>
+            <li>Bir <b>temsil yetkisine sahip olmadığı hâlde</b>, başka bir kişi adına ya da hesabına hareket ettiğini beyan eden kişi.</li>
+          </ul>
+        </div>
+        <p>Kanunun <b>225/1</b> fıkrasında belirtilen kişiler, gümrük idarelerinde <b>dolaylı temsilci</b> olarak iş takip edebilirler.</p>
       `},
-      {baslik:"Müşavir, yardımcı ve stajyer (G.K. 226)", metin:`
+      {baslik:"Gümrüklerde iş takibi ve gümrük müşavirleri", metin:`
+        <span class="madde">G.K. 225</span>
+        <p><b>1.</b> Eşyanın <b>gümrükçe onaylanmış bir işlem veya kullanıma (GOBİK)</b> tabi tutulmasına ilişkin faaliyetler;</p>
         <ul>
-          <li>İş takibini <b>noter tasdikli vekâletnameyi</b> haiz müşavirler yapar. Kamu kuruluşu vekâletnamelerinde <b>noter onayı aranmaz</b>; posta/hızlı kargoda vekâletname aranmaz.</li>
-          <li><b>Gümrük müşavirleri:</b> her türlü gümrük işlemini takip edip sonuçlandırır.</li>
-          <li><b>Müşavir yardımcıları:</b> bir müşavirin yanında çalışır, onun adına iş takip eder.</li>
-          <li><b>Stajyerler:</b> gümrükte <b>iş takibi yapamaz</b>.</li>
+          <li><b>Sahipleri</b> ile bunların <b>adına hareket edenler</b> tarafından <b>DOĞRUDAN TEMSİL</b> yoluyla veya</li>
+          <li><b>Gümrük müşavirleri</b> tarafından <b>DOLAYLI TEMSİL</b> yoluyla takip edilir ve sonuçlandırılır.</li>
         </ul>
-        <div class="box tip"><b>Sorumluluk:</b> Müşavir yardımcısı ve stajyerlerin fiillerinden doğacak <b>mali sorumluluk, yanında çalıştıkları müşavire</b> aittir.</div>
+        <div class="box tip"><b>Gerçek kişinin doğrudan temsil yoluyla iş takibi</b>, geçerli <b>vekâletnameye istinaden</b>, yalnızca şu iki hâlde mümkündür:
+          <ul>
+            <li><b>Ticari miktar ve mahiyet arz etmeyen</b> eşyanın,</li>
+            <li><b>Özel kullanıma mahsus taşıt araçlarının</b> gümrük işlemleri.</li>
+          </ul>
+        </div>
+        <p><b>Posta yolu ve hızlı kargo taşımacılığı</b> kapsamında gelen ya da gönderilen, miktarı ve değeri <b>Cumhurbaşkanınca</b> belirlenecek eşyanın GOBİK'e tabi tutulması faaliyetlerinin takip edilip sonuçlandırılmasında, <b>posta idaresi</b> ya da <b>hızlı kargo taşımacılığı yapan şirketler</b> <b>DOLAYLI TEMSİLCİ</b> olarak yetkili kılınabilir.</p>
+        <p><b>2. Devlet, belediye ve il özel idarelerinin amir ve memurları</b>, tüm gümrük işlemlerini <b>DOĞRUDAN TEMSİL</b> yoluyla takip edebilirler.</p>
+        <p><b>Kara, deniz ve hava yolu işletmeleri</b> ile <b>nakliyeci kuruluş temsilcileri</b>, <b>SADECE taşıdıkları eşyanın TRANSİT işlemlerini</b> doğrudan temsil yoluyla takip edebilirler.</p>
       `},
-      {baslik:"Müşavir yardımcısı şartları (G.K. 227)", metin:`
-        <p>T.C. vatandaşı olmak, medeni hakları kullanma ehliyeti, kamu haklarından mahrum olmamak, taksirli suçlar hariç hüküm giymemek, memuriyetten çıkarılmamış olmak; <b>1 yıl staj</b>; sınavda <b>70 puan</b>; belirli <b>lisans</b> mezuniyeti (hukuk, iktisat, maliye, işletme, muhasebe, bankacılık, kamu yönetimi, siyasal, endüstri müh.) veya bu alanlarda lisansüstü, ya da Gümrük/Dış Ticaret/AB <b>önlisansı</b>.</p>
-        <div class="box"><b>Gümrük idaresinden gelenler:</b> 15 yıl çalışıp istifa/emekli olanlar staj koşulu aranmaksızın <b>sınava girebilir</b>; 15 yılın 3 yılını muayene memuru/başmemur/müdür yardımcısı olarak geçirenler <b>sınav ve staj aranmaksızın</b> müşavir yardımcısı olabilir.</div>
+      {baslik:"Posta ve hızlı kargo — 15481 sayılı C.B. Kararı", metin:`
+        <p><b>15481 sayılı Cumhurbaşkanı Kararına göre</b>; posta/hızlı kargonun <b>dolaylı temsilci</b> yetkisinin sınırları:</p>
+        <div class="twrap"><table>
+          <tr><th>İşlem</th><th>Brüt ağırlık</th><th>Kıymet</th><th>Tarih</th></tr>
+          <tr><td><b>Serbest dolaşıma giriş</b></td><td>30 kg'ı aşmayacak</td><td>1.500 Avro'yu aşmayan</td><td>07.01.2026</td></tr>
+          <tr><td><b>İhracat</b></td><td>30 kg'ı aşmayacak</td><td>1.500 Avro'yu aşmayan</td><td>—</td></tr>
+          <tr><td><b>İhracat</b> (G.G.T. Seri No 1 ile fiilen uygulanan)</td><td>600 kg</td><td>30.000 Avro</td><td>03.01.2026</td></tr>
+        </table></div>
+        <p><b>NOT:</b> İhracatta belirlenen bu miktar ve kıymeti <b>Bakanlık 20 katına kadar artırabilir</b>. Nitekim <b>Gümrük Genel Tebliği Seri No 1'e göre</b> ihracatta brüt <b>600 kg / 30.000 Avro</b> olarak uygulanmaktadır.</p>
+        <div class="box tip"><b>Posta/hızlı kargo ile yapılan işlemlerde:</b>
+          <ul>
+            <li><b>VEKÂLETNAME ARANMAZ.</b></li>
+            <li>İhracat işlemlerinde <b>İHRACATÇI BİRLİĞİ ONAYI ARANMAZ.</b></li>
+            <li><b>Yükümlü Kayıt ve Takip Sistemine (YKTS) kayıt olma koşulu ARANMAZ.</b></li>
+            <li>Ancak <b>2 gümrük müşaviri istihdam etme zorunluluğu vardır.</b></li>
+          </ul>
+        </div>
       `},
-      {baslik:"Müşavir şartları (G.K. 228)", metin:`
-        <p>Müşavir yardımcısı ile aynı temel şartlar; ancak <b>2 yıl staj</b> ve sınavda <b>70 puan</b>.</p>
-        <div class="box"><b>Gümrük idaresinden gelenler:</b> 10 yılın 3 yılını şube müdürü/gümrük müdürü/muhafaza müdürü/baş müdür yardımcısı olarak geçirenler staj aranmaksızın müşavirlik <b>sınavına girebilir</b> (talep ederse GMY izin belgesi verilir); 10 yıl başmüdür/uzman/kontrolör/müfettiş/daire başkanı olanlar <b>sınav ve staj aranmaksızın müşavir</b> olabilir.</div>
-      `},
-      {baslik:"Sınav esasları", metin:`
+      {baslik:"Müşavir, müşavir yardımcısı ve stajyerlerin iş takibi", metin:`
+        <span class="madde">G.K. 226</span>
         <ul>
-          <li><b>Müşavir yardımcılığı</b> sınavı: <b>yazılı</b>, tek aşamada.</li>
-          <li><b>Gümrük müşavirliği</b> sınavı: <b>yazılı ve sözlü</b>, iki aşamada (yazılıyı kazanan sözlüye girer).</li>
-          <li>Sınav tarihi ve koşulları en az <b>1 ay önce</b> ilan edilir.</li>
-          <li><b>GMY sınavı:</b> %20 genel yetenek/genel kültür + %80 gümrük ve kaçakçılık mevzuatı.</li>
-          <li><b>Sınav Kurulu:</b> Ticaret Bakanınca belirlenir; <b>4 Bakanlık + 1 dernek başkanı = 5 kişi</b>.</li>
-          <li>Sınav <b>yılda bir kez</b>; en fazla <b>3'er kez</b> girilebilir; <b>100</b> tam puan, <b>70+</b> başarılı.</li>
-          <li>İtiraz <b>10 gün</b> içinde; itirazlar <b>30 gün</b> içinde değerlendirilir; izin belgesi <b>60 gün</b> içinde verilir.</li>
+          <li>Gümrükte iş takibini <b>NOTER TASDİKLİ vekâletnameyi haiz</b> müşavirler yapabilir. <b>ANCAK</b> kamu kuruluşlarınca verilecek vekâletnamelerde <b>noter onayı aranmaz</b>. Posta/hızlı kargo ile yapılan işlemlerde <b>vekâletname aranmaz</b>.</li>
+          <li><b>GÜMRÜK MÜŞAVİRLERİ</b>, <b>her türlü</b> gümrük işlemini takip ederek sonuçlandırabilirler.</li>
+          <li><b>MÜŞAVİR YARDIMCILARI</b>, bir müşavirin yanında çalışır ve <b>onun adına</b> gümrükte iş takip edebilirler.</li>
+          <li><b>STAJYERLER</b>, gümrük idarelerinde <b>İŞ TAKİBİ YAPAMAZ.</b></li>
+        </ul>
+        <div class="box tip"><b>GMY ve STAJYERLERİN</b> fiil ve hareketlerinden doğacak <b>mali SORUMLULUK</b>, yanında çalıştıkları <b>MÜŞAVİRE</b> aittir.</div>
+      `},
+      {baslik:"Müşavir yardımcısı olabilmek için aranan şartlar", metin:`
+        <span class="madde">G.K. 227</span>
+        <ul>
+          <li><b>T.C. vatandaşı</b> olmak</li>
+          <li><b>Medeni hakları kullanma ehliyetine</b> sahip olmak</li>
+          <li><b>Kamu haklarından mahrum</b> bulunmamak</li>
+          <li><b>Taksirli suçlar hariç</b> hüküm giymemiş olmak</li>
+          <li><b>Memuriyetten çıkarılmamış</b> olmak</li>
+          <li><b>1 YIL staj</b> yapmış olmak</li>
+          <li><b>Sınavda başarılı</b> olmak <b>(70 puan)</b></li>
+        </ul>
+        <p><b>Öğrenim şartı</b> — aşağıdakilerden biri:</p>
+        <ul>
+          <li><b>Hukuk, İktisat, Maliye, İşletme, Muhasebe, Bankacılık, Kamu Yönetimi, Siyasal Bilgiler</b> ve <b>Endüstri Mühendisliği</b> <b>LİSANS</b> mezunu olmak, <b>ya da</b></li>
+          <li>Diğer öğretim kurumlarından <b>lisans seviyesinde</b> mezun olduktan sonra yukarıdaki bilim dallarından <b>LİSANSÜSTÜ</b> seviyede diploma almış olmak, <b>ya da</b></li>
+          <li><b>Gümrük, Dış Ticaret ve Avrupa Birliği ÖNLİSANS</b> mezunu olmak.</li>
+        </ul>
+        <div class="box"><b>Dikkat:</b> <b>Önlisans</b> seçeneği <b>yalnızca müşavir yardımcılığında</b> vardır; gümrük müşavirliğinde (G.K. 228) önlisans yoktur.</div>
+      `},
+      {baslik:"Gümrük müşaviri olabilmek için aranan şartlar", metin:`
+        <span class="madde">G.K. 228</span>
+        <ul>
+          <li><b>T.C. vatandaşı</b> olmak</li>
+          <li><b>Medeni hakları kullanma ehliyetine</b> sahip olmak</li>
+          <li><b>Kamu haklarından mahrum</b> bulunmamak</li>
+          <li><b>Taksirli suçlar hariç</b> hüküm giymemiş olmak</li>
+          <li><b>Memuriyetten çıkarılmamış</b> olmak</li>
+          <li><b>2 YIL staj</b> yapmış olmak</li>
+          <li><b>Sınavda başarılı</b> olmak <b>(70 puan)</b></li>
+          <li><b>Hukuk, İktisat, Maliye, İşletme, Muhasebe, Bankacılık, Kamu Yönetimi, Siyasal Bilgiler</b> ve <b>Endüstri Mühendisliği LİSANS</b> mezunu olmak <b>ya da</b> diğer öğretim kurumlarından lisans seviyesinde mezun olduktan sonra yukarıdaki bilim dallarından <b>LİSANSÜSTÜ</b> seviyede diploma almış olmak.</li>
+        </ul>
+        <div class="twrap"><table>
+          <tr><th>Karşılaştırma</th><th>Müşavir Yardımcısı (227)</th><th>Gümrük Müşaviri (228)</th></tr>
+          <tr><td>Staj</td><td><b>1 yıl</b></td><td><b>2 yıl</b></td></tr>
+          <tr><td>Sınav</td><td>Yazılı, <b>tek aşama</b></td><td>Yazılı + sözlü, <b>iki aşama</b></td></tr>
+          <tr><td>Başarı puanı</td><td>70</td><td>70 (her iki sınavdan ayrı ayrı)</td></tr>
+          <tr><td>Önlisans ile giriş</td><td><b>Var</b> (Gümrük/Dış Tic./AB)</td><td><b>Yok</b></td></tr>
+        </table></div>
+      `},
+      {baslik:"Gümrük idaresinden gelenler (227 ve 228)", metin:`
+        <p><b>MÜŞAVİR YARDIMCILIĞI için (G.K. 227):</b></p>
+        <div class="twrap"><table>
+          <tr><th>Durum</th><th>Sonuç</th></tr>
+          <tr><td><b>15 YIL</b> çalışıp <b>istifa</b> edenler – <b>emekli</b> olanlar</td><td><b>Staj koşulu aranmaksızın SINAVA GİREBİLİR</b></td></tr>
+          <tr><td><b>15 YIL</b> çalışıp bunun <b>3 yılını</b> Gümrük <b>Muayene Memuru</b>, Gümrük <b>Başmemuru</b>, <b>Müdür Yardımcısı</b> olarak geçirenler</td><td><b>Sınav ve staj koşulu aranmaksızın MÜŞAVİR YARDIMCISI OLABİLİR</b></td></tr>
+        </table></div>
+        <p><b>GÜMRÜK MÜŞAVİRLİĞİ için (G.K. 228):</b></p>
+        <div class="twrap"><table>
+          <tr><th>Durum</th><th>Sonuç</th></tr>
+          <tr><td><b>10 YIL</b> çalışıp bunun <b>3 yılını</b> <b>Şube Müdürü</b> – <b>Gümrük Müdürü</b> – <b>Muhafaza Müdürü</b> – <b>Baş Müdür Yardımcısı</b> – <b>Muhafaza Baş Müdür Yardımcısı</b> olarak geçirenler</td><td><b>Staj koşulu aranmaksızın müşavirlik SINAVINA GİREBİLİR.</b> Talep ederse <b>müşavir yardımcılığı izin belgesi</b> verilir.</td></tr>
+          <tr><td><b>10 YIL</b> Gümrük <b>Başmüdürü</b> – Gümrük <b>Muhafaza Başmüdürü</b> – Gümrük <b>Uzmanı</b> – <b>Kontrolör</b> – <b>Müfettiş</b> – <b>Daire Başkanı</b></td><td><b>Sınav ve staj koşulu aranmaksızın MÜŞAVİR OLABİLİR</b></td></tr>
+        </table></div>
+        <div class="box tip"><b>Ezber notu:</b> Yardımcılıkta <b>15 yıl</b>, müşavirlikte <b>10 yıl</b> esas alınır; her ikisinde de nitelikli görevde geçirilmesi gereken süre <b>3 yıldır</b>.</div>
+      `},
+      {baslik:"Sınavın yapılışı ve sınav konuları", metin:`
+        <ul>
+          <li><b>MÜŞAVİR YARDIMCILIĞI</b> sınavı <b>YAZILI</b> olmak üzere <b>TEK AŞAMADA</b> yapılır.</li>
+          <li><b>GÜMRÜK MÜŞAVİRLİĞİ</b> sınavı ise <b>YAZILI ve SÖZLÜ</b> olmak üzere <b>İKİ (2) AŞAMADA</b> yapılır.</li>
+          <li>Gümrük müşavirliği sınavının <b>yazılı kısmını kazananlar, SÖZLÜ SINAVA</b> tabi tutulur.</li>
+          <li>Yazılı ve sözlü sınavların <b>tarihi ve başvuru koşulları</b>, sınav tarihinden en az <b>BİR (1) AY ÖNCE İLAN</b> edilir.</li>
+        </ul>
+        <p><b>GÜMRÜK MÜŞAVİRLİĞİ SINAV KONULARI:</b></p>
+        <ul>
+          <li><b>a)</b> Gümrük Kanunu ve gümrük mevzuatının uygulanmasına ilişkin <b>ikincil düzenlemeler</b>,</li>
+          <li><b>b)</b> <b>5607 sayılı Kaçakçılıkla Mücadele Kanunu</b> ve bu Kanuna ilişkin ikincil düzenlemeler,</li>
+          <li><b>c)</b> <b>Dış ticaret ve kambiyo</b> mevzuatı,</li>
+          <li><b>ç)</b> Gümrüğe ilişkin <b>iktisadi, ticari ve mali konular</b>, <b>uluslararası anlaşmalar</b> ile <b>AB mevzuatının</b> gümrüğe ilişkin hükümleri,</li>
+          <li><b>d)</b> <b>Türk Gümrük Tarife Cetveli ve İzahnamesi.</b></li>
+        </ul>
+        <p><b>MÜŞAVİR YARDIMCILIĞI SINAV KONULARI:</b></p>
+        <ul>
+          <li>Soruların <b>%20'si</b>: <b>Türkçe, matematik, T.C. İnkılâp Tarihi ve Atatürkçülük ile vatandaşlık bilgisi</b> konularını içeren <b>genel yetenek ve genel kültür</b> sorularından,</li>
+          <li>Soruların <b>%80'i</b>: <b>Gümrük Kanunu ve ikincil düzenlemeleri</b>, <b>Kaçakçılıkla Mücadele Kanunu</b> ve ikincil düzenlemelerinden oluşur.</li>
+        </ul>
+        <div class="box"><b>SINAV KURULU</b>, <b>Ticaret Bakanı</b> tarafından belirlenir. <b>Bakanlıktan DÖRT (4)</b> ve <b>G.M. Dernek Başkanlarından BİR (1)</b> olmak üzere <b>BEŞ (5) KİŞİDEN</b> oluşur.</div>
+      `},
+      {baslik:"Sınav sonuçları, itiraz ve izin belgesi", metin:`
+        <ul>
+          <li>Gümrük müşavirliği ve müşavir yardımcılığı sınavları <b>HER YIL BİR KEZ</b> yapılır.</li>
+          <li>Gerekli koşulları <b>SINAVIN AÇILDIĞI YIL BAŞINDA SAĞLAMIŞ</b> olanlar, sınavlara müracaat edebilirler.</li>
+          <li>Sınavlara en fazla <b>ÜÇER (3'ER) KEZ</b> girilebilir.</li>
+          <li>Sınav sonuçlarının değerlendirilmesi <b>YÜZ (100) TAM PUAN</b> üzerinden yapılır.</li>
+          <li>Gümrük müşavirliği <b>yazılı ve sözlü</b> sınavlarının <b>her birinden YETMİŞ (70) VEYA ÜZERİNDE</b> puan alanlar başarılı sayılır.</li>
+          <li>Müşavir yardımcılığı <b>yazılı</b> sınavından <b>YETMİŞ (70) VEYA ÜZERİNDE</b> puan alanlar başarılı sayılır.</li>
+          <li>Sınav sonucunun <b>duyurulduğu tarihten itibaren 10 GÜN</b> içinde <b>Bakanlığa</b> sınav sonucuna <b>İTİRAZ</b> edilebilir.</li>
+          <li>İtirazlar <b>30 GÜN</b> içinde değerlendirilerek sonucu adaylara <b>yazı ile TEBLİĞ EDİLİR.</b></li>
+          <li>Gerekli şartları sağlayan kişilere <b>ALTMIŞ (60) GÜN</b> içinde <b>GM / GMY İzin Belgesi</b> verilir.</li>
+        </ul>
+        <div class="box tip"><b>Süre karışıklığına dikkat:</b> İtiraz <b>10 gün</b> · Değerlendirme <b>30 gün</b> · İzin belgesi <b>60 gün</b> · İlan <b>en az 1 ay önce</b>.</div>
+      `},
+      {baslik:"Mesleğin icrası: şirketleşme, çalışma yeri, bildirimler", metin:`
+        <ul>
+          <li><b>MÜŞAVİRLERE VERİLECEK İZİN BELGELERİ</b>, <b>492 sayılı Harçlar Kanunu</b> uyarınca <b>RUHSAT HARCINA TABİDİR.</b></li>
+          <li>Herhangi bir müşavirlik şirketine <b>bağlı olmaksızın</b> gümrük işlemi takip eden müşavirler, <b>SERBEST MESLEK MAKBUZU</b> düzenlemek zorundadır.</li>
+          <li>Gümrük müşavirleri mesleki faaliyetlerini <b>GERÇEK KİŞİ</b> olarak veya <b>TÜZEL KİŞİLİK</b> oluşturarak sürdürebilirler.</li>
+          <li><b>Tüzel kişilik ortağı</b> olan gümrük müşavirleri, <b>gerçek kişi olarak mesleki faaliyette bulunamazlar.</b></li>
+          <li>Gümrük müşavirlerince kurulan tüzel kişiliklere <b>MÜŞAVİR YARDIMCILARI DA ORTAK OLABİLİR.</b></li>
+          <li><b>Müşavir ve müşavir yardımcısı DIŞINDAKİ KİŞİLER, ORTAK OLAMAZLAR.</b></li>
+          <li>Müşavirler, <b>tebligat adresi ve çalışma yerini</b> bağlı olduğu <b>BAŞMÜDÜRLÜĞE</b> ve ilgili <b>DERNEĞE</b> yazı ile bildirir.</li>
+        </ul>
+        <p><b>MÜŞAVİRLERİN ÇALIŞMA YERİ</b> — devamlı iş çevresi sayılan yer:</p>
+        <ul>
+          <li>Gümrük işleri nedeniyle kendilerine yapılacak tebligat için <b>YERLEŞİM YERİ</b> ve</li>
+          <li>Bu merkezin bulunduğu gümrüğün bağlı olduğu <b>BAŞMÜDÜRLÜK</b> veya</li>
+          <li>Başmüdürlük bulunmayan yerlerde <b>MÜDÜRLÜK BÖLGESİ</b> <b>DEVAMLI İŞ ÇEVRESİ SAYILIR.</b></li>
+        </ul>
+        <ul>
+          <li><b>Çalışma yeri dışında</b> diğer başmüdürlükler ve bağlantılarında iş takibi yapmak isteyen müşavirler, <b>iş takibine başlamadan önce</b> bu durumu <b>İLGİLİ GÜMRÜK MÜDÜRLÜĞÜNE</b> bildirir.</li>
+          <li><b>ÇALIŞMA YERİNİN DEĞİŞTİRİLMESİ</b>, Müsteşarlıkça verilen <b>İZİN BELGESİNİN DEĞİŞTİRİLMESİ İLE MÜMKÜNDÜR.</b></li>
+        </ul>
+        <div class="box"><b>Bildirim süreleri:</b> Müşavirler, bilgi ve belgelerinde <b>DEĞİŞİKLİK</b> olması hâlinde bunları <b>BİR (1) HAFTA</b> içinde <b>GÜMRÜK MÜŞAVİRLERİ DERNEKLERİNE</b> bildirirler. Dernekler de en geç <b>BİR (1) HAFTA</b> içinde ilgili <b>BAŞMÜDÜRLÜĞE</b> gönderir. <b>DEĞİŞİKLİK OLMAYAN</b> hâllerde <b>HER YILIN İKİNCİ AYI (ŞUBAT)</b> içinde <b>BAŞMÜDÜRLÜĞE</b> bildirilir.</div>
+        <p><b>ASGARİ ÜCRET TARİFESİ:</b> Gümrük müşavir derneklerince, asgari ücretleri gösteren ve <b>takvim yılı bazında</b> belirlenen asgari ücret tarifesi, <b>Müsteşarlıkça uygun görülerek onaylanmak suretiyle</b> uygulamaya konulur.</p>
+      `},
+      {baslik:"Sır saklama ve veri güvenliği (20.04.2024)", metin:`
+        <p>Gümrük müşavirliği hizmeti veren <b>gerçek ve tüzel kişiler ile bunların ortak ve çalışanları</b>;</p>
+        <ul>
+          <li>Hesabına beyanda bulundukları kişi veya kuruluşlara ait öğrendikleri <b>bilgi ve ticari sırları</b>, <b>MESLEKİ FAALİYETLERİNE SON VERSELER DAHİ AÇIKLAYAMAZLAR.</b></li>
+          <li><b>Ancak</b>, <b>adli veya idari</b> her türlü <b>inceleme veya soruşturma</b> durumunda bu hüküm <b>uygulanmaz</b>.</li>
+        </ul>
+        <p>Gümrük müşavirliği hizmeti veren gerçek ve tüzel kişiler, <b>bilgisayar veri işleme tekniği</b> yoluyla beyanda bulunulmasına yönelik olarak kullandıkları <b>BİLGİSAYAR SİSTEMLERİNDE VERİLERİN GÜVENLİĞİ İÇİN HER TÜRLÜ TEDBİRİ ALMAK ZORUNDADIR.</b></p>
+        <div class="box tip"><b>ÜÇÜNCÜ KİŞİLERDEN HİZMET ALINMASI durumunda:</b> Hizmet alınan kişiyle <b>YAZILI SÖZLEŞME YAPILMASI</b> ve bu sözleşmede hizmet sağlayıcının <b>verilerin güvenliği için her türlü tedbiri alacağı</b> ve <b>sunulan hizmet kapsamındaki bilgi ve sırları açıklayamayacağı</b> hususlarının <b>açıkça belirtilmesi</b> gerekir.</div>
+        <p><b>SÖZLEŞME ŞARTINI YERİNE GETİRMEYEN</b> gerçek ve tüzel kişi müşavirlerin, bu şart <b>yerine getirilinceye kadar DOLAYLI TEMSİL HİZMETİ VERMESİNE İZİN VERİLMEZ.</b></p>
+      `},
+      {baslik:"Disiplin cezaları ve yetkili merciler", metin:`
+        <p>Gümrük müşavirleri ve müşavir yardımcılarına verilecek <b>DİSİPLİN CEZALARI</b>:</p>
+        <div class="twrap"><table>
+          <tr><th>Ceza</th><th>Tanımı</th><th>Yetkili merci</th></tr>
+          <tr><td><b>UYARMA</b></td><td>Meslek mensubuna mesleğinin icrasında <b>daha dikkatli davranması</b> gerektiğinin <b>yazı ile bildirilmesi</b>.</td><td><b>Gümrük Başmüdürü</b></td></tr>
+          <tr><td><b>KINAMA</b></td><td>Meslek mensubuna görevinde <b>KUSURLU SAYILDIĞININ</b> yazı ile bildirilmesi.</td><td><b>Gümrük Başmüdürü</b></td></tr>
+          <tr><td><b>GEÇİCİ OLARAK MESLEKİ FAALİYETTEN ALIKOYMA</b></td><td><b>Mesleki sıfatı saklı kalmak</b> şartıyla <b>6 AYDAN AZ, 1 YILDAN ÇOK OLMAMAK</b> üzere mesleki faaliyetten alıkoymadır.</td><td><b>Müsteşarlık Merkez Disiplin Kurulu</b></td></tr>
+          <tr><td><b>MESLEKTEN ÇIKARMA</b></td><td>Meslek mensubunun <b>izin belgesinin geri alınarak</b>, bir daha bu mesleği icra etmesine izin verilmemesidir.</td><td><b>Müsteşarlık Yüksek Disiplin Kurulu</b></td></tr>
+        </table></div>
+      `},
+      {baslik:"Hangi fiile hangi ceza? Tekerrür kuralları", metin:`
+        <div class="twrap"><table>
+          <tr><th>Fiil</th><th>Ceza</th></tr>
+          <tr><td><b>Mesleki kurallara, mesleğin vakar ve onuruna aykırı</b> fiil ve harekette bulunanlar ile <b>görevin gerektirdiği güveni sarsıcı</b> harekette bulunanlar</td><td><b>İLK DEFASINDA UYARMA</b>, <b>TEKRARINDA KINAMA</b></td></tr>
+          <tr><td>Görevini <b>bağımsızlık, tarafsızlık ve dürüstlükle yapmayan</b> veya <b>kusurlu olarak yapan</b> ya da bu mesleğin <b>genel prensiplerine aykırı</b> harekette bulunanlar</td><td><b>GEÇİCİ OLARAK MESLEKİ FAALİYETTEN ALIKOYMA</b></td></tr>
+          <tr><td><b>Sahte belgelere dayanılarak yanlış beyanda</b> bulunulduğunun, <b>ancak bu durumun müşavirin bilgisi dışında olduğunun</b>, bununla birlikte <b>bir araştırma sonucunda gerçek durumun öğrenilebileceğinin</b> <b>merkez denetim elemanlarınca rapora bağlandığı</b> durumlar</td><td><b>İlk defasında KINAMA</b>; <b>tekerrüründe GEÇİCİ OLARAK MESLEKİ FAALİYETTEN ALIKOYMA</b></td></tr>
+        </table></div>
+        <p><b>TEKERRÜR KURALLARI:</b></p>
+        <ul>
+          <li><b>ÜÇ (3) YILLIK</b> bir dönem içinde <b>iki veya daha fazla</b> disiplin cezasını gerektiren davranışta bulunan meslek mensubuna, <b>HER YENİ SUÇU İÇİN BİR ÖNCEKİNDEN DAHA AĞIR CEZA UYGULANABİLİR.</b></li>
+          <li><b>BEŞ (5) YILLIK</b> dönem içinde <b>iki defa MESLEKİ FAALİYETTEN ALIKOYMA</b> cezası ile cezalandırılmasından sonra <b>bu cezayı gerektiren fiili yeniden işleyen</b> meslek mensupları hakkında <b>MESLEKTEN ÇIKARMA CEZASI UYGULANIR.</b></li>
+          <li><b>Disiplin kurulları</b>, <b>bir derece ağır</b> veya <b>bir derece hafif</b> disiplin cezasının uygulanmasına karar verebilirler.</li>
         </ul>
       `},
-      {baslik:"Meslekle ilgili genel hükümler", metin:`
+      {baslik:"Savunma, zamanaşımı ve tedbiren belge alınması", metin:`
         <ul>
-          <li>İzin belgeleri <b>ruhsat harcına</b> tabidir (492 sayılı Harçlar Kanunu). Bağımsız çalışan müşavir <b>serbest meslek makbuzu</b> düzenler.</li>
-          <li>Faaliyet <b>gerçek kişi</b> veya <b>tüzel kişilik</b> ile sürdürülür. Tüzel kişilik ortağı müşavir, gerçek kişi olarak faaliyette bulunamaz. Tüzel kişiliklere <b>müşavir yardımcıları da ortak olabilir</b>; müşavir/yardımcı dışındakiler ortak olamaz.</li>
-          <li>Bilgi/belge değişikliği <b>1 hafta</b> içinde derneğe; dernek 1 hafta içinde başmüdürlüğe bildirir. Değişiklik yoksa her yılın <b>2. ayı (Şubat)</b> bildirilir.</li>
-          <li><b>Sır saklama:</b> Öğrendikleri bilgi ve ticari sırları, mesleki faaliyete son verseler dahi açıklayamaz (adli/idari inceleme hariç).</li>
+          <li>Meslek mensubu hakkında <b>SAVUNMASI ALINMADAN DİSİPLİN CEZASI VERİLEMEZ.</b></li>
+          <li>Yetkili disiplin kurulunun <b>ON (10) GÜNDEN AZ OLMAMAK</b> üzere verdiği süre içinde <b>savunma yapmayanlar, SAVUNMA HAKKINDAN VAZGEÇMİŞ SAYILIRLAR.</b></li>
+          <li>Disiplin cezaları <b>KESİNLEŞME TARİHİNDEN İTİBAREN</b> uygulanır.</li>
+          <li>Gümrük müşavirleri ve müşavir yardımcıları, <b>görevleri sırasında işledikleri suçlardan</b> dolayı fiillerinin niteliğine göre <b>TÜRK CEZA KANUNUNUN DEVLET MEMURLARINA</b> ait hükümleri uyarınca cezalandırılır.</li>
+          <li><b>ZAMANAŞIMI:</b> Disiplin cezaları, bir <b>dava sonucuna bağlı olmaksızın</b>, mevzuat hükümlerine aykırılığı gümrük idarelerince <b>tespit edildiği tarihten itibaren ÜÇ (3) YIL SÜREYLE UYGULANMADIĞI TAKDİRDE ZAMANAŞIMINA UĞRAR.</b></li>
         </ul>
-      `},
-      {baslik:"Disiplin cezaları", metin:`
-        <ul>
-          <li><b>Uyarma</b> — daha dikkatli davranması gerektiğinin bildirilmesi. <b>(Gümrük Başmüdürü)</b></li>
-          <li><b>Kınama</b> — görevinde kusurlu sayıldığının bildirilmesi. <b>(Gümrük Başmüdürü)</b></li>
-          <li><b>Geçici olarak mesleki faaliyetten alıkoyma</b> — <b>6 aydan az, 1 yıldan çok olmamak</b> üzere. <b>(Müsteşarlık Merkez Disiplin Kurulu)</b></li>
-          <li><b>Meslekten çıkarma</b> — izin belgesi geri alınır. <b>(Müsteşarlık Yüksek Disiplin Kurulu)</b></li>
-        </ul>
-        <div class="box"><b>Tekerrür:</b> Vakar/onura aykırılıkta ilk uyarma, tekrarında kınama. 5 yıllık dönemde <b>iki kez</b> geçici alıkoyma sonrası aynı fiil → <b>meslekten çıkarma</b>. Savunma alınmadan ceza verilemez (<b>10 günden az olmamak</b> üzere süre). Disiplin cezaları tespitten itibaren <b>3 yıl</b> uygulanmazsa zaman aşımına uğrar.</div>
-        <p>İzin belgeleri, Bakanlık Müfettişleri ve Bölge Müdürlerince tedbir mahiyetinde en fazla <b>6 ay</b> geçici olarak alınabilir.</p>
+        <div class="box tip"><b>TEDBİR MAHİYETİNDE İZİN BELGESİNİN ALINMASI:</b> Bu Kanuna ve gümrüklerde uygulanan mevzuat hükümlerine <b>aykırı hareketleri görülen</b> gümrük müşavirleri ve müşavir yardımcılarının <b>izin belgeleri</b>, <b>BAKANLIK MÜFETTİŞLERİ</b> ve <b>BÖLGE MÜDÜRLERİ</b> tarafından gerek görülmesi hâlinde <b>tedbir mahiyetinde en fazla ALTI (6) AY SÜRE İLE GEÇİCİ OLARAK ALINIR</b> ve <b>gümrüklerde iş takip etmelerine izin verilmez.</b></div>
       `}
     ]
   }
